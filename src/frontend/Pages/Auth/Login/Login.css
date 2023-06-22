@@ -1,0 +1,34 @@
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+}
+.auth-form > input {
+  margin: 12px;
+  padding: 6px;
+  border: 1px solid grey;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+  border-radius: 6px;
+  color:var(--primary-text-color);
+  outline: none;
+}
+.auth-heading {
+  color: var(--primary-text-color);
+  line-height: 0;
+  margin-bottom: -20px;
+  font-size: 5rem;
+}
+.auth-dropdown {
+  margin: 10px;
+  padding-bottom: 10px;
+}
+.auth-btn {
+  width: 90%;
+  color: var(--primary-text-color);
+}
+/* .auth-dropdown-item {
+  background-color: var(--secondary-color);
+  color:var(--primary-text-color)
+} */

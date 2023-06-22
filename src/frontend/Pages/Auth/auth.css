@@ -1,0 +1,31 @@
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.auth-container {
+  width: 400px;
+  border-radius: 12px;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+  box-shadow: 0px 10px 10px rgba(7, 7, 7, 0.1);
+}
+.auth-header {
+  display: flex;
+}
+.auth-header > button {
+  flex-grow: 1;
+  border: solid transparent;
+  padding: 12px;
+  font-weight: var(--fw-regular);
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+  color: var(--primary-text-color);
+}
+.auth-header > button:nth-child(1) {
+  border-radius: 12px 0 0 0;
+}
+.auth-header > button:nth-child(2) {
+  border-radius: 0 12px 0 0;
+}

@@ -1,16 +1,25 @@
 import Mockman from "mockman-js";
-import { FaEmber } from "react-icons/fa";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { PrivateRoute } from "./frontend/Components/PrivateRoute";
+import { Auth } from "./frontend/Pages/Auth/auth";
+import { Feed } from "./frontend/Pages/Feed/Feed";
 
 function App() {
   return (
     <div className="App">
-      <FaEmber style={{ color: "white", fontSize: "5rem" }} />
       {/* <Mockman /> */}
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="/auth"/>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Feed />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </div>
   );

@@ -6,8 +6,8 @@
   --ember: #ef4444;
   --ember-gradient: "linear-gradient(45deg,#27272a,red)";
 
-  --background-blur: rgba(0, 0, 0, 0.2);
-  --blur: blur(15px);
+  --background-blur: rgba(21, 20, 20, 0.1);
+  --blur: blur(10px);
 
   --primary-text-color: rgba(255, 255, 255, 0.9);
 
