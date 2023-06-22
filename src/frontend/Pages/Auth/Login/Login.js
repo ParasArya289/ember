@@ -39,7 +39,7 @@ export const Login = () => {
           ref={passwordRef}
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="Password"
           required
         />
         <Dropdown className="auth-dropdown" as={ButtonGroup}>

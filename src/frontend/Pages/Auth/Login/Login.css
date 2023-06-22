@@ -12,6 +12,7 @@
   backdrop-filter: var(--blur);
   border-radius: 6px;
   color:var(--primary-text-color);
+  font-size: medium;
   outline: none;
 }
 .auth-heading {
