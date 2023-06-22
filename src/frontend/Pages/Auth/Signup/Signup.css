@@ -1,0 +1,31 @@
+.avatar-radio-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 11px;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.auth-form > p {
+  color: var(--primary-text-color);
+  font-size: small;
+  margin-left: 12px;
+  text-align: left;
+}
+.avatar-radio-group input[type="radio"] {
+  appearance: none;
+}
+
+.avatar-radio {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  user-select: none;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+}

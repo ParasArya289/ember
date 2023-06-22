@@ -1,17 +1,22 @@
 import { FaEmber } from "react-icons/fa";
 
-import { useRef } from "react";
-import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
+import { useRef, useState } from "react";
+import { Button, ButtonGroup, Dropdown, Spinner } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../Context/authContext";
-
+import { avatars } from "../../../../Utils/avatars";
+import "./Signup.css";
 export const Signup = () => {
-  const {singupHandler, authLoading } = useAuth();
+  const [selectedAvatar, setSelectedAvatar] = useState();
+  const [avatarLoading, setAvatarLoading] = useState(true);
+  const { singupHandler, authLoading } = useAuth();
   const formRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const userName = useRef(null);
   const passwordRef = useRef(null);
+
+  console.log(avatars);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,6 +72,30 @@ export const Signup = () => {
           placeholder="Password"
           required
         />
+        <p>Select avatar</p>
+        <div className="avatar-radio-group">
+          {avatars.map((avatar, index) => (
+            <label key={index} className="avatar-radio">
+              <input
+                type="radio"
+                name="avatar"
+                value={avatar}
+                required
+                onChange={() => setSelectedAvatar(index)}
+                />
+                {avatarLoading && <Spinner size="sm" className="spinner"/>}
+              <img
+                src={avatar}
+                alt={`Avatar ${index + 1}`}
+                className="avatar-image"
+                style={{
+                  outline: selectedAvatar === index ? "1px solid grey" : "",
+                }}
+                onLoad={() => setAvatarLoading(false)}
+              />
+            </label>
+          ))}
+        </div>
         <Dropdown className="auth-dropdown" as={ButtonGroup}>
           <Button
             className="auth-btn"
