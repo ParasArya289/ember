@@ -1,15 +1,15 @@
 import "./Login.css";
-import {FaEmber} from "react-icons/fa"
+import { FaEmber } from "react-icons/fa";
 
-import { useContext, useRef } from "react";
-// import { authContext } from "../../../contexts/authContext";
+import { useRef } from "react";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { useAuth } from "../../../Context/authContext";
 
 export const Login = () => {
-//   const { token, loginHandler, user, authLoading } = useContext(authContext);
+  const { loginHandler, authLoading } = useAuth();
   const formRef = useRef(null);
-  const emailRef = useRef(null);
+  const userName = useRef(null);
   const passwordRef = useRef(null);
 
   const handleSubmit = (e) => {
@@ -19,12 +19,11 @@ export const Login = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    // loginHandler(obj)
-};
-// console.log(token)
+    loginHandler(obj);
+  };
   const createTestAccount = () => {
-    emailRef.current.value = "parasarya289@gmail.com";
-    passwordRef.current.value = "parasarya";
+    userName.current.value = "parasarya";
+    passwordRef.current.value = "parasarya123";
   };
   return (
     <motion.div
@@ -32,9 +31,17 @@ export const Login = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.1 }}
     >
-      <h1 className="auth-heading"><FaEmber/></h1>
+      <h1 className="auth-heading">
+        <FaEmber />
+      </h1>
       <form ref={formRef} className="auth-form" onSubmit={handleSubmit}>
-        <input ref={emailRef} type="email" name="email" placeholder="Email" required/>
+        <input
+          ref={userName}
+          type="text"
+          name="username"
+          placeholder="Username"
+          required
+        />
         <input
           ref={passwordRef}
           type="password"
@@ -46,27 +53,27 @@ export const Login = () => {
           <Button
             className="auth-btn"
             type="submit"
-            // disabled={authLoading}
+            disabled={authLoading}
             variant="dark"
           >
             Login
           </Button>
 
           <Dropdown.Toggle
-            // disabled={authLoading}
+            disabled={authLoading}
             split
             variant="dark"
             id="dropdown-split-basic"
           />
           <Dropdown.Menu className="auth-dropdown-item">
             <Dropdown.Item
-            className="auth-dropdown-item"
+              className="auth-dropdown-item"
               onClick={(e) => {
                 createTestAccount();
                 handleSubmit(e);
               }}
             >
-              Test login
+              Guest login
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

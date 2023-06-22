@@ -1,8 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { useAuth } from "../Context/authContext";
 
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
-  const token = true;
+  const {token} = useAuth();
+  console.log(token)
   return token ? (
     children
   ) : (

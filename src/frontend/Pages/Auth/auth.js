@@ -1,27 +1,29 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { authContext } from "../../contexts/authContext";
 import { Login } from "./Login/Login";
 import { Signup } from "./Signup/Signup";
 import { motion } from "framer-motion";
 import "./auth.css";
 import useMeasure from "react-use-measure";
+import { useAuth } from "../../Context/authContext";
 
 export const Auth = () => {
   const [loginUi, setLoginUi] = useState("login");
   //   const { token } = useContext(authContext);
+  const {token} = useAuth()
   const [ref, { height }] = useMeasure();
   const navigate = useNavigate();
   const location = useLocation();
 
-  //   useEffect(() => {
-  //     if (token) {
-  //       const navi =
-  //         (location?.state?.from === "/user" && "/products") ||
-  //         (location?.state?.from ?? "/products");
-  //       navigate(navi);
-  //     }
-  //   }, [token]);
+    useEffect(() => {
+      // if (token) {
+      //   const navi =
+      //     (location?.state?.from === "/user" && "/products") ||
+      //     (location?.state?.from ?? "/products");
+      //   navigate(navi);
+      // }
+      // navigate("/")
+    }, [token]);
   return (
     <div className="auth">
 

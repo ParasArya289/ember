@@ -1,16 +1,16 @@
 import { FaEmber } from "react-icons/fa";
 
-import { useContext, useRef } from "react";
-// import { authContext } from "../../../contexts/authContext";
+import { useRef } from "react";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
+import { useAuth } from "../../../Context/authContext";
 
 export const Signup = () => {
-  //   const { token, user, singupHandler, authLoading } = useContext(authContext);
+  const {singupHandler, authLoading } = useAuth();
   const formRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
-  const emailRef = useRef(null);
+  const userName = useRef(null);
   const passwordRef = useRef(null);
 
   const handleSubmit = (e) => {
@@ -20,13 +20,13 @@ export const Signup = () => {
     for (const [key, value] of formdata.entries()) {
       obj[key] = value;
     }
-    // singupHandler(obj);
+    singupHandler(obj);
   };
 
   const createTestAccount = () => {
     firstNameRef.current.value = "Test";
     lastNameRef.current.value = "Test";
-    emailRef.current.value = "test@gmail.com";
+    userName.current.value = "test@gmail.com";
     passwordRef.current.value = "test";
   };
   return (
@@ -54,10 +54,10 @@ export const Signup = () => {
           required
         />
         <input
-          ref={emailRef}
-          type="email"
-          name="email"
-          placeholder="Email"
+          ref={userName}
+          type="text"
+          name="username"
+          placeholder="Username"
           required
         />
         <input
@@ -71,14 +71,14 @@ export const Signup = () => {
           <Button
             className="auth-btn"
             type="submit"
-            // disabled={authLoading}
+            disabled={authLoading}
             variant="dark"
           >
             Create Account
           </Button>
 
           <Dropdown.Toggle
-            // disabled={authLoading}
+            disabled={authLoading}
             split
             variant="dark"
             id="dropdown-split-basic"
