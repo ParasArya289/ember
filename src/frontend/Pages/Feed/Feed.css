@@ -1,0 +1,35 @@
+.feed-container {
+  display: grid;
+  grid-template-columns: 275px auto 350px;
+  margin: 0 auto;
+}
+.info-bar-fixed {
+  position: sticky;
+  top: 0;
+  border-left: var(--layout-border);
+  min-height: 100vh;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+}
+
+.sidebar {
+}
+.sidebar-fixed {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  display: flex;
+  border-right: var(--layout-border);
+  justify-content: center;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+}
+
+.populated-feed {
+  min-height: 100vh;
+}
+
+.populated-feed {
+  background-color: var(--background-blur);
+  backdrop-filter: blur(15px);
+}

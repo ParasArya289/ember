@@ -5,12 +5,17 @@
   flex-wrap: nowrap;
   gap: 10px;
 }
-.auth-form > p {
+.auth-form > .avatar-radio-header {
   color: var(--primary-text-color);
+  display: flex;
+  justify-content: space-between;
   font-size: small;
-  margin-left: 12px;
-  margin-bottom: 5px;
+  margin-inline: 12px;
+  margin-bottom: 0px;
   text-align: left;
+}
+.auth-form > .avatar-radio-header > span{
+  cursor: pointer;
 }
 .avatar-radio-group input[type="radio"] {
   appearance: none;

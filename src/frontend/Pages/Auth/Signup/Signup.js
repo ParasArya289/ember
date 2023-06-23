@@ -1,4 +1,5 @@
 import { FaEmber } from "react-icons/fa";
+import { BsShuffle } from "react-icons/bs";
 
 import { useRef, useState } from "react";
 import { Button, ButtonGroup, Dropdown, Spinner } from "react-bootstrap";
@@ -7,7 +8,7 @@ import { useAuth } from "../../../Context/authContext";
 import { avatars } from "../../../../Utils/avatars";
 import "./Signup.css";
 export const Signup = () => {
-  const [selectedAvatar, setSelectedAvatar] = useState();
+  const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [avatarLoading, setAvatarLoading] = useState(true);
   const { singupHandler, authLoading } = useAuth();
   const formRef = useRef(null);
@@ -16,7 +17,15 @@ export const Signup = () => {
   const userName = useRef(null);
   const passwordRef = useRef(null);
 
-  console.log(avatars);
+  function createDramaEffect() {
+    for (let i = 0; i < 10; i++) {
+      setTimeout(() => {
+        const randomNumber = Math.floor(Math.random() * 5);
+        console.log(randomNumber);
+        setSelectedAvatar(randomNumber);
+      }, i * 100);
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,9 +38,9 @@ export const Signup = () => {
   };
 
   const createTestAccount = () => {
-    firstNameRef.current.value = "Test";
-    lastNameRef.current.value = "Test";
-    userName.current.value = "test@gmail.com";
+    firstNameRef.current.value = "John";
+    lastNameRef.current.value = "Doe";
+    userName.current.value = "johndoe";
     passwordRef.current.value = "test";
   };
   return (
@@ -72,7 +81,13 @@ export const Signup = () => {
           placeholder="Password"
           required
         />
-        <p>Select avatar</p>
+
+        <motion.div className="avatar-radio-header">
+          <motion.p>Select Avatar</motion.p>
+          <motion.span whileHover={{ scale: 1.2 }} whileTap={{ scale: 1 }}>
+            <BsShuffle onClick={createDramaEffect} />
+          </motion.span>
+        </motion.div>
         <div className="avatar-radio-group">
           {avatars.map((avatar, index) => (
             <label key={index} className="avatar-radio">
@@ -82,9 +97,13 @@ export const Signup = () => {
                 value={avatar}
                 required
                 onChange={() => setSelectedAvatar(index)}
-                />
-                {avatarLoading && <Spinner size="sm" className="spinner"/>}
-              <img
+              />
+              {avatarLoading && <Spinner size="sm" className="spinner" />}
+              <motion.img
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 1 }}
+                initial={{ scale: 1 }}
+                animate={{ scale: selectedAvatar === index ? 1.2 : 1 }}
                 src={avatar}
                 alt={`Avatar ${index + 1}`}
                 className="avatar-image"

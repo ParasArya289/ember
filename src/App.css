@@ -1,7 +1,3 @@
 .App{
     text-align: center;
 }
-.App > h1{
-    color:var(--ember);
-    font-weight: var(--fw-regular);
-}
