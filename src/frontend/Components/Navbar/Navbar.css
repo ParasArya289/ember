@@ -6,10 +6,22 @@
   align-items: center;
   position: sticky;
   top: 0;
-  border-bottom:var(--layout-border);
+  border-bottom: var(--layout-border);
   font-weight: var(--fw-bold);
   background-color: var(--background-blur);
-  backdrop-filter:var(--blur);
+  backdrop-filter: var(--blur);
   color: var(--primary-text-color);
   z-index: 9999;
+}
+.feed-nav-search {
+  display: none;
+}
+
+@media (max-width:1065px) {
+  .feed-nav {
+    justify-content: space-around;
+  }
+  .feed-nav-search {
+    display: unset;
+  }
 }

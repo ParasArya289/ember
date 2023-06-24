@@ -1,11 +1,3 @@
-/* .searchbar{
-    position: sticky;
-    top:0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height:5rem;
-} */
 .searchbar {
   width: 100%;
   height: 4rem;
@@ -19,3 +11,8 @@
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
 }
+@media (max-width:1065px) {
+    .searchbar {
+        height: 3rem;
+    }
+  }
