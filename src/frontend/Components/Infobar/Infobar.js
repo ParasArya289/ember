@@ -1,3 +1,10 @@
+import "./Infobar.css";
 export const Inforbar = () => {
-  return <div>Infobar</div>;
+  return (
+    <div>
+      <div className="info-card"></div>
+      <div className="info-card"></div>
+      <div className="info-card"></div>
+    </div>
+  );
 };

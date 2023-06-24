@@ -109,6 +109,7 @@ export const Signup = () => {
                 className="avatar-image"
                 style={{
                   outline: selectedAvatar === index ? "1px solid grey" : "",
+                  outlineRadius:"6px"
                 }}
                 onLoad={() => setAvatarLoading(false)}
               />

@@ -1,19 +1,22 @@
 .feed-container {
   display: grid;
-  grid-template-columns: 275px auto 350px;
-  margin: 0 auto;
+  grid-template-columns: 357px 700px auto;
 }
-.info-bar-fixed {
-  position: sticky;
-  top: 0;
-  border-left: var(--layout-border);
-  min-height: 100vh;
+.info-bar {
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
 }
-
-.sidebar {
+.info-bar-fixed {
+  position: sticky;
+  top:0;
+  display: flex;
+  justify-content: center;
+  border-left: var(--layout-border);
+  min-height: 100vh;
 }
+
+/* .sidebar {
+} */
 .sidebar-fixed {
   position: sticky;
   top: 0;
@@ -32,4 +35,13 @@
 .populated-feed {
   background-color: var(--background-blur);
   backdrop-filter: blur(15px);
+}
+
+@media (max-width: 870px) {
+  .feed-container {
+    grid-template-columns: 80px 1fr;
+  }
+  .info-bar {
+    display: none;
+  }
 }

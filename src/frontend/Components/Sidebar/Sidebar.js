@@ -8,7 +8,7 @@ export const Sidebar = () => {
   return (
     <nav>
       <div className="sidebar-links">
-        <h1 className="auth-heading">
+        <h1 className="sidebar-heading">
           <FaEmber />
         </h1>
         <div>

@@ -6,8 +6,11 @@
   width: fit-content;
   gap: 20px;
 }
-.auth-heading {
-  /* align-self: center; */
+.sidebar-heading {
+  color: var(--primary-text-color);
+  line-height: 0;
+  margin-bottom: -20px;
+  font-size: 5rem;
 }
 .sidebar-links > div {
   font-size: 22px;
@@ -16,4 +19,18 @@
   font-weight: var(--fw-bold);
   font-size: 19px;
   margin-left: 20px;
+}
+
+@media (max-width: 870px) {
+  .sidebar-links {
+    align-items: center;
+  }
+  .sidebar-links > div > span {
+    display: none;
+  }
+  .sidebar-heading{
+    font-size: 3rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
 }
