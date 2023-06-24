@@ -3,7 +3,7 @@
 :root {
   --primary-color: #0a0a0a;
   --secondary-color: #262626;
-  --ember: #ef4444;
+  --ember: #ef444498;
   --ember-rgba: rgba(239, 68, 68, 0.15);
   --ember-gradient: "linear-gradient(45deg,#27272a,red)";
 

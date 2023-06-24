@@ -14,6 +14,7 @@
 }
 .sidebar-links > div {
   font-size: 22px;
+  padding: 5px 12px;
 }
 .sidebar-links > div > span {
   font-weight: var(--fw-bold);
@@ -21,6 +22,10 @@
   margin-left: 20px;
 }
 
+.sidebar-links > div:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 20px;
+}
 @media (max-width: 870px) {
   .sidebar-links {
     align-items: center;

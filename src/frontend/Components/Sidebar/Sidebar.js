@@ -3,6 +3,7 @@ import { FaEmber } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { MdExplore } from "react-icons/md";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { BsFillSendFill } from "react-icons/bs";
 
 export const Sidebar = () => {
   return (
@@ -22,6 +23,10 @@ export const Sidebar = () => {
         <div>
           <BsFillBookmarkFill />
           <span>Bookmark</span>
+        </div>
+        <div>
+          <BsFillSendFill />
+          <span>Post</span>
         </div>
       </div>
     </nav>
