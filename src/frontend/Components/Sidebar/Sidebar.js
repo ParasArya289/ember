@@ -4,10 +4,13 @@ import { AiFillHome } from "react-icons/ai";
 import { MdExplore } from "react-icons/md";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillSendFill } from "react-icons/bs";
-
+import { GoKebabHorizontal } from "react-icons/go";
+import { useAuth } from "../../Context/authContext";
+import { motion } from "framer-motion";
 export const Sidebar = () => {
+  const { user } = useAuth();
   return (
-    <nav>
+    <nav className="sidebar-container">
       <div className="sidebar-links">
         <h1 className="sidebar-heading">
           <FaEmber />
@@ -29,6 +32,24 @@ export const Sidebar = () => {
           <span>Post</span>
         </div>
       </div>
+      <motion.div whileHover={{ scale: 1.04}} className="sidebar-user">
+        <div className="sidebar-user-flex">
+          <div className="sidebar-user-img">
+            <img src={user?.avatar} />
+          </div>
+
+          <div className="sidebar-user-info">
+            <p>
+              {user?.firstName} {user?.lastName}
+            </p>
+            <p>@{user?.username}</p>
+          </div>
+
+          {/* <div>
+            <GoKebabHorizontal />
+          </div> */}
+        </div>
+      </motion.div>
     </nav>
   );
 };

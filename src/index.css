@@ -6,6 +6,7 @@
   --ember: #ef444498;
   --ember-rgba: rgba(239, 68, 68, 0.15);
   --ember-gradient: "linear-gradient(45deg,#27272a,red)";
+  --hover-color:rgba(128, 128, 128, 0.1);
 
   --layout-border: 1px solid rgba(255, 255, 255, 0.1);
 
