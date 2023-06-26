@@ -8,6 +8,8 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: uuid(),
+    avatar:
+      "https://pbs.twimg.com/profile_images/1605458814068674563/V2sT6f64_400x400.jpg",
     firstName: "Paras",
     lastName: "Arya",
     username: "parasarya",
