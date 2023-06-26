@@ -8,6 +8,7 @@ import { GoKebabHorizontal } from "react-icons/go";
 import { useAuth } from "../../Context/authContext";
 import { motion } from "framer-motion";
 import { MyPopover } from "../Popover/Popover";
+import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
 export const Sidebar = () => {
   const { user } = useAuth();
   return (
@@ -36,9 +37,11 @@ export const Sidebar = () => {
       <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
         <MyPopover user={user}>
           <div className="sidebar-user-flex">
-            <div className="sidebar-user-img">
-              <img src={user?.avatar} />
-            </div>
+            <ProfileHoverCard user={user}>
+              <div className="sidebar-user-img">
+                <img src={user?.avatar} />
+              </div>
+            </ProfileHoverCard>
 
             <div className="sidebar-user-info">
               <p>
