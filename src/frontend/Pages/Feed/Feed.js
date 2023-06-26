@@ -13,7 +13,7 @@ export const Feed = () => {
         </div>
       </div>
       <div className="main-feed">
-        <Navbar title={"Your Feed"} />
+        <Navbar title={"Home"} />
         <div className="populated-feed">
           <h2 style={{ color: "white" }}>Feed</h2>
          {[...Array(100)].map((_,i)=>(<div>test</div>))}

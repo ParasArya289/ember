@@ -3,7 +3,7 @@ import "./Navbar.css";
 export const Navbar = ({ title }) => {
   return (
     <nav className="feed-nav">
-      <p>{title}</p>
+      <h5>{title}</h5>
       <div className="feed-nav-search">
         <Searchbar />
       </div>

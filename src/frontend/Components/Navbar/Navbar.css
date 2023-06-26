@@ -13,13 +13,21 @@
   color: var(--primary-text-color);
   z-index: 9999;
 }
+.feed-nav > h5{
+  font-weight: var(--fw-bold);
+}
+
 .feed-nav-search {
   display: none;
 }
 
 @media (max-width:1065px) {
   .feed-nav {
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .feed-nav > h5,.feed-nav{
+    font-size: small;
   }
   .feed-nav-search {
     display: unset;
