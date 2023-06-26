@@ -11,3 +11,9 @@ export const singupUser = (userDetails) => {
     body: JSON.stringify(userDetails),
   });
 };
+
+export const logoutHandler = (setUser, setToken) => {
+  localStorage.clear();
+  setUser({});
+  setToken("");
+};

@@ -7,6 +7,7 @@ import { BsFillSendFill } from "react-icons/bs";
 import { GoKebabHorizontal } from "react-icons/go";
 import { useAuth } from "../../Context/authContext";
 import { motion } from "framer-motion";
+import { MyPopover } from "../Popover/Popover";
 export const Sidebar = () => {
   const { user } = useAuth();
   return (
@@ -32,23 +33,21 @@ export const Sidebar = () => {
           <span>Post</span>
         </div>
       </div>
-      <motion.div whileHover={{ scale: 1.04}} className="sidebar-user">
-        <div className="sidebar-user-flex">
-          <div className="sidebar-user-img">
-            <img src={user?.avatar} />
-          </div>
+      <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
+        <MyPopover user={user}>
+          <div className="sidebar-user-flex">
+            <div className="sidebar-user-img">
+              <img src={user?.avatar} />
+            </div>
 
-          <div className="sidebar-user-info">
-            <p>
-              {user?.firstName} {user?.lastName}
-            </p>
-            <p>@{user?.username}</p>
+            <div className="sidebar-user-info">
+              <p>
+                {user?.firstName} {user?.lastName}
+              </p>
+              <p>@{user?.username}</p>
+            </div>
           </div>
-
-          {/* <div>
-            <GoKebabHorizontal />
-          </div> */}
-        </div>
+        </MyPopover>
       </motion.div>
     </nav>
   );

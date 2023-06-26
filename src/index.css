@@ -11,6 +11,7 @@
   --layout-border: 1px solid rgba(255, 255, 255, 0.1);
 
   --background-blur: rgba(21, 20, 20, 0.1);
+  --background-blur-dark:rgba(128, 128, 128, 0.1);
   --blur: blur(12px);
 
   --primary-text-color: rgba(255, 255, 255, 0.9);
