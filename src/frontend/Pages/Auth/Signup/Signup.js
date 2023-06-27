@@ -108,8 +108,7 @@ export const Signup = () => {
                 alt={`Avatar ${index + 1}`}
                 className="avatar-image"
                 style={{
-                  outline: selectedAvatar === index ? "1px solid grey" : "",
-                  outlineRadius:"6px"
+                  borderColor: selectedAvatar === index ? "grey" : ""
                 }}
                 onLoad={() => setAvatarLoading(false)}
               />
