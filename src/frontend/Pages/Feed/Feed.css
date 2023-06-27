@@ -45,3 +45,27 @@
     display: none;
   }
 }
+
+@media (max-width: 450px) {
+  .feed-container{
+    all:unset;
+    display: flex;
+  }
+  .main-feed{
+    flex-basis: 100%;
+    z-index: -1;
+  }
+  .sidebar{
+    position: fixed;
+    background-color: var(--background-blur);
+    backdrop-filter: var(--blur);
+    height: 5rem;
+    bottom: 0;
+    left:0;
+    right: 0;
+  }
+  .sidebar-fixed{
+    all:unset;
+    display: flex;
+  }
+}

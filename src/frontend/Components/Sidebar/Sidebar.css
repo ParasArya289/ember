@@ -83,3 +83,20 @@
     margin-bottom: 10px;
   }
 }
+@media (max-width: 450px) {
+  .sidebar-links{
+    /* align-items: baseline; */
+    flex-direction: row;
+    justify-content: space-between;
+
+  }
+  .sidebar-user{
+    position: unset;
+  }
+  .sidebar-links > div:hover{
+    background-color: transparent;
+  }
+  .sidebar-heading{
+    display: none;
+  }
+}

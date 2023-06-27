@@ -33,7 +33,6 @@ export const Sidebar = () => {
           <BsFillSendFill />
           <span>Post</span>
         </div>
-      </div>
       <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
         <MyPopover user={user}>
           <div className="sidebar-user-flex">
@@ -52,6 +51,7 @@ export const Sidebar = () => {
           </div>
         </MyPopover>
       </motion.div>
+      </div>
     </nav>
   );
 };
