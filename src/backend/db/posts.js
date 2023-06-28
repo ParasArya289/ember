@@ -8,29 +8,152 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: uuid(),
+    _id: "bf747aeb-57e7-4e82-9c1a-10de989b792d",
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Just finished reading an amazing book that completely blew my mind! Highly recommend it to everyone. #BookRecommendation",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 3,
+      likedBy: ["johnsmith", "emilyjohnson", "michaelbrown"],
       dislikedBy: [],
     },
-    username: "adarshbalika",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    username: "parasarya",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
   },
   {
-    _id: uuid(),
+    _id: "ceec46f2-51e1-4f81-97db-6236de51e704",
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "Just watched the latest Marvel movie, and it was mind-blowing! The action, the storyline, and the special effects were top-notch. #MarvelFan",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: ["sophiadavis", "michaelbrown"],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
+    username: "johnsmith",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "976be752-6cc4-4ee7-98e6-38d5ed08e3a0",
+    content:
+      "Just had the most delicious meal at my favorite restaurant! The flavors were incredible, and the presentation was beautiful. #Foodie",
+    likes: {
+      likeCount: 1,
+      likedBy: ["parasarya"],
+      dislikedBy: [],
+    },
+    username: "emilyjohnson",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "ad84b92a-ff14-4fe1-9124-763ccbb7083d",
+    content:
+      "Attended an inspiring conference today. The speakers were phenomenal, and I learned so much. Feeling motivated and ready to conquer new challenges! #PersonalGrowth",
+    likes: {
+      likeCount: 4,
+      likedBy: ["johnsmith", "emilyjohnson", "sophiadavis", "michaelbrown"],
+      dislikedBy: [],
+    },
+    username: "michaelbrown",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "1e2dbd0c-0808-4d9d-a53d-7e22f066faa2",
+    content:
+      "Just finished a challenging coding project after hours of hard work. It feels great to see it working flawlessly. #CodingLife",
+    likes: {
+      likeCount: 2,
+      likedBy: ["emilyjohnson", "michaelbrown"],
+      dislikedBy: [],
+    },
+    username: "sophiadavis",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e267",
+    content:
+      "Spent the weekend exploring a beautiful hiking trail. The views were breathtaking, and I feel so refreshed. Nature is truly amazing! #OutdoorAdventure",
+    likes: {
+      likeCount: 3,
+      likedBy: ["parasarya", "michaelbrown", "sophiadavis"],
+      dislikedBy: [],
+    },
+    username: "johnsmith",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e267",
+    content:
+      "Just adopted the cutest puppy today! Meet Bella, my new furry best friend. 🐶❤️ #NewPuppy",
+    likes: {
+      likeCount: 5,
+      likedBy: [
+        "emilyjohnson",
+        "michaelbrown",
+        "sophiadavis",
+        "johnsmith",
+        "parasarya",
+      ],
+      dislikedBy: [],
+    },
+    username: "sophiadavis",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "315a9dbd-fb52-4bdc-83e1-6af938f38b77",
+    content:
+      "Just completed my first half-marathon! It was an incredible experience. Proud of my accomplishment and excited to set new fitness goals. 🏃‍♂️💪 #FitnessJourney",
+    likes: {
+      likeCount: 3,
+      likedBy: ["johnsmith", "parasarya", "sophiadavis"],
+      dislikedBy: [],
+    },
+    username: "emilyjohnson",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "9b4d3e35-d6df-4e36-91a5-9e9f3db8fb55",
+    content:
+      "Just launched my own business! It's been a long journey, but I'm excited to embark on this new chapter. If you're interested in handmade crafts, check out my website. #Entrepreneur",
+    likes: {
+      likeCount: 2,
+      likedBy: ["michaelbrown", "sophiadavis"],
+      dislikedBy: [],
+    },
+    username: "parasarya",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "12e78a8f-53ea-43c7-9c85-bddad8b9c67d",
+    content:
+      "Just returned from an incredible trip to Paris. The architecture, the food, and the art were simply amazing. Missing the city already! #TravelDiaries",
+    likes: {
+      likeCount: 4,
+      likedBy: ["sophiadavis", "emilyjohnson", "johnsmith", "michaelbrown"],
+      dislikedBy: [],
+    },
+    username: "johnsmith",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: "c8c3f2af-4c07-4ad6-9791-43b82d0a8160",
+    content:
+      "Just finished an amazing art project! It took hours of dedication, but the result is absolutely worth it. Sharing my artwork with you all. #ArtisticPassion",
+    likes: {
+      likeCount: 1,
+      likedBy: ["michaelbrown"],
+      dislikedBy: [],
+    },
+    username: "emilyjohnson",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
   },
 ];
