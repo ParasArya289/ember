@@ -7,12 +7,13 @@
   padding: 20px;
   width: 260px;
   background-color: var(--background-blur-dark);
-  backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
   color: var(--primary-text-color);
   font-size: small;
   /* background: linear-gradient(135deg, #33333380, rgba(74, 74, 74, 0.1), rgba(102, 102, 102, 0.1), rgba(153, 153, 153, 0.1));*/
+  z-index: 99;
 }
-.PopoverContent > hr{
+.PopoverContent > hr {
   opacity: 0.1;
 }
 .PopoverContent > div > img {
@@ -22,7 +23,7 @@
   margin-left: 10px;
   font-weight: 500;
 }
-.PopoverContent > div{
+.PopoverContent > div {
   cursor: pointer;
 }
 

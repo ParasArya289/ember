@@ -53,7 +53,6 @@
   }
   .main-feed{
     flex-basis: 100%;
-    z-index: -1;
   }
   .sidebar{
     position: fixed;
@@ -65,9 +64,9 @@
     right: 0;
     display: grid;
     place-items: center;
+    z-index: 1;
   }
   .sidebar-fixed{
     all:unset;
-
   }
 }

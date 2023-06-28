@@ -10,6 +10,7 @@ export const MyPopover = ({ children, user }) => {
   const logout = () => logoutHandler(setUser,setToken)
 
   return (
+    <div className="Popover">
     <Popover.Root>
       <Popover.Trigger className="PopoverTrigger"> {children}</Popover.Trigger>
       <Popover.Portal>
@@ -29,5 +30,6 @@ export const MyPopover = ({ children, user }) => {
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>
+    </div>
   );
 };
