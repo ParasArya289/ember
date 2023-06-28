@@ -28,9 +28,9 @@ body {
   overflow-x: auto;
   overflow-y: auto;
   background-color: var(--primary-color);
-  background-image: url(/public/bg3.svg);
+  background-image: url(/public/bg2.svg);
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-origin: center;
   background-attachment: fixed;

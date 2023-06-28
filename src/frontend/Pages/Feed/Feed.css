@@ -28,11 +28,10 @@
   backdrop-filter: var(--blur);
 }
 
-.populated-feed {
-  min-height: 100vh;
-}
+/* .populated-feed {
 
-.populated-feed {
+} */
+.main-feed{
   background-color: var(--background-blur);
   backdrop-filter: blur(15px);
 }
@@ -53,6 +52,7 @@
   }
   .main-feed{
     flex-basis: 100%;
+    min-height: 100vh;
   }
   .sidebar{
     position: fixed;

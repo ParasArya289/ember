@@ -4,7 +4,7 @@ import { Inforbar } from "../../Components/Infobar/Infobar";
 import { Sidebar } from "../../Components/Sidebar/Sidebar";
 import { Navbar } from "../../Components/Navbar/Navbar";
 
-export const Feed = () => {
+export const Feed = ({children}) => {
   return (
     <div className="feed-container">
       <div className="sidebar">
@@ -15,8 +15,9 @@ export const Feed = () => {
       <div className="main-feed">
         <Navbar title={"Home"} />
         <div className="populated-feed">
-          <h2 style={{ color: "white" }}>Feed</h2>
-         {[...Array(100)].map((_,i)=>(<div>test</div>))}
+          {/* <h2 style={{ color: "white" }}>Feed</h2>
+         {[...Array(100)].map((_,i)=>(<div>test</div>))} */}
+         {children}
         </div>
       </div>
       <div className="info-bar">
