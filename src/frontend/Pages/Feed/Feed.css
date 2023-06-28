@@ -58,6 +58,7 @@
     position: fixed;
     background-color: var(--background-blur);
     backdrop-filter: var(--blur);
+    border-top: var(--layout-border);
     height: 5rem;
     bottom: 0;
     left:0;
