@@ -95,6 +95,7 @@ export const Signup = () => {
                 type="radio"
                 name="avatar"
                 value={avatar}
+                checked={index === selectedAvatar}
                 required
                 onChange={() => setSelectedAvatar(index)}
               />
@@ -108,7 +109,7 @@ export const Signup = () => {
                 alt={`Avatar ${index + 1}`}
                 className="avatar-image"
                 style={{
-                  borderColor: selectedAvatar === index ? "grey" : ""
+                  borderColor: selectedAvatar === index ? "grey" : "",
                 }}
                 onLoad={() => setAvatarLoading(false)}
               />
