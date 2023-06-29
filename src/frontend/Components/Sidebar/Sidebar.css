@@ -18,18 +18,18 @@
   margin-bottom: -20px;
   font-size: 5rem;
 }
-.sidebar-links > div {
+.sidebar-links-link {
   font-size: 22px;
   padding: 5px 12px;
   cursor: pointer;
 }
-.sidebar-links > div > span {
+.sidebar-links-link > span {
   font-weight: var(--fw-bold);
   font-size: 19px;
   margin-left: 20px;
 }
 
-.sidebar-links > div:hover {
+.sidebar-links-link:hover {
   background-color: var(--hover-color);
   border-radius: 20px;
 }
@@ -71,7 +71,7 @@
   .sidebar-links {
     align-items: center;
   }
-  .sidebar-links > div > span,
+  .sidebar-links-link > span,
   .sidebar-user-action,
   .sidebar-user-info {
     display: none;

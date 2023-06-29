@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { MyPopover } from "../Popover/Popover";
 import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
 import { useNavigate } from "react-router-dom";
+import PostDialogBox from "../PostDialogBox/PostDialogBox";
 export const Sidebar = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -19,22 +20,32 @@ export const Sidebar = () => {
         <h1 className="sidebar-heading">
           <FaEmber />
         </h1>
-        <div onClick={() => navigate("/")}>
+        <div className="sidebar-links-link" onClick={() => navigate("/")}>
           <AiFillHome />
           <span>Home</span>
         </div>
-        <div onClick={() => navigate("/explore")}>
+        <div
+          className="sidebar-links-link"
+          onClick={() => navigate("/explore")}
+        >
           <MdExplore />
           <span>Explore</span>
         </div>
-        <div onClick={() => navigate("/bookmark")}>
+        <div
+          className="sidebar-links-link"
+          onClick={() => navigate("/bookmark")}
+        >
           <BsFillBookmarkFill />
           <span>Bookmark</span>
         </div>
-        <div>
-          <BsFillSendFill />
-          <span>Post</span>
-        </div>
+
+        <PostDialogBox>
+          <div className="sidebar-links-link">
+            <BsFillSendFill />
+            <span>Post</span>
+          </div>
+        </PostDialogBox>
+
         <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
           <MyPopover user={user}>
             <div className="sidebar-user-flex">
