@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PrivateRoute } from "./frontend/Components/PrivateRoute";
 import { Auth } from "./frontend/Pages/Auth/auth";
+import { Bookmark } from "./frontend/Pages/Bookmark/Bookmark";
+import { Explore } from "./frontend/Pages/Explore/Explore";
 import { Feed } from "./frontend/Pages/Feed/Feed";
 import { Home } from "./frontend/Pages/Home/Home";
 
@@ -17,6 +19,22 @@ function App() {
           element={
             <PrivateRoute>
               <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <PrivateRoute>
+              <Explore />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/bookmark"
+          element={
+            <PrivateRoute>
+              <Bookmark />
             </PrivateRoute>
           }
         />

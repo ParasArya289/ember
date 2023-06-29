@@ -1,6 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { loginUser, singupUser } from "../../frontend/AsyncUtilities/authAsyncHelpers";
+import {
+  loginUser,
+  singupUser,
+} from "../../frontend/AsyncUtilities/authAsyncHelpers";
 
 export const authContext = createContext();
 
@@ -10,13 +13,6 @@ export const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(localStorageToken);
   const [user, setUser] = useState(localStorageUser);
   const [authLoading, setAuthLoading] = useState(false);
-
-//   useEffect(()=>{
-//     if(token){
-//       getCart(token,dataDispatch);
-//       getWishlist(token,dataDispatch);
-//     }
-//   },[token])
 
   const loginHandler = async (userCred) => {
     try {
@@ -40,7 +36,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message,{id:"toast"});
+      toast.error(e.message, { id: "toast" });
     } finally {
       setAuthLoading(false);
     }
@@ -66,7 +62,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message,{id:"toast"});
+      toast.error(e.message, { id: "toast" });
     } finally {
       setAuthLoading(false);
     }

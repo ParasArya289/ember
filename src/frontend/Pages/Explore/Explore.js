@@ -1,14 +1,13 @@
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Feed } from "../Feed/Feed";
-import "./Home.css";
 
-export const Home = () => {
+export const Explore = () => {
   return (
     <Feed>
-      <Navbar title={"Home"} />
+      <Navbar title={"Explore"} />
       <div>
         {[...Array(100)].map((el) => (
-          <h1>Home</h1>
+          <h1>Explore</h1>
         ))}
       </div>
     </Feed>

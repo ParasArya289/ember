@@ -1,14 +1,13 @@
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { Feed } from "../Feed/Feed";
-import "./Home.css";
 
-export const Home = () => {
+export const Bookmark = () => {
   return (
     <Feed>
-      <Navbar title={"Home"} />
+      <Navbar title={"Bookmark"} />
       <div>
         {[...Array(100)].map((el) => (
-          <h1>Home</h1>
+          <h1>Bookmark</h1>
         ))}
       </div>
     </Feed>

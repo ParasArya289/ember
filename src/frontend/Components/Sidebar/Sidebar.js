@@ -9,23 +9,25 @@ import { useAuth } from "../../Context/authContext";
 import { motion } from "framer-motion";
 import { MyPopover } from "../Popover/Popover";
 import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
+import { useNavigate } from "react-router-dom";
 export const Sidebar = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   return (
     <nav className="sidebar-container">
       <div className="sidebar-links">
         <h1 className="sidebar-heading">
           <FaEmber />
         </h1>
-        <div>
+        <div onClick={() => navigate("/")}>
           <AiFillHome />
           <span>Home</span>
         </div>
-        <div>
+        <div onClick={() => navigate("/explore")}>
           <MdExplore />
           <span>Explore</span>
         </div>
-        <div>
+        <div onClick={() => navigate("/bookmark")}>
           <BsFillBookmarkFill />
           <span>Bookmark</span>
         </div>
@@ -33,24 +35,24 @@ export const Sidebar = () => {
           <BsFillSendFill />
           <span>Post</span>
         </div>
-      <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
-        <MyPopover user={user}>
-          <div className="sidebar-user-flex">
-            <ProfileHoverCard user={user}>
-              <div className="sidebar-user-img">
-                <img src={user?.avatar} />
-              </div>
-            </ProfileHoverCard>
+        <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
+          <MyPopover user={user}>
+            <div className="sidebar-user-flex">
+              <ProfileHoverCard user={user}>
+                <div className="sidebar-user-img">
+                  <img src={user?.avatar} />
+                </div>
+              </ProfileHoverCard>
 
-            <div className="sidebar-user-info">
-              <p>
-                {user?.firstName} {user?.lastName}
-              </p>
-              <p>@{user?.username}</p>
+              <div className="sidebar-user-info">
+                <p>
+                  {user?.firstName} {user?.lastName}
+                </p>
+                <p>@{user?.username}</p>
+              </div>
             </div>
-          </div>
-        </MyPopover>
-      </motion.div>
+          </MyPopover>
+        </motion.div>
       </div>
     </nav>
   );
