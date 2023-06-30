@@ -25,7 +25,6 @@ export const DataContext = ({ children }) => {
         !following.some((followedUser) => followedUser?.username === user?.username)
         );
       dataDispatch({ type: "INIT_NOT_FOLLOWING", payload: notFollowingList });
-      console.log(notFollowingList,following);
     }
   }, [user,dataState.users]);
 

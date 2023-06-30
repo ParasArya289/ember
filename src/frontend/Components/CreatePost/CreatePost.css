@@ -12,8 +12,15 @@
   all: unset;
   flex: 1;
   outline: none;
+  word-wrap:break-word;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 .createpost-input {
     display: flex;
+    flex-direction: column;
     flex: 1;
+}
+.createpost-input > button{
+    align-self: flex-end;
 }
