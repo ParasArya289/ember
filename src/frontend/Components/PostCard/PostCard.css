@@ -8,7 +8,12 @@
 }
 .postcard-container > img{
     border-radius: 50%;
+    user-select: none;
 }
+/* .postcard-info-container-header{
+    display: flex;
+    flex-direction:column;
+} */
 .header-name{
     font-weight: 600;
 }

@@ -28,9 +28,6 @@
   backdrop-filter: var(--blur);
 }
 
-/* .populated-feed {
-
-} */
 .main-feed{
   background-color: var(--background-blur);
   backdrop-filter: blur(15px);

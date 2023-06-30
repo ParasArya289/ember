@@ -8,8 +8,8 @@ export const Explore = () => {
   } = useData();
   return (
     <Feed>
-      <Navbar title={"Explore"} />
       <div>
+        <Navbar title={"Explore"} />
         {posts?.map((post) => (
           <PostCard key={post?.id} post={post} />
         ))}
