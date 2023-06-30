@@ -22,7 +22,7 @@ export const DataContext = ({ children }) => {
       const { username, following } = user;
       const notFollowingList = users?.filter(
         (user) => user?.username !== username && 
-        !following.some((followedUser) => followedUser?.username === user?.username)
+        !following?.some((followedUser) => followedUser?.username === user?.username)
         );
       dataDispatch({ type: "INIT_NOT_FOLLOWING", payload: notFollowingList });
     }
