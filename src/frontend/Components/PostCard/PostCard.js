@@ -1,6 +1,6 @@
 import "./PostCard.css";
 import { AiOutlineHeart } from "react-icons/ai";
-import { BiComment } from "react-icons/bi";
+import { BsBookmark } from "react-icons/bs";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
@@ -44,7 +44,7 @@ export const PostCard = ({ post }) => {
               </LikePopover>
             </div>
             <div className="postcard-action">
-              <BiComment />
+              <BsBookmark />
             </div>
             <div className="postcard-action">
               <AiOutlineShareAlt />
