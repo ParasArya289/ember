@@ -1,3 +1,4 @@
+import { CreatePost } from "../../Components/CreatePost/CreatePost";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { PostCard } from "../../Components/PostCard/PostCard";
 import { useAuth } from "../../Context/authContext";
@@ -27,6 +28,7 @@ export const Home = () => {
     <Feed>
       <div>
         <Navbar title={"Home"} />
+        <CreatePost/>
         {filterPostsOfFollowers()?.map((post) => (
           <PostCard key={post?.id} post={post} />
         ))}

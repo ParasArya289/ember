@@ -1,0 +1,19 @@
+.createpost-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  text-align: left;
+  color:var(--primary-text-color);
+}
+.createpost-avatar > img {
+  border-radius: 50%;
+}
+.createpost-input > textarea {
+  all: unset;
+  flex: 1;
+  outline: none;
+}
+.createpost-input {
+    display: flex;
+    flex: 1;
+}
