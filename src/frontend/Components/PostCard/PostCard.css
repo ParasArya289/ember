@@ -1,0 +1,44 @@
+.postcard-container{
+    color:var(--primary-text-color);
+    display: flex;
+    padding:20px;
+    gap:20px;
+    text-align: left;
+    font-size: medium;
+}
+.postcard-container > img{
+    border-radius: 50%;
+}
+.header-name{
+    font-weight: 600;
+}
+.header-username{
+    font-size: small;
+    color: var(--ember);
+}
+.postcard-info-container-body{
+    margin-top: 10px;
+}
+.postcard-action-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 20rem;
+}
+.postcard-action{
+    cursor: pointer;
+}
+.postcard-action-flex{
+    display: flex;
+    align-items: center;
+}
+.postcard-action-likeCount{
+    margin-left: 2px;
+    padding: 5px;
+    font-size: small;
+}
+.postcard-action:hover{
+    color:var(--ember)
+}
+.postcard-hr{
+    color:rgba(255, 255, 255, 0.3);
+}

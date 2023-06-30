@@ -1,13 +1,17 @@
 import { Navbar } from "../../Components/Navbar/Navbar";
+import { PostCard } from "../../Components/PostCard/PostCard";
+import { useData } from "../../Context/dataContext";
 import { Feed } from "../Feed/Feed";
-
 export const Explore = () => {
+  const {
+    dataState: { posts },
+  } = useData();
   return (
     <Feed>
       <Navbar title={"Explore"} />
       <div>
-        {[...Array(100)].map((el) => (
-          <h1>Explore</h1>
+        {posts?.map((post) => (
+          <PostCard key={post?.id} post={post} />
         ))}
       </div>
     </Feed>

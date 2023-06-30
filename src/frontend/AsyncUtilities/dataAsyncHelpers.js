@@ -7,3 +7,14 @@ export const getUser = async (dispatch) => {
     console.error(e.message);
   }
 };
+
+export const getPosts = async (dispatch) => {
+  try {
+    const res = await fetch("/api/posts");
+    const { posts } = await res.json();
+    dispatch({ type: "INIT_POSTS", payload: posts });
+    console.log(posts)
+  } catch (e) {
+    console.error(e.message);
+  }
+};

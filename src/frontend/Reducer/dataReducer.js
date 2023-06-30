@@ -1,7 +1,8 @@
 export const initDataState = {
   users: [],
-  following:[],
-  notFollowing:[],
+  posts: [],
+  following: [],
+  notFollowing: [],
 };
 
 export const dataReducer = (state, action) => {
@@ -12,9 +13,14 @@ export const dataReducer = (state, action) => {
         users: action.payload,
       };
     case "INIT_NOT_FOLLOWING":
-      return{
+      return {
         ...state,
-        notFollowing:action.payload,
-      }
+        notFollowing: action.payload,
+      };
+    case "INIT_POSTS":
+      return {
+        ...state,
+        posts: action.payload,
+      };
   }
 };

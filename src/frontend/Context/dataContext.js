@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { getUser } from "../AsyncUtilities/dataAsyncHelpers";
+import { getPosts, getUser } from "../AsyncUtilities/dataAsyncHelpers";
 import { dataReducer, initDataState } from "../Reducer/dataReducer";
 import { useAuth } from "./authContext";
 
@@ -12,6 +12,7 @@ export const DataContext = ({ children }) => {
 
   useEffect(() => {
     getUser(dataDispatch);
+    getPosts(dataDispatch);
   }, []);
 
   //abstract this part

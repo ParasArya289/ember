@@ -16,7 +16,7 @@ export const Inforbar = () => {
       <div className="info-card">
         <h4>Who to follow</h4>
         {notFollowing?.map((user) => (
-          <div className="info-Card-users-container">
+          <div key={user?.id} className="info-Card-users-container">
           <div key={user?.id} 
           className="info-Card-users">
             <ProfileHoverCard key={user?.id} user={user}>
