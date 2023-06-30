@@ -7,6 +7,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { useData } from "../../Context/dataContext";
 import { LikePopover } from "../Popover/LikePopover";
 import { useAuth } from "../../Context/authContext";
+import { useState } from "react";
 
 export const PostCard = ({ post }) => {
   const {

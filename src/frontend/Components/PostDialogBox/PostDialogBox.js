@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
 import "./PostDialogBox.css";
 import { useAuth } from "../../Context/authContext";
+import { useData } from "../../Context/dataContext";
+import { createPost } from "../../AsyncUtilities/dataAsyncHelpers";
 
 const PostDialogBox = ({ children }) => {
-  const {user} = useAuth();
+  const [formData, setFormData] = useState("");
+  const { user, token } = useAuth();
+  const { dataDispatch } = useData();
+
+  const sendPost = () => {
+    if (formData) {
+      const data = {
+        content: formData,
+        username: user?.username,
+      };
+      createPost(data, token, dataDispatch);
+      setFormData("");
+    }
+  };
+
   return (
     <Dialog.Root>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>
@@ -14,11 +30,15 @@ const PostDialogBox = ({ children }) => {
         <Dialog.Content className="DialogContent">
           <Dialog.Title className="DialogTitle">
             <div className="DialogUser">
-              <img src={user?.avatar} height="40"/>
+              <img src={user?.avatar} height="40" />
             </div>
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
-            <textarea placeholder="Whats happening?!"/>
+            <textarea
+              placeholder="Whats happening?!"
+              onChange={(e) => setFormData(e.target.value)}
+              value={formData}
+            />
           </Dialog.Description>
 
           <div
@@ -29,7 +49,13 @@ const PostDialogBox = ({ children }) => {
             }}
           >
             <Dialog.Close asChild>
-              <button className="Button green">Post</button>
+              <button
+                disabled={!formData.length}
+                className="Button green"
+                onClick={sendPost}
+              >
+                Post
+              </button>
             </Dialog.Close>
           </div>
           <Dialog.Close asChild>
