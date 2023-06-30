@@ -2,14 +2,17 @@ import "./PostCard.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BiComment } from "react-icons/bi";
 import { AiOutlineShareAlt } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 import { useData } from "../../Context/dataContext";
 import { LikePopover } from "../Popover/LikePopover";
+import { useAuth } from "../../Context/authContext";
 
 export const PostCard = ({ post }) => {
   const {
     dataState: { users },
   } = useData();
+  const { user } = useAuth();
 
   const findUser = users?.find(({ username }) => username === post?.username);
 
@@ -29,7 +32,11 @@ export const PostCard = ({ post }) => {
           </div>
           <div className="postcard-action-container">
             <div className="postcard-action postcard-action-flex">
-              <AiOutlineHeart />
+              {post?.likes?.likedBy.includes(user?.username) ? (
+                <AiFillHeart />
+              ) : (
+                <AiOutlineHeart />
+              )}
               <LikePopover likedBy={post?.likes?.likedBy}>
                 <span className="postcard-action-likeCount">
                   {post?.likes?.likeCount}
