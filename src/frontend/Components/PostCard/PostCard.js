@@ -14,8 +14,9 @@ import { EditMenu } from "../Popover/EditPopover";
 export const PostCard = ({ post }) => {
   const {
     dataState: { users },
+    dataDispatch,
   } = useData();
-  const { user } = useAuth();
+  const { token, user } = useAuth();
 
   const findUser = users?.find(({ username }) => username === post?.username);
 
@@ -34,7 +35,11 @@ export const PostCard = ({ post }) => {
 
             <div className="header-menu">
               {user?.username === post?.username && (
-                <EditMenu>
+                <EditMenu
+                  postId={post?._id}
+                  token={token}
+                  dispatch={dataDispatch}
+                >
                   <BiDotsHorizontalRounded />
                 </EditMenu>
               )}
