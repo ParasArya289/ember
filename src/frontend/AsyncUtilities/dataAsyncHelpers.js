@@ -1,6 +1,9 @@
 export const getUser = async (dispatch) => {
   try {
     const res = await fetch("/api/users");
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
     const { users } = await res.json();
     dispatch({ type: "INIT_USER", payload: users });
   } catch (e) {
@@ -11,9 +14,50 @@ export const getUser = async (dispatch) => {
 export const getPosts = async (dispatch) => {
   try {
     const res = await fetch("/api/posts");
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const followUser = async (userId, token, setUser) => {
+  console.log({ userId, token });
+  try {
+    const res = await fetch(`/api/users/follow/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { user, followuser } = await res.json();
+    setUser(user);
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const unfollowUser = async (userId, token, setUser) => {
+  try {
+    const res = await fetch(`/api/users/unfollow/${userId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { user, followuser } = await res.json();
+    setUser(user);
   } catch (e) {
     console.error(e.message);
   }

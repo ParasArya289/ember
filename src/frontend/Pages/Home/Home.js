@@ -9,15 +9,19 @@ export const Home = () => {
   const {
     dataState: { posts },
   } = useData();
-  // const {
-  //   user: { username:you,following=["johnsmith,parasarya"] },
-  // } = useAuth();
+  const {
+    user: { username: you, following },
+  } = useAuth();
+  console.log(you, following);
   const filterPostsOfFollowers = () => {
-    const you = "parasarya";
-    const following = [you, "johnsmith", "emilyjohnson"];
-    return posts?.filter(({ username }) => following.includes(username));
+    const postIncludingCurrentUser = [
+      you,
+      ...following.map(({ username }) => username),
+    ];
+    return posts?.filter(({ username }) =>
+      postIncludingCurrentUser.includes(username)
+    );
   };
-  // console.log(posts)
   console.log(filterPostsOfFollowers());
   return (
     <Feed>
