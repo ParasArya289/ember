@@ -29,13 +29,13 @@ export const ProfileHoverCard = ({ children, user }) => (
             <div style={{ display: "flex", gap: 15 }}>
               <div style={{ display: "flex", gap: 5 }}>
                 <div className="Text bold">
-                  {user?.following.toString() || "0"}
+                  {user?.following?.length || "0"}
                 </div>{" "}
                 <div className="Text faded">Following</div>
               </div>
               <div style={{ display: "flex", gap: 5 }}>
                 <div className="Text bold">
-                  {user?.followers.toString() || "0"}
+                  {user?.followers?.length || "0"}
                 </div>{" "}
                 <div className="Text faded">Followers</div>
               </div>

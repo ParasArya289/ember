@@ -19,12 +19,13 @@ export const DataContext = ({ children }) => {
   useEffect(() => {
     const { users } = dataState;
     if (user && users.length) {
-      const { username, followers } = user;
+      const { username, following } = user;
       const notFollowingList = users?.filter(
-        (user) => user?.username !== username && !followers?.includes(username)
-      );
+        (user) => user?.username !== username && 
+        !following.some((followedUser) => followedUser?.username === user?.username)
+        );
       dataDispatch({ type: "INIT_NOT_FOLLOWING", payload: notFollowingList });
-      console.log(notFollowingList);
+      console.log(notFollowingList,following);
     }
   }, [user,dataState.users]);
 
