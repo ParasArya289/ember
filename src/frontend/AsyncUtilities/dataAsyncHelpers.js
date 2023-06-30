@@ -62,9 +62,30 @@ export const unfollowUser = async (userId, token, setUser) => {
     console.error(e.message);
   }
 };
+
 export const createPost = async (postData, token, dispatch) => {
   try {
     const res = await fetch(`/api/posts`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify({ postData }),
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const {posts} = await res.json();
+    dispatch({ type: "INIT_POSTS", payload: posts });
+    console.log(posts)
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+export const editPost = async (postData,postId,token, dispatch) => {
+  try {
+    const res = await fetch(`/api/posts/edit/${postId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

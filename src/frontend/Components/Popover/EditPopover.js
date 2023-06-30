@@ -2,11 +2,19 @@ import * as Popover from "@radix-ui/react-popover";
 import { FiEdit2 } from "react-icons/fi";
 import { AiOutlineDelete } from "react-icons/ai";
 import "./EditPopover.css";
-import { DeletePost } from "../../AsyncUtilities/dataAsyncHelpers";
+import { DeletePost, editPost } from "../../AsyncUtilities/dataAsyncHelpers";
+import { EditDialogBox } from "../EditDialogBox/EditDialogBox";
 
-export const EditMenu = ({ children,postId,token, dispatch }) => {
+export const EditMenu = ({
+  children,
+  user,
+  content,
+  postId,
+  token,
+  dispatch,
+}) => {
   const deletePost = () => {
-    DeletePost(postId,token, dispatch);
+    DeletePost(postId, token, dispatch);
   };
   return (
     <div className="Popover">
@@ -18,9 +26,17 @@ export const EditMenu = ({ children,postId,token, dispatch }) => {
         <Popover.Portal>
           <Popover.Content className="Edit-PopoverContent">
             <div>
-              <button>
-                <FiEdit2 /> Edit
-              </button>
+              <EditDialogBox
+                content={content}
+                user={user}
+                postId={postId}
+                token={token}
+                dispatch={dispatch}
+              >
+                <button>
+                  <FiEdit2 /> Edit
+                </button>
+              </EditDialogBox>
             </div>
             <hr />
             <div>

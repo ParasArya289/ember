@@ -36,6 +36,8 @@ export const PostCard = ({ post }) => {
             <div className="header-menu">
               {user?.username === post?.username && (
                 <EditMenu
+                  content={post?.content}
+                  user={user}
                   postId={post?._id}
                   token={token}
                   dispatch={dataDispatch}
