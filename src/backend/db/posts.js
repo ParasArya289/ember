@@ -43,7 +43,9 @@ export const posts = [
       "Just had the most delicious meal at my favorite restaurant! The flavors were incredible, and the presentation was beautiful. #Foodie",
     likes: {
       likeCount: 1,
-      likedBy: [{ username: "parasarya" }],
+      likedBy: [
+        { username: "parasarya", _id: "ceec46f2-51e1-4f81-97db-6236de51e708" },
+      ],
       dislikedBy: [],
     },
     username: "emilyjohnson",
@@ -88,7 +90,7 @@ export const posts = [
     likes: {
       likeCount: 3,
       likedBy: [
-        { username: "parasarya" },
+        { username: "parasarya", _id: "ceec46f2-51e1-4f81-97db-6236de51e708" },
         { username: "michaelbrown" },
         { username: "sophiadavis" },
       ],
@@ -109,7 +111,7 @@ export const posts = [
         { username: "michaelbrown" },
         { username: "sophiadavis" },
         { username: "johnsmith" },
-        { username: "parasarya" },
+        { username: "parasarya", _id: "ceec46f2-51e1-4f81-97db-6236de51e708" },
       ],
       dislikedBy: [],
     },
@@ -125,7 +127,7 @@ export const posts = [
       likeCount: 3,
       likedBy: [
         { username: "johnsmith" },
-        { username: "parasarya" },
+        { username: "parasarya", _id: "ceec46f2-51e1-4f81-97db-6236de51e708" },
         { username: "sophiadavis" },
       ],
       dislikedBy: [],

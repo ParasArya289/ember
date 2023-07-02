@@ -8,7 +8,7 @@ export const LikePopover = ({ children, likedBy }) => {
     dataState: { users },
   } = useData();
   const listLikedUsers = users?.filter(({ username }) =>
-    likedBy.some(({ username: name }) => name === username)
+    likedBy?.some(({ username: name }) => name === username)
   );
   return (
     <div className="Popover">

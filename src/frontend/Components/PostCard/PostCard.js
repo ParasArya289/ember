@@ -24,6 +24,7 @@ export const PostCard = ({ post }) => {
     dataDispatch,
   } = useData();
   const { token, user } = useAuth();
+  console.log(bookmark)
 
   const findUser = users?.find(({ username }) => username === post?.username);
 
@@ -75,7 +76,7 @@ export const PostCard = ({ post }) => {
               </LikePopover>
             </div>
             <div className="postcard-action">
-              {bookmark.some(({ _id }) => _id === post?._id) ? (
+              {bookmark?.some(({ _id }) => _id === post?._id) ? (
                 <BsBookmarkFill
                   onClick={() =>
                     removeBookmarkedPost(post?._id, token, dataDispatch)

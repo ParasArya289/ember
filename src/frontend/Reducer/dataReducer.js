@@ -19,14 +19,22 @@ export const dataReducer = (state, action) => {
         notFollowing: action.payload,
       };
     case "INIT_POSTS":
+      const initBookmarksWithFreshData = action?.payload?.filter(({ _id }) =>
+        state?.bookmark?.some(({ _id: id }) => id === _id)
+      );
       return {
         ...state,
         posts: action.payload,
+        bookmark: initBookmarksWithFreshData,
       };
     case "INIT_BOOKMARK":
+      const bookmarkedFullPost = state?.posts?.filter(({ _id }) =>
+        action?.payload?.some(({ _id: id }) => id === _id)
+      );
+      console.log(bookmarkedFullPost);
       return {
         ...state,
-        bookmark: action.payload,
+        bookmark: bookmarkedFullPost,
       };
   }
 };

@@ -7,7 +7,7 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
+    _id: "ceec46f2-51e1-4f81-97db-6236de51e708",
     avatar:
       "https://pbs.twimg.com/profile_images/1605458814068674563/V2sT6f64_400x400.jpg",
     bio: "Tech-loving IT student | Passionate web developer | AWS Certified | Embracing innovation",
