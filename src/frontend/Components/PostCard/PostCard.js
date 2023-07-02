@@ -13,7 +13,9 @@ import { useState } from "react";
 import { EditMenu } from "../Popover/EditPopover";
 import {
   bookmarkPost,
+  likePost,
   removeBookmarkedPost,
+  unlikePost,
 } from "../../AsyncUtilities/dataAsyncHelpers";
 
 export const PostCard = ({ post }) => {
@@ -57,10 +59,14 @@ export const PostCard = ({ post }) => {
           </div>
           <div className="postcard-action-container">
             <div className="postcard-action postcard-action-flex">
-              {post?.likes?.likedBy.includes(user?.username) ? (
-                <AiFillHeart />
+              {post?.likes?.likedBy?.some(({username})=>username === user?.username) ? (
+                <AiFillHeart
+                  onClick={() => unlikePost(post?._id, token, dataDispatch)}
+                />
               ) : (
-                <AiOutlineHeart />
+                <AiOutlineHeart
+                  onClick={() => likePost(post?._id, token, dataDispatch)}
+                />
               )}
               <LikePopover likedBy={post?.likes?.likedBy}>
                 <span className="postcard-action-likeCount">

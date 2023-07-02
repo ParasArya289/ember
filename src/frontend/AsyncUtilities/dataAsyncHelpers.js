@@ -96,7 +96,6 @@ export const createPost = async (postData, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts);
   } catch (e) {
     console.error(e.message);
   }
@@ -116,7 +115,6 @@ export const editPost = async (postData, postId, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts);
   } catch (e) {
     console.error(e.message);
   }
@@ -133,8 +131,8 @@ export const DeletePost = async (postId, token, dispatch) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const { bookmarks } = await res.json();
-    dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+    const { posts } = await res.json();
+    dispatch({ type: "INIT_POSTS", payload: posts });
   } catch (e) {
     console.error(e.message);
   }
@@ -155,7 +153,6 @@ export const bookmarkPost = async (postId, token, dispatch) => {
     }
     const { bookmarks } = await res.json();
     dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
-    console.log(bookmarks)
   } catch (e) {
     console.error(e.message);
   }
@@ -175,6 +172,49 @@ export const removeBookmarkedPost = async (postId, token, dispatch) => {
     }
     const { bookmarks } = await res.json();
     dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+//LIKE and UNLIKE Post
+
+export const likePost = async (postId, token, dispatch) => {
+  try {
+    const res = await fetch(`/api/posts/like/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { posts } = await res.json();
+    dispatch({ type: "INIT_POSTS", payload: posts });
+    console.log(posts)
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const unlikePost = async (postId, token, dispatch) => {
+  try {
+    const res = await fetch(`/api/posts/dislike/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    console.log(res)
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { posts } = await res.json();
+    dispatch({ type: "INIT_POSTS", payload: posts });
+    console.log(posts)
   } catch (e) {
     console.error(e.message);
   }

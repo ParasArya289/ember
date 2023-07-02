@@ -7,9 +7,10 @@ export const LikePopover = ({ children, likedBy }) => {
   const {
     dataState: { users },
   } = useData();
-  const listLikedUsers = users?.filter(({ username }) =>
-    likedBy.includes(username)
-  );
+  const listLikedUsers = users
+    ?.filter(({ username }) =>
+      likedBy.some(({ username:name }) => name === username)
+    )
   return (
     <div className="Popover">
       <Popover.Root>
@@ -21,9 +22,18 @@ export const LikePopover = ({ children, likedBy }) => {
           <Popover.Content className="PopoverContent">
             {listLikedUsers?.map((user) => (
               <>
-                <div key={user?._id} style={{marginBlock:"10px",fontSize:"small"}}>
-                  <img src={user?.avatar} height="30" style={{borderRadius:"50%"}}/>
-                  <span>{user?.firstName} {user?.lastName}</span>
+                <div
+                  key={user?._id}
+                  style={{ marginBlock: "10px", fontSize: "small" }}
+                >
+                  <img
+                    src={user?.avatar}
+                    height="30"
+                    style={{ borderRadius: "50%" }}
+                  />
+                  <span>
+                    {user?.firstName} {user?.lastName}
+                  </span>
                 </div>
               </>
             ))}
