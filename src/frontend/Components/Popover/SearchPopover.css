@@ -1,17 +1,11 @@
-.PopoverTrigger {
-  all: unset;
-}
-
 .PopoverContent {
   border-radius: 4px;
   padding: 20px;
   width: 260px;
-  background-color: var(--background-blur-dark);
-  backdrop-filter: blur(10px);
+  background-color: var(--primary-color);
   color: var(--primary-text-color);
   font-size: small;
   outline: none;
-  z-index: 99;
 }
 .PopoverContent > hr {
   opacity: 0.1;
@@ -27,9 +21,9 @@
   cursor: pointer;
 }
 
-/* .PopoverContent > div:hover{
+.PopoverContent > div:hover {
   background-color: var(--background-blur);
-} */
+}
 
 .PopoverArrow {
   fill: var(--background-blur-dark);
