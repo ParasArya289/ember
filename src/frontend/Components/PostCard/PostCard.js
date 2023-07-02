@@ -1,6 +1,7 @@
 import "./PostCard.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
+import { BsBookmarkFill } from "react-icons/bs";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
@@ -10,10 +11,14 @@ import { LikePopover } from "../Popover/LikePopover";
 import { useAuth } from "../../Context/authContext";
 import { useState } from "react";
 import { EditMenu } from "../Popover/EditPopover";
+import {
+  bookmarkPost,
+  removeBookmarkedPost,
+} from "../../AsyncUtilities/dataAsyncHelpers";
 
 export const PostCard = ({ post }) => {
   const {
-    dataState: { users },
+    dataState: { users, bookmark },
     dataDispatch,
   } = useData();
   const { token, user } = useAuth();
@@ -64,7 +69,17 @@ export const PostCard = ({ post }) => {
               </LikePopover>
             </div>
             <div className="postcard-action">
-              <BsBookmark />
+              {bookmark.some(({ _id }) => _id === post?._id) ? (
+                <BsBookmarkFill
+                  onClick={() =>
+                    removeBookmarkedPost(post?._id, token, dataDispatch)
+                  }
+                />
+              ) : (
+                <BsBookmark
+                  onClick={() => bookmarkPost(post?._id, token, dataDispatch)}
+                />
+              )}
             </div>
             <div className="postcard-action">
               <AiOutlineShareAlt />

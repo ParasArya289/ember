@@ -1,6 +1,7 @@
 export const initDataState = {
   users: [],
   posts: [],
+  bookmark: [],
   following: [],
   notFollowing: [],
 };
@@ -21,6 +22,11 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
         posts: action.payload,
+      };
+    case "INIT_BOOKMARK":
+      return {
+        ...state,
+        bookmark: action.payload,
       };
   }
 };

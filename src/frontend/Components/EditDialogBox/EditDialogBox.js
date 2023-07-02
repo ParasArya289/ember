@@ -15,6 +15,10 @@ export const EditDialogBox = ({ children,user,content,postId, token, dispatch })
     //   setFormData("");
     }
   };
+//   const handleAutoResize = (event) => {
+//     event.target.style.height = 'auto';
+//     event.target.style.height = `${event.target.scrollHeight}px`;
+//   };
   return (
     <Dialog.Root>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>

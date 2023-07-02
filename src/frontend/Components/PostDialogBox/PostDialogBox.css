@@ -13,6 +13,8 @@
   flex: 1;
   color:var(--primary-text-color);
   outline: none;
+  /* overflow: hidden; */
+  /* padding-block: 20px; */
 }
 .DialogOverlay {
   background-color: var(--background-blur);

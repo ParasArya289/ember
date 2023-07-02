@@ -1,3 +1,5 @@
+//Get basic data
+
 export const getUser = async (dispatch) => {
   try {
     const res = await fetch("/api/users");
@@ -23,6 +25,20 @@ export const getPosts = async (dispatch) => {
     console.error(e.message);
   }
 };
+export const getBookmarked = async (dispatch) => {
+  try {
+    const res = await fetch("/api/users/bookmark");
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { bookmarks } = await res.json();
+    dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+//Follow and Unfollow
 
 export const followUser = async (userId, token, setUser) => {
   console.log({ userId, token });
@@ -63,6 +79,8 @@ export const unfollowUser = async (userId, token, setUser) => {
   }
 };
 
+//POST
+
 export const createPost = async (postData, token, dispatch) => {
   try {
     const res = await fetch(`/api/posts`, {
@@ -76,14 +94,14 @@ export const createPost = async (postData, token, dispatch) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const {posts} = await res.json();
+    const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+    console.log(posts);
   } catch (e) {
     console.error(e.message);
   }
 };
-export const editPost = async (postData,postId,token, dispatch) => {
+export const editPost = async (postData, postId, token, dispatch) => {
   try {
     const res = await fetch(`/api/posts/edit/${postId}`, {
       method: "POST",
@@ -96,14 +114,14 @@ export const editPost = async (postData,postId,token, dispatch) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const {posts} = await res.json();
+    const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+    console.log(posts);
   } catch (e) {
     console.error(e.message);
   }
 };
-export const DeletePost = async (postId,token, dispatch) => {
+export const DeletePost = async (postId, token, dispatch) => {
   try {
     const res = await fetch(`/api/posts/${postId}`, {
       method: "DELETE",
@@ -115,9 +133,48 @@ export const DeletePost = async (postId,token, dispatch) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const {posts} = await res.json();
-    dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+    const { bookmarks } = await res.json();
+    dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+// BOOKMARK Post
+export const bookmarkPost = async (postId, token, dispatch) => {
+  try {
+    const res = await fetch(`/api/users/bookmark/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { bookmarks } = await res.json();
+    dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+    console.log(bookmarks)
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+export const removeBookmarkedPost = async (postId, token, dispatch) => {
+  try {
+    const res = await fetch(`/api/users/remove-bookmark/${postId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { bookmarks } = await res.json();
+    dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
   } catch (e) {
     console.error(e.message);
   }

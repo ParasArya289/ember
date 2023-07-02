@@ -11,10 +11,10 @@ export const MyPopover = ({ children, user }) => {
 
   return (
     <div className="Popover">
-    <Popover.Root>
-      <Popover.Trigger className="PopoverTrigger"> {children}</Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content className="PopoverContent">
+    <Popover.Root >
+      <Popover.Trigger  className="PopoverTrigger"> {children}</Popover.Trigger>
+      <Popover.Portal >
+        <Popover.Content  className="PopoverContent">
           <div>
             <img src={user?.avatar} height="30" />
             <span>
