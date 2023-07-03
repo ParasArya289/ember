@@ -194,7 +194,7 @@ export const likePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-      navigator.permissions.query({ name: "vibrate" }).then((result) => {
+      Notification.requestPermission().then((result) => {
         if (result.state === "granted") {
           // Permission already granted, vibrate the device
           navigator.vibrate(200);
@@ -235,7 +235,7 @@ export const unlikePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-      navigator.permissions.query({ name: "vibrate" }).then((result) => {
+      Notification.requestPermission().then((result) => {
         if (result.state === "granted") {
           // Permission already granted, vibrate the device
           navigator.vibrate(200);
