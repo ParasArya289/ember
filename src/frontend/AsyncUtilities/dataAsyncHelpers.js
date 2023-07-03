@@ -194,7 +194,7 @@ export const likePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-     navigator.vibrate(200);
+     navigator.vibrate(100);
     }
   } catch (e) {
     console.error(e.message);
@@ -217,7 +217,7 @@ export const unlikePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-      navigator.vibrate(200);
+      navigator.vibrate(100);
     }
   } catch (e) {
     console.error(e.message);
