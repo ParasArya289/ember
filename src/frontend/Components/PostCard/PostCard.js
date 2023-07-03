@@ -9,7 +9,6 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { useData } from "../../Context/dataContext";
 import { LikePopover } from "../Popover/LikePopover";
 import { useAuth } from "../../Context/authContext";
-import { useState } from "react";
 import { EditMenu } from "../Popover/EditPopover";
 import {
   bookmarkPost,
@@ -34,17 +33,14 @@ export const PostCard = ({ post }) => {
         text: "Checkout this post",
         url: "http://localhost:3000/",
         title: "Shared from Ember",
+        icon:"/public/bg2.svg"
       });
     } else {
       navigator.clipboard.writeText("http://localhost:3000/");
-      new Notification("Link Copied",{
-        body:"Link Copied",
-        data:"Post",
-        tag:"share notification",
-        vibrate:true,
-      })
+      if("vibrate" in navigator){
+        navigator.vibrate(200)
+      }
     }
-
   };
 
   return (

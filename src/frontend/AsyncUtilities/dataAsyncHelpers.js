@@ -193,7 +193,9 @@ export const likePost = async (postId, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+    if ("vibrate" in navigator) {
+      navigator.vibrate(200);
+    }
   } catch (e) {
     console.error(e.message);
   }
@@ -208,13 +210,15 @@ export const unlikePost = async (postId, token, dispatch) => {
         authorization: token,
       },
     });
-    console.log(res)
+    console.log(res);
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
-    console.log(posts)
+    if ("vibrate" in navigator) {
+      navigator.vibrate(200);
+    }
   } catch (e) {
     console.error(e.message);
   }
