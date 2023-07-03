@@ -9,6 +9,22 @@ import { DataContext } from "./frontend/Context/dataContext";
 
 makeServer();
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const loader = document.getElementById("loader");
+
+const showLoader = () => {
+  document.body.style.visibility = "hidden";
+  loader.style.visibility = "visible";
+};
+
+const hideLoader = () => {
+  document.body.style.visibility = "visible";
+  loader.style.display = "none";
+};
+
+document.addEventListener("DOMContentLoaded", showLoader);
+
+window.addEventListener("load", hideLoader);
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
