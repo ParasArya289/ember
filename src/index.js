@@ -12,12 +12,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 const loader = document.getElementById("loader");
 
 const showLoader = () => {
+  document.body.style.overflow = "hidden";
   document.body.style.visibility = "hidden";
   loader.style.visibility = "visible";
 };
 
 const hideLoader = () => {
   document.body.style.visibility = "visible";
+  document.body.style.overflowY = "auto";
   loader.style.display = "none";
 };
 
