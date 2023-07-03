@@ -37,10 +37,8 @@ export const PostCard = ({ post }) => {
       });
     } else {
       navigator.clipboard.writeText("http://localhost:3000/");
-      if ("vibrate" in navigator) {
-        navigator.vibrate(200);
-      }
     }
+      navigator.vibrate(200);
   };
 
   return (
