@@ -24,9 +24,28 @@ export const PostCard = ({ post }) => {
     dataDispatch,
   } = useData();
   const { token, user } = useAuth();
-  console.log(bookmark)
+  console.log(bookmark);
 
   const findUser = users?.find(({ username }) => username === post?.username);
+
+  const sharePostHandler = () => {
+    if (navigator.share) {
+      navigator.share({
+        text: "Checkout this post",
+        url: "http://localhost:3000/",
+        title: "Shared from Ember",
+      });
+    } else {
+      navigator.clipboard.writeText("http://localhost:3000/");
+      new Notification("Link Copied",{
+        body:"Link Copied",
+        data:"Post",
+        tag:"share notification",
+        vibrate:true,
+      })
+    }
+
+  };
 
   return (
     <>
@@ -60,7 +79,9 @@ export const PostCard = ({ post }) => {
           </div>
           <div className="postcard-action-container">
             <div className="postcard-action postcard-action-flex">
-              {post?.likes?.likedBy?.some(({username})=>username === user?.username) ? (
+              {post?.likes?.likedBy?.some(
+                ({ username }) => username === user?.username
+              ) ? (
                 <AiFillHeart
                   onClick={() => unlikePost(post?._id, token, dataDispatch)}
                 />
@@ -89,7 +110,7 @@ export const PostCard = ({ post }) => {
               )}
             </div>
             <div className="postcard-action">
-              <AiOutlineShareAlt />
+              <AiOutlineShareAlt onClick={sharePostHandler} />
             </div>
           </div>
         </div>
