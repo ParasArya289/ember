@@ -239,12 +239,12 @@ export const unlikePost = async (postId, token, dispatch) => {
         if (result.state === "granted") {
           // Permission already granted, vibrate the device
           navigator.vibrate(200);
-        } else if (result.state === "prompt") {
+        } else if (result === "prompt") {
           // Permission not yet granted, show a prompt to the user
           navigator.vibrate(200); // Trigger a short vibration to get user's attention
           // Handle the user's response to the prompt
           result.onchange = () => {
-            if (result.state === "granted") {
+            if (result === "granted") {
               // Permission granted, vibrate the device
               navigator.vibrate(200);
             } else {
