@@ -1,9 +1,9 @@
 import "./PostCard.css";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsBookmark } from "react-icons/bs";
-import { BsBookmarkFill } from "react-icons/bs";
-import { AiOutlineShareAlt } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
+import { RxHeartFilled } from "react-icons/rx";
+import { RxBookmarkFilled } from "react-icons/rx";
+import { RxBookmark } from "react-icons/rx";
+import { RxShare2 } from "react-icons/rx";
+import { RxHeart } from "react-icons/rx";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 import { useData } from "../../Context/dataContext";
@@ -33,12 +33,12 @@ export const PostCard = ({ post }) => {
         text: "Checkout this post",
         url: "http://localhost:3000/",
         title: "Shared from Ember",
-        icon:"/public/bg2.svg"
+        icon: "/public/bg2.svg",
       });
     } else {
       navigator.clipboard.writeText("http://localhost:3000/");
-      if("vibrate" in navigator){
-        navigator.vibrate(200)
+      if ("vibrate" in navigator) {
+        navigator.vibrate(200);
       }
     }
   };
@@ -78,11 +78,11 @@ export const PostCard = ({ post }) => {
               {post?.likes?.likedBy?.some(
                 ({ username }) => username === user?.username
               ) ? (
-                <AiFillHeart
+                <RxHeartFilled
                   onClick={() => unlikePost(post?._id, token, dataDispatch)}
                 />
               ) : (
-                <AiOutlineHeart
+                <RxHeart
                   onClick={() => likePost(post?._id, token, dataDispatch)}
                 />
               )}
@@ -94,19 +94,19 @@ export const PostCard = ({ post }) => {
             </div>
             <div className="postcard-action">
               {bookmark?.some(({ _id }) => _id === post?._id) ? (
-                <BsBookmarkFill
+                <RxBookmarkFilled
                   onClick={() =>
                     removeBookmarkedPost(post?._id, token, dataDispatch)
                   }
                 />
               ) : (
-                <BsBookmark
+                <RxBookmark
                   onClick={() => bookmarkPost(post?._id, token, dataDispatch)}
                 />
               )}
             </div>
             <div className="postcard-action">
-              <AiOutlineShareAlt onClick={sharePostHandler} />
+              <RxShare2 onClick={sharePostHandler} />
             </div>
           </div>
         </div>

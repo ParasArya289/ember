@@ -39,6 +39,7 @@
 .postcard-action-container{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     max-width: 20rem;
 }
 .postcard-action,.header-menu{

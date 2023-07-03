@@ -194,7 +194,25 @@ export const likePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-      navigator.vibrate(200);
+      navigator.permissions.query({ name: "vibrate" }).then((result) => {
+        if (result.state === "granted") {
+          // Permission already granted, vibrate the device
+          navigator.vibrate(200);
+        } else if (result.state === "prompt") {
+          // Permission not yet granted, show a prompt to the user
+          navigator.vibrate(200); // Trigger a short vibration to get user's attention
+          // Handle the user's response to the prompt
+          result.onchange = () => {
+            if (result.state === "granted") {
+              // Permission granted, vibrate the device
+              navigator.vibrate(200);
+            } else {
+              // Permission denied, handle accordingly
+              console.log("Vibration permission denied");
+            }
+          };
+        }
+      });
     }
   } catch (e) {
     console.error(e.message);
@@ -217,7 +235,25 @@ export const unlikePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-      navigator.vibrate(200);
+      navigator.permissions.query({ name: "vibrate" }).then((result) => {
+        if (result.state === "granted") {
+          // Permission already granted, vibrate the device
+          navigator.vibrate(200);
+        } else if (result.state === "prompt") {
+          // Permission not yet granted, show a prompt to the user
+          navigator.vibrate(200); // Trigger a short vibration to get user's attention
+          // Handle the user's response to the prompt
+          result.onchange = () => {
+            if (result.state === "granted") {
+              // Permission granted, vibrate the device
+              navigator.vibrate(200);
+            } else {
+              // Permission denied, handle accordingly
+              console.log("Vibration permission denied");
+            }
+          };
+        }
+      });
     }
   } catch (e) {
     console.error(e.message);
