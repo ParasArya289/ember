@@ -8,8 +8,7 @@ export const Bookmark = () => {
     dataState: { bookmark },
   } = useData();
   return (
-    <Feed>
-      <Navbar title={"Bookmark"} />
+    <Feed navbar={<Navbar title={"Bookmark"} />}>
       <div>
         {bookmark?.map((post) => (
           <PostCard key={post?.id} post={post} />

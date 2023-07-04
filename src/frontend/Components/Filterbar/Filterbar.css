@@ -1,0 +1,22 @@
+.filterbar {
+  position: sticky;
+  top: 80px;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+  width: 100%;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  text-align: left;
+  border-bottom: var(--layout-border);
+  z-index: 9;
+}
+.filterbar-btn {
+  all: unset;
+  padding: 20px;
+  cursor: pointer;
+}
+.filterbar-highlight {
+  text-decoration: underline 3px;
+  text-underline-offset: 24px;
+  color: var(--primary-text-color);
+}

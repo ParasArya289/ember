@@ -4,7 +4,7 @@ import { Inforbar } from "../../Components/Infobar/Infobar";
 import { Sidebar } from "../../Components/Sidebar/Sidebar";
 import { Navbar } from "../../Components/Navbar/Navbar";
 
-export const Feed = ({ children }) => {
+export const Feed = ({ children, navbar, filterbar, showfilterbar }) => {
   return (
     <div className="feed-container">
       <div className="sidebar">
@@ -12,7 +12,13 @@ export const Feed = ({ children }) => {
           <Sidebar />
         </div>
       </div>
-      <div className="main-feed">{children}</div>
+      <div className="main-feed">
+        {navbar}
+        {showfilterbar && filterbar}
+        <div className="main-feed-container">
+          <div className="main-feed-populated">{children}</div>
+        </div>
+      </div>
       <div className="info-bar">
         <div className="info-bar-fixed">
           <Inforbar />

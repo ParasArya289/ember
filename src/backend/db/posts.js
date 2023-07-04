@@ -22,7 +22,7 @@ export const posts = [
     },
     username: "parasarya",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: formatDate(),
   },
   {
     _id: "ceec46f2-51e1-4f81-97db-6236de51e704",
@@ -68,7 +68,7 @@ export const posts = [
     },
     username: "michaelbrown",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: "2023-06-29",
   },
   {
     _id: "1e2dbd0c-0808-4d9d-a53d-7e22f066faa2",
@@ -81,7 +81,7 @@ export const posts = [
     },
     username: "sophiadavis",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: "2023-06-30",
   },
   {
     _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e267",
@@ -98,7 +98,7 @@ export const posts = [
     },
     username: "johnsmith",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: "2023-07-01",
   },
   {
     _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e267",
@@ -133,8 +133,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "emilyjohnson",
-    createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    createdAt: "2023-06-25",
+    updatedAt: "2023-06-25",
   },
   {
     _id: "9b4d3e35-d6df-4e36-91a5-9e9f3db8fb55",
@@ -146,8 +146,8 @@ export const posts = [
       dislikedBy: [],
     },
     username: "parasarya",
-    createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    createdAt: "2023-05-27",
+    updatedAt: "2023-05-27",
   },
   {
     _id: "12e78a8f-53ea-43c7-9c85-bddad8b9c67d",
@@ -165,7 +165,7 @@ export const posts = [
     },
     username: "johnsmith",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: "2023-06-12",
   },
   {
     _id: "c8c3f2af-4c07-4ad6-9791-43b82d0a8160",
@@ -178,6 +178,6 @@ export const posts = [
     },
     username: "emilyjohnson",
     createdAt: "2023-06-27",
-    updatedAt: "2023-06-27",
+    updatedAt: "2023-06-02",
   },
 ];

@@ -1,4 +1,5 @@
 import { CreatePost } from "../../Components/CreatePost/CreatePost";
+import { Filterbar } from "../../Components/Filterbar/Filterbar";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { PostCard } from "../../Components/PostCard/PostCard";
 import { SuggestionBoxMobile } from "../../Components/SuggestionBoxMobile/SuggestionBoxMobile";
@@ -9,7 +10,7 @@ import "./Home.css";
 
 export const Home = () => {
   const {
-    dataState: { posts },
+    dataState: { posts,sortedPosts },
   } = useData();
   const {
     user: { username: you, following },
@@ -20,7 +21,7 @@ export const Home = () => {
       you,
       ...following.map(({ username }) => username),
     ];
-    return posts?.filter(({ username }) =>
+    return sortedPosts?.filter(({ username }) =>
       postIncludingCurrentUser.includes(username)
     );
   };
@@ -29,10 +30,13 @@ export const Home = () => {
   console.log(isMobile);
 
   return (
-    <Feed>
-      <div>
-        <Navbar title={"Home"} />
-        <CreatePost />
+    <Feed
+      navbar={<Navbar title={"Home"} />}
+      filterbar={<Filterbar />}
+      showfilterbar
+    >
+      <CreatePost />
+      <div className="home-posts">
         <SuggestionBoxMobile />
         {filterPostsOfFollowers()?.map((post) => (
           <PostCard key={post?.id} post={post} />

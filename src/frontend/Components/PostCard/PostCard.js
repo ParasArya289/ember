@@ -23,8 +23,6 @@ export const PostCard = ({ post }) => {
     dataDispatch,
   } = useData();
   const { token, user } = useAuth();
-  console.log(bookmark);
-
   const findUser = users?.find(({ username }) => username === post?.username);
 
   const sharePostHandler = () => {
@@ -37,7 +35,7 @@ export const PostCard = ({ post }) => {
       });
     } else {
       navigator.clipboard.writeText("http://localhost:3000/");
-      if("vibrate" in navigator){
+      if ("vibrate" in navigator) {
         navigator.vibrate(100);
       }
     }

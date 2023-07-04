@@ -12,7 +12,7 @@
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
   color: var(--primary-text-color);
-  z-index: 99999;
+  z-index: 10;
 }
 .feed-nav > h5{
   font-weight: var(--fw-bold);

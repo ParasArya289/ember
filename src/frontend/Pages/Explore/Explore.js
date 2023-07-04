@@ -7,9 +7,8 @@ export const Explore = () => {
     dataState: { posts },
   } = useData();
   return (
-    <Feed>
+    <Feed navbar={<Navbar title={"Explore"} />}>
       <div>
-        <Navbar title={"Explore"} />
         {posts?.map((post) => (
           <PostCard key={post?.id} post={post} />
         ))}

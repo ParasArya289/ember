@@ -1,6 +1,7 @@
 export const initDataState = {
   users: [],
   posts: [],
+  sortedPosts: [],
   bookmark: [],
   following: [],
   notFollowing: [],
@@ -31,10 +32,31 @@ export const dataReducer = (state, action) => {
       const bookmarkedFullPost = state?.posts?.filter(({ _id }) =>
         action?.payload?.some(({ _id: id }) => id === _id)
       );
-      console.log(bookmarkedFullPost);
       return {
         ...state,
         bookmark: bookmarkedFullPost,
+      };
+    case "SORT":
+      const sortParameter = action.payload;
+      let sortedArr = [];
+      if (sortParameter) {
+        if (sortParameter === "trending") {
+          sortedArr = [...state?.posts]?.sort(
+            (a, b) => b?.likes?.likeCount - a?.likes?.likeCount
+          );
+        } else {
+          sortedArr = [...state?.posts]?.sort((a, b) => {
+            const valueA = new Date(a?.updatedAt);
+            const valueB = new Date(b?.updatedAt);
+            return sortParameter === "latest"
+              ? valueB - valueA
+              : valueA - valueB;
+          });
+        }
+      }
+      return {
+        ...state,
+        sortedPosts: sortedArr,
       };
   }
 };

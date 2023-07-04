@@ -2,6 +2,7 @@
   border-radius: 4px;
   padding: 20px;
   width: 260px;
+  z-index: 9999999999999;
   background-color: var(--primary-color);
   color: var(--primary-text-color);
   font-size: small;
