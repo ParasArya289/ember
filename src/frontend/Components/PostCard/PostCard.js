@@ -66,7 +66,7 @@ export const PostCard = ({ post }) => {
             <div className="postcard-info-container-header">
               <span className="header-name">
                 {findUser?.firstName} {findUser?.lastName}
-                <span className="header-name-edit">{post?.edited?" Edited":''}</span>
+                <span className="header-name-edit">{post?.edited?" edited":''}</span>
                 <BsDot />
                 <span className="header-name-time">{timeDifference}</span>
               </span>
@@ -103,11 +103,11 @@ export const PostCard = ({ post }) => {
                   onClick={() => likePost(post?._id, token, dataDispatch)}
                 />
               )}
-              <LikePopover likedBy={post?.likes?.likedBy}>
+             {post?.likes?.likeCount > 0&& <LikePopover likedBy={post?.likes?.likedBy}>
                 <span className="postcard-action-likeCount">
                   {post?.likes?.likeCount}
                 </span>
-              </LikePopover>
+              </LikePopover>}
             </div>
             <div className="postcard-action">
               {bookmark?.some(({ _id }) => _id === post?._id) ? (

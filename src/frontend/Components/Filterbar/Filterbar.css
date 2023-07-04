@@ -14,9 +14,20 @@
   all: unset;
   padding: 20px;
   cursor: pointer;
+  position: relative;
+}
+.filterbar-highlight::after {
+  position: absolute;
+  content: "";
+  left: 50%;
+  bottom: 0;
+  width: 65%;
+  height: 3px;
+  transform: translateX(-50%);
+  background-color: var(--primary-text-color);
 }
 .filterbar-highlight {
-  text-decoration: underline 3px;
-  text-underline-offset: 24px;
+  /* text-decoration: underline 3px;
+  text-underline-offset: 24px; */
   color: var(--primary-text-color);
 }

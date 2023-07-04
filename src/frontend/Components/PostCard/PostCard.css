@@ -33,7 +33,7 @@
 }
 .header-name-edit {
   font-size: x-small;
-  font-weight: 600;
+  font-weight: 500;
 }
 .header-name-time {
   font-weight: var(--fw-regular);
@@ -51,7 +51,7 @@
 .postcard-action-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   max-width: 20rem;
 }
 .postcard-action,
