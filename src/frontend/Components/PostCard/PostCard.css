@@ -1,63 +1,76 @@
-.postcard-container{
-    color:var(--primary-text-color);
-    display: flex;
-    padding:20px;
-    gap:20px;
-    text-align: left;
-    font-size: medium;
-    color:var(--primary-text-color)
+.postcard-container {
+  color: var(--primary-text-color);
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  text-align: left;
+  font-size: medium;
+  color: var(--primary-text-color);
 }
-.postcard-info-container{
-    flex: 1;
+.postcard-info-container {
+  flex: 1;
 }
-.postcard-container > img{
-    border-radius: 50%;
-    user-select: none;
+.postcard-container > img {
+  border-radius: 50%;
+  user-select: none;
 }
-.postcard-info-container-header{
-    display: flex;
-    flex-direction:column;
+.postcard-info-container-header {
+  display: flex;
+  flex-direction: column;
 }
 /* new */
-.postcard-header-flex{
-    display: flex;
-    justify-content: space-between;
+.postcard-header-flex {
+  display: flex;
+  justify-content: space-between;
 }
-.header-name{
-    font-weight: 600;
-    margin-bottom: -2px;
+.header-name {
+  font-weight: 600;
+  margin-bottom: -2px;
 }
-.header-username{
-    font-size: small;
-    font-weight: 500;
-    color: var(--ember);
+.header-name-edit,
+.header-name-time {
+  color: var(--secondary-text-color);
 }
-
-.postcard-info-container-body{
-    margin-top: 10px;
+.header-name-edit {
+  font-size: x-small;
+  font-weight: 600;
 }
-.postcard-action-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    max-width: 20rem;
+.header-name-time {
+  font-weight: var(--fw-regular);
+  font-size: small;
 }
-.postcard-action,.header-menu{
-    cursor: pointer;
-}
-.postcard-action-flex{
-    display: flex;
-    align-items: center;
-}
-.postcard-action-likeCount{
-    margin-left: 2px;
-    padding: 5px;
-    font-size: small;
-}
-.postcard-hr{
-    color:rgba(255, 255, 255, 0.3);
-}
-.postcard-action:hover,.header-menu:hover{
-    color:var(--ember)
+.header-username {
+  font-size: small;
+  font-weight: 500;
+  color: var(--ember);
 }
 
+.postcard-info-container-body {
+  margin-top: 10px;
+}
+.postcard-action-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 20rem;
+}
+.postcard-action,
+.header-menu {
+  cursor: pointer;
+}
+.postcard-action-flex {
+  display: flex;
+  align-items: center;
+}
+.postcard-action-likeCount {
+  margin-left: 2px;
+  padding: 5px;
+  font-size: small;
+}
+.postcard-hr {
+  color: rgba(255, 255, 255, 0.3);
+}
+.postcard-action:hover,
+.header-menu:hover {
+  color: var(--ember);
+}

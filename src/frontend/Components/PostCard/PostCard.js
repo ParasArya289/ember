@@ -5,6 +5,7 @@ import { RxBookmark } from "react-icons/rx";
 import { RxShare2 } from "react-icons/rx";
 import { RxHeart } from "react-icons/rx";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { BsDot } from "react-icons/bs";
 
 import { useData } from "../../Context/dataContext";
 import { LikePopover } from "../Popover/LikePopover";
@@ -16,8 +17,11 @@ import {
   removeBookmarkedPost,
   unlikePost,
 } from "../../AsyncUtilities/dataAsyncHelpers";
+import { timeOfPost } from "../../../Utils/utils";
+import { useEffect, useState } from "react";
 
 export const PostCard = ({ post }) => {
+  const [timeDifference, setTimeDifference] = useState("");
   const {
     dataState: { users, bookmark },
     dataDispatch,
@@ -41,6 +45,18 @@ export const PostCard = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    setTimeDifference(timeOfPost(post?.updatedAt));
+
+    const interval = setInterval(() => {
+      setTimeDifference(timeOfPost(post?.updatedAt));
+    }, 10000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [timeOfPost]);
+
   return (
     <>
       <div className="postcard-container">
@@ -50,6 +66,9 @@ export const PostCard = ({ post }) => {
             <div className="postcard-info-container-header">
               <span className="header-name">
                 {findUser?.firstName} {findUser?.lastName}
+                <span className="header-name-edit">{post?.edited?" Edited":''}</span>
+                <BsDot />
+                <span className="header-name-time">{timeDifference}</span>
               </span>
               <span className="header-username"> @{findUser?.username}</span>
             </div>
