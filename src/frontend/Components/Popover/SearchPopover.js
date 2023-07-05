@@ -7,9 +7,12 @@ export const SearchPopover = ({ children, array, inputRef }) => {
   useEffect(() => {
     if (inputRef.current.value.length > 0) {
       setPopoverOpen(true);
+      // setTimeout(() => {
+      //   inputRef.current.focus();
+      // }, 200);
       setTimeout(() => {
-        inputRef.current.focus();
-      }, 100);
+        requestAnimationFrame(() => inputRef.current.focus());
+      }, 0);
       return;
     }
     setPopoverOpen(false);
@@ -31,17 +34,24 @@ export const SearchPopover = ({ children, array, inputRef }) => {
             {array.length <= 0 && (
               <h6
                 className="info-Card-users-info-name"
-                style={{ fontSize: "small",textAlign:"center" }}
+                style={{ fontSize: "small", textAlign: "center" }}
               >
                 No Search Result
               </h6>
             )}
             {array?.map((user) => (
               <div key={user?._id} className="info-Card-users-container">
-                <div key={user?._id}
-                className="info-Card-users">
+                <div key={user?._id} className="info-Card-users">
                   <div className="info-card-users-img">
-                    <img src={user?.avatar} height="30" style={{height:"30px",width:"30px",backgroundColor:"var(--primary-color)"}}/>
+                    <img
+                      src={user?.avatar}
+                      height="30"
+                      style={{
+                        height: "30px",
+                        width: "30px",
+                        backgroundColor: "var(--primary-color)",
+                      }}
+                    />
                   </div>
                   <div className="info-Card-users-info">
                     <h6
