@@ -31,7 +31,6 @@
 
 .main-feed {
   /* width: 700px; */
-  justify-self: center;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
 }
