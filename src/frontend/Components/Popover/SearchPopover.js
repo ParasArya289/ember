@@ -38,9 +38,10 @@ export const SearchPopover = ({ children, array, inputRef }) => {
             )}
             {array?.map((user) => (
               <div key={user?._id} className="info-Card-users-container">
-                <div key={user?._id} className="info-Card-users">
+                <div key={user?._id}
+                className="info-Card-users">
                   <div className="info-card-users-img">
-                    <img src={user?.avatar} height="30" />
+                    <img src={user?.avatar} height="30" style={{height:"30px",width:"30px",backgroundColor:"var(--primary-color)"}}/>
                   </div>
                   <div className="info-Card-users-info">
                     <h6
