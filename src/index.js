@@ -6,6 +6,7 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./frontend/Context/authContext";
 import { DataContext } from "./frontend/Context/dataContext";
+import ScrollToTop from "./frontend/Components/ScrollToTop";
 
 makeServer();
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -30,6 +31,7 @@ window.addEventListener("load", hideLoader);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <AuthContextProvider>
         <DataContext>
           <App />
