@@ -9,7 +9,7 @@ export const SearchPopover = ({ children, array, inputRef }) => {
       setPopoverOpen(true);
       setTimeout(() => {
         inputRef.current.focus();
-      }, 0);
+      }, 100);
       return;
     }
     setPopoverOpen(false);

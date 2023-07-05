@@ -11,8 +11,11 @@ export const Searchbar = () => {
   const inputRef = useRef(null);
 
   const searchHandler = (e) => {
-    const searchedArray = search(users, e.target.value);
+    const key = e.target.value.toLowerCase().replace(" ", "");
+    const searchedArray = search(users, key);
     setSearchOutput(searchedArray);
+    return;
+    return;
   };
 
   return (

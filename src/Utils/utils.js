@@ -1,12 +1,13 @@
 export const search = (array, key) => {
   let arr = array;
+  
   if (key) {
-    const lowerCaseKey = key.toLowerCase();
     arr = arr.filter(
       ({ username, firstName, lastName }) =>
-        username.toLowerCase().includes(lowerCaseKey) ||
-        firstName.toLowerCase().includes(lowerCaseKey) ||
-        lastName.toLowerCase().includes(lowerCaseKey)
+        username.toLowerCase().includes(key) ||
+        `${firstName.toLowerCase()}${lastName.toLowerCase()}`.includes(
+          key
+        )
     );
     return arr;
   }
@@ -25,21 +26,21 @@ export const timeOfPost = (date) => {
   const days = Math.floor(hours / 24);
   const months = Math.floor(days / 30);
   const years = Math.floor(months / 12);
-  
-  let result = '';
-  
+
+  let result = "";
+
   if (years > 0) {
-    result = `${years} year${years > 1 ? 's' : ''}`;
+    result = `${years} year${years > 1 ? "s" : ""}`;
   } else if (months > 0) {
-    result = `${months} month${months > 1 ? 's' : ''}`;
+    result = `${months} month${months > 1 ? "s" : ""}`;
   } else if (days > 0) {
-    result = `${days} day${days > 1 ? 's' : ''}`;
+    result = `${days} day${days > 1 ? "s" : ""}`;
   } else if (hours > 0) {
-    result = `${hours} hr${hours > 1 ? 's' : ''}`;
+    result = `${hours} hr${hours > 1 ? "s" : ""}`;
   } else if (minutes > 0) {
-    result = `${minutes} min${minutes > 1 ? 's' : ''}`;
+    result = `${minutes} min${minutes > 1 ? "s" : ""}`;
   } else {
-    result = `${seconds} sec${seconds > 1 ? 's' : ''}`;
+    result = `${seconds} sec${seconds > 1 ? "s" : ""}`;
   }
 
   return result;
