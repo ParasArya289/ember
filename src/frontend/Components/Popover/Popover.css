@@ -13,12 +13,14 @@
   outline: none;
   z-index: 99;
 }
+
 .PopoverContent > hr {
   opacity: 0.1;
 }
-.PopoverContent > div > img {
+/* .PopoverContent > div > img {
   border-radius: 3px;
-}
+
+} */
 .PopoverContent > div > span {
   margin-left: 10px;
   font-weight: 500;

@@ -3,24 +3,27 @@
   gap: 20px;
   padding: 20px;
   text-align: left;
-  color:var(--primary-text-color);
+  color: var(--primary-text-color);
 }
 .createpost-avatar > img {
   border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: var(--secondary-color);
 }
 .createpost-input > textarea {
   all: unset;
   flex: 1;
   outline: none;
-  word-wrap:break-word;
+  word-wrap: break-word;
   overflow: hidden;
   box-sizing: border-box;
 }
 .createpost-input {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-.createpost-input > button{
-    align-self: flex-end;
+.createpost-input > button {
+  align-self: flex-end;
 }

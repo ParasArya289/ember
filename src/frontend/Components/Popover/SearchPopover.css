@@ -22,9 +22,9 @@
   cursor: pointer;
 }
 
-.PopoverContent > div:hover {
-  background-color: var(--background-blur);
-}
+/* .PopoverContent:hover {
+  background-color: var(--secondary-color);
+} */
 
 .PopoverArrow {
   fill: var(--background-blur-dark);

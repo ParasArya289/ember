@@ -2,11 +2,13 @@ import * as React from "react";
 import * as Popover from "@radix-ui/react-popover";
 import "./Popover.css";
 import { useData } from "../../Context/dataContext";
+import { useNavigate } from "react-router-dom";
 
 export const LikePopover = ({ children, likedBy }) => {
   const {
     dataState: { users },
   } = useData();
+  const navigate = useNavigate();
   const listLikedUsers = users?.filter(({ username }) =>
     likedBy?.some(({ username: name }) => name === username)
   );
@@ -23,11 +25,17 @@ export const LikePopover = ({ children, likedBy }) => {
               <div
                 key={user?._id}
                 style={{ marginBlock: "10px", fontSize: "small" }}
+                onClick={() => navigate("/profile/" + user?.username)}
               >
                 <img
                   src={user?.avatar}
                   height="30"
-                  style={{ borderRadius: "50%" }}
+                  style={{
+                    borderRadius: "50%",
+                    height: "30px",
+                    width: "30px",
+                    backgroundColor: "var(--secondary-color)",
+                  }}
                 />
                 <span>
                   {user?.firstName} {user?.lastName}

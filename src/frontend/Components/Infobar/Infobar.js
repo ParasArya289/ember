@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { followUser } from "../../AsyncUtilities/dataAsyncHelpers";
 import { useAuth } from "../../Context/authContext";
 import { useData } from "../../Context/dataContext";
@@ -11,6 +12,8 @@ export const Inforbar = () => {
   } = useData();
   const { setUser, token } = useAuth();
 
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="info-searchbar">
@@ -21,7 +24,8 @@ export const Inforbar = () => {
         <h4>Who to follow</h4>
         {notFollowing?.map((user) => (
           <div key={user?._id} className="info-Card-users-container">
-            <div key={user?._id} className="info-Card-users">
+            <div key={user?._id} className="info-Card-users" onClick={()=>navigate
+            ("/profile/"+user?.username)}>
               <ProfileHoverCard key={user?._id} user={user}>
                 <div className="info-card-users-img">
                   <img src={user?.avatar} height="40" />

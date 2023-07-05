@@ -1,4 +1,5 @@
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { followUser } from "../../AsyncUtilities/dataAsyncHelpers";
 import { useAuth } from "../../Context/authContext";
 import { useData } from "../../Context/dataContext";
@@ -8,7 +9,9 @@ export const SuggestionBoxMobile = () => {
     dataState: { notFollowing },
   } = useData();
 
-  const {setUser,token} = useAuth();
+  const { setUser, token } = useAuth();
+
+  const navigate = useNavigate();
 
   // const isMobile = window.innerWidth < 850;
 
@@ -19,7 +22,10 @@ export const SuggestionBoxMobile = () => {
       <div className="suggestionBoxMobile-container">
         {notFollowing?.slice(0, 3)?.map((user) => (
           <div key={user?._id} className="suggestionBoxMobile-info">
-            <img src={user?.avatar} />
+            <img
+              src={user?.avatar}
+              onClick={() => navigate("/profile/" + user?.username)}
+            />
             <p>
               {user?.firstName} {user?.lastName}
             </p>

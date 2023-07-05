@@ -1,7 +1,7 @@
 .feed-container {
   display: grid;
   grid-template-columns: 375px 700px auto;
-
+  /* justify-content: center; */
 }
 .info-bar {
   background-color: var(--background-blur);

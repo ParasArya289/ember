@@ -20,22 +20,23 @@
   align-items: center;
   background-color: var(--primary-color);
 }
-.info-card > h4{
+.info-card > h4 {
   color: var(--primary-text-color);
   text-align: left;
 }
 
-.info-Card-users-container{
+.info-Card-users-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
-.info-Card-users-btn{
+.info-Card-users-btn {
   height: fit-content;
   width: 5rem;
   font-size: small;
   font-weight: 600;
-  color:var(--primary-text-color);
+  color: var(--primary-text-color);
   border-radius: 30px;
   background-color: var(--secondary-color);
 }
@@ -48,8 +49,11 @@
   margin-block: 10px;
   color: var(--primary-text-color);
 }
-.info-card-users-img > img{
+.info-card-users-img > img {
   border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: var(--secondary-color);
   cursor: pointer;
 }
 .info-Card-users-info-name {
@@ -62,5 +66,5 @@
   padding: 0;
   margin: 0;
   font-size: small;
-  color:var(--ember)
+  color: var(--ember);
 }

@@ -64,13 +64,22 @@ export const PostCard = ({ post }) => {
   return (
     <>
       <div className="postcard-container">
-        <img src={findUser?.avatar} height="40" />
+        <img
+          src={findUser?.avatar}
+          height="40"
+          onClick={() => navigate("/profile/" + post?.username)}
+        />
         <div className="postcard-info-container">
           <div className="postcard-header-flex">
-            <div className="postcard-info-container-header" onClick={()=>navigate("/profile/"+post?.username)}>
+            <div
+              className="postcard-info-container-header"
+              onClick={() => navigate("/profile/" + post?.username)}
+            >
               <span className="header-name">
                 {findUser?.firstName} {findUser?.lastName}
-                <span className="header-name-edit">{post?.edited?" edited":''}</span>
+                <span className="header-name-edit">
+                  {post?.edited ? " edited" : ""}
+                </span>
                 <BsDot />
                 <span className="header-name-time">{timeDifference}</span>
               </span>
@@ -107,11 +116,13 @@ export const PostCard = ({ post }) => {
                   onClick={() => likePost(post?._id, token, dataDispatch)}
                 />
               )}
-             {post?.likes?.likeCount > 0&& <LikePopover likedBy={post?.likes?.likedBy}>
-                <span className="postcard-action-likeCount">
-                  {post?.likes?.likeCount}
-                </span>
-              </LikePopover>}
+              {post?.likes?.likeCount > 0 && (
+                <LikePopover likedBy={post?.likes?.likedBy}>
+                  <span className="postcard-action-likeCount">
+                    {post?.likes?.likeCount}
+                  </span>
+                </LikePopover>
+              )}
             </div>
             <div className="postcard-action">
               {bookmark?.some(({ _id }) => _id === post?._id) ? (
