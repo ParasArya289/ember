@@ -1,6 +1,7 @@
 .feed-container {
   display: grid;
-  grid-template-columns: 357px 700px auto;
+  grid-template-columns: 375px 700px auto;
+
 }
 .info-bar {
   background-color: var(--background-blur);
@@ -29,6 +30,8 @@
 }
 
 .main-feed {
+  /* width: 700px; */
+  justify-self: center;
   display: grid;
   grid-template-rows: min-content 1fr min-content;
 }

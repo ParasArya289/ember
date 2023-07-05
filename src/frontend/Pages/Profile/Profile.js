@@ -24,23 +24,28 @@ export const Profile = () => {
       navbar={
         <Navbar title={foundUser?.firstName + " " + foundUser?.lastName} />
       }
+      filterbar={ <div className="header-fixed-container">
+      <div className="profile-header">
+        <div className="profile-header-action">
+          <RxArrowLeft />
+        </div>
+        <div className="profile-header-action">
+          <RxDotsHorizontal />
+        </div>
+      </div>
+    </div>}
+    showfilterbar
     >
+       
       <div className="profile">
+      
         <div className="header-bg">
+
           <img src="https://images.pexels.com/photos/5253574/pexels-photo-5253574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           <div className="profile-avatar">
             <img src={foundUser?.avatar} />
           </div>
-          <div className="header-fixed-container">
-            <div className="profile-header">
-              <div className="profile-header-action">
-                <RxArrowLeft />
-              </div>
-              <div className="profile-header-action">
-                <RxDotsHorizontal />
-              </div>
-            </div>
-          </div>
+         
         </div>
         <div className="profile-name-header">
           <div className="profile-name">
