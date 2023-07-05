@@ -1,13 +1,14 @@
 import "./Profile.css";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { RxArrowLeft } from "react-icons/rx";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Feed } from "../Feed/Feed";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { useData } from "../../Context/dataContext";
 import { PostCard } from "../../Components/PostCard/PostCard";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
+  const navigate = useNavigate();
   const {
     dataState: { users, posts },
   } = useData();
@@ -24,28 +25,38 @@ export const Profile = () => {
       navbar={
         <Navbar title={foundUser?.firstName + " " + foundUser?.lastName} />
       }
-      filterbar={ <div className="header-fixed-container">
-      <div className="profile-header">
-        <div className="profile-header-action">
-          <RxArrowLeft />
+      filterbar={
+        <div className="header-fixed-container">
+          <div className="profile-header">
+            <div
+              className="profile-header-action"
+              onClick={() => navigate("/")}
+            >
+              <RxArrowLeft />
+            </div>
+            <div className="profile-header-action">
+              <RxDotsHorizontal />
+            </div>
+          </div>
         </div>
-        <div className="profile-header-action">
-          <RxDotsHorizontal />
+      }
+    >
+      <div className="header-fixed-container">
+        <div className="profile-header">
+          <div className="profile-header-action" onClick={() => navigate("/")}>
+            <RxArrowLeft />
+          </div>
+          <div className="profile-header-action">
+            <RxDotsHorizontal />
+          </div>
         </div>
       </div>
-    </div>}
-    showfilterbar
-    >
-       
       <div className="profile">
-      
         <div className="header-bg">
-
           <img src="https://images.pexels.com/photos/5253574/pexels-photo-5253574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
           <div className="profile-avatar">
             <img src={foundUser?.avatar} />
           </div>
-         
         </div>
         <div className="profile-name-header">
           <div className="profile-name">

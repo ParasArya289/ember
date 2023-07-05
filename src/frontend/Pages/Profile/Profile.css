@@ -1,6 +1,5 @@
 .profile {
   color: var(--primary-text-color);
-  margin-top: -75px;
 }
 .header-bg {
   width: 100%;
@@ -31,8 +30,8 @@
   ); 
 } */
 .header-fixed-container {
-  position: sticky;
-  top: 75px;
+  position: fixed;
+  width: 100%;
   color: var(--primary-text-color);
   z-index: 99;
 }
