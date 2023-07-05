@@ -10,13 +10,13 @@ export const SearchPopover = ({ children, array, inputRef }) => {
       // setTimeout(() => {
       //   inputRef.current.focus();
       // }, 200);
-      setTimeout(() => {
+
         requestAnimationFrame(() =>
           setTimeout(() => {
             inputRef.current.focus();
           }, 0)
         );
-      }, 0);
+
       return;
     }
     setPopoverOpen(false);
