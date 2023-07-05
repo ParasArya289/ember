@@ -1,6 +1,38 @@
 .profile {
   color: var(--primary-text-color);
 }
+.header-bg {
+  width: 100%;
+  height: 250px;
+  position: relative;
+}
+.header-bg > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* .header-bg::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.9)
+  ); 
+} */
+.header-fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
 .profile-header {
   display: flex;
   justify-content: space-between;
@@ -12,6 +44,64 @@
   display: grid;
   place-content: center;
   border-radius: 50%;
-  background-color: var(--background-blur-dark);
+  background-color: var(--background-blur);
   backdrop-filter: var(--blur);
+  cursor: pointer;
+}
+.profile-header-action:hover {
+  background-color: var(--secondary-color);
+}
+.profile-avatar > img {
+  position: absolute;
+  bottom: -50px;
+  left: 20px;
+  height: 150px;
+  padding: 5px;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: var(--background-blur);
+  backdrop-filter: var(--blur);
+}
+.profile-name-header {
+  margin-top: 50px;
+  padding: 20px;
+  text-align: left;
+}
+.profile-name-header > .profile-name {
+  font-size: x-large;
+  line-height: 0.9;
+  font-weight: var(--fw-bold);
+}
+.profile-name-header > .profile-username {
+  color: var(--ember);
+  margin-bottom: 20px;
+}
+.profile-name-header > .profile-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.profile-dashboard {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-inline: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: rgba(58, 58, 58, 0.5);
+  border: var(--layout-border);
+}
+.profile-dashboard-info {
+  display: flex;
+  flex-direction: column;
+}
+.profle-dashboard-info-data {
+  font-size: large;
+  font-weight: 500;
+}
+.profle-dashboard-info-data-name {
+  font-size: small;
+  font-weight: 500;
+  color: var(--secondary-text-color);
 }

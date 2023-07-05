@@ -11,9 +11,11 @@ export const DataContext = ({ children }) => {
   const { user } = useAuth();
 
   useEffect(() => {
-    getUser(dataDispatch);
     getPosts(dataDispatch);
   }, []);
+  useEffect(() => {
+    getUser(dataDispatch);
+  }, [user]);
 
   //abstract this part
   useEffect(() => {
@@ -21,12 +23,15 @@ export const DataContext = ({ children }) => {
     if (user && users.length) {
       const { username, following } = user;
       const notFollowingList = users?.filter(
-        (user) => user?.username !== username && 
-        !following?.some((followedUser) => followedUser?.username === user?.username)
-        );
+        (user) =>
+          user?.username !== username &&
+          !following?.some(
+            (followedUser) => followedUser?.username === user?.username
+          )
+      );
       dataDispatch({ type: "INIT_NOT_FOLLOWING", payload: notFollowingList });
     }
-  }, [user,dataState.users]);
+  }, [user, dataState.users]);
 
   return (
     <dataContext.Provider value={{ dataState, dataDispatch }}>
