@@ -19,13 +19,17 @@ import {
 } from "../../AsyncUtilities/dataAsyncHelpers";
 import { timeOfPost } from "../../../Utils/utils";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   const [timeDifference, setTimeDifference] = useState("");
+  const navigate = useNavigate();
+
   const {
     dataState: { users, bookmark },
     dataDispatch,
   } = useData();
+
   const { token, user } = useAuth();
   const findUser = users?.find(({ username }) => username === post?.username);
 
@@ -63,7 +67,7 @@ export const PostCard = ({ post }) => {
         <img src={findUser?.avatar} height="40" />
         <div className="postcard-info-container">
           <div className="postcard-header-flex">
-            <div className="postcard-info-container-header">
+            <div className="postcard-info-container-header" onClick={()=>navigate("/profile/"+post?.username)}>
               <span className="header-name">
                 {findUser?.firstName} {findUser?.lastName}
                 <span className="header-name-edit">{post?.edited?" edited":''}</span>

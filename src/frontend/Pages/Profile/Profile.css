@@ -1,0 +1,17 @@
+.profile {
+  color: var(--primary-text-color);
+}
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.profile-header-action {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  background-color: var(--background-blur-dark);
+  backdrop-filter: var(--blur);
+}

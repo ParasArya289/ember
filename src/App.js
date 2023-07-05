@@ -7,6 +7,7 @@ import { Bookmark } from "./frontend/Pages/Bookmark/Bookmark";
 import { Explore } from "./frontend/Pages/Explore/Explore";
 import { Feed } from "./frontend/Pages/Feed/Feed";
 import { Home } from "./frontend/Pages/Home/Home";
+import { Profile } from "./frontend/Pages/Profile/Profile";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           }
         />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/profile/:username" element={<Profile />} />
       </Routes>
     </div>
   );
