@@ -12,7 +12,7 @@
   object-fit: cover;
 }
 .header-bg {
-  background-color: var(--secondary-color);
+  /* background-color: var(--secondary-color); */
 }
 /* .header-bg::after {
   content: "";
@@ -77,12 +77,16 @@
   padding: 20px;
   text-align: left;
 }
-.profile-name-header > .profile-name {
+.profile-name-header-flex {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-name-header .profile-name {
   font-size: x-large;
   line-height: 0.9;
   font-weight: var(--fw-bold);
 }
-.profile-name-header > .profile-username {
+.profile-name-header .profile-username {
   color: var(--ember);
   margin-bottom: 20px;
 }

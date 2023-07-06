@@ -7,8 +7,15 @@ import { Navbar } from "../../Components/Navbar/Navbar";
 import { useData } from "../../Context/dataContext";
 import { PostCard } from "../../Components/PostCard/PostCard";
 import { LikePopover } from "../../Components/Popover/LikePopover";
+import { useAuth } from "../../Context/authContext";
+import { Button } from "react-bootstrap";
+import {
+  followUser,
+  unfollowUser,
+} from "../../AsyncUtilities/dataAsyncHelpers";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
+  const { user, setUser, token } = useAuth();
   const navigate = useNavigate();
   const {
     dataState: { users, posts },
@@ -19,27 +26,28 @@ export const Profile = () => {
   const foundPostOfUser = posts?.filter(
     ({ username }) => usernameParams === username
   );
-  console.log(foundPostOfUser);
+
+  const isCurrentUserFollowing = user?.following.some(
+    ({ username }) => username === foundUser?.username
+  );
+
+  const followHandler = () => {
+    if (token) {
+      followUser(foundUser?._id, token, setUser);
+    }
+  };
+  const unFollowHandler = () => {
+    if (token) {
+      unfollowUser(foundUser?._id, token, setUser);
+    }
+  };
 
   return (
     <Feed
       navbar={
-        <Navbar title={foundUser?.firstName + " " + foundUser?.lastName} />
-      }
-      filterbar={
-        <div className="header-fixed-container">
-          <div className="profile-header">
-            <div
-              className="profile-header-action"
-              onClick={() => navigate("/")}
-            >
-              <RxArrowLeft />
-            </div>
-            <div className="profile-header-action">
-              <RxDotsHorizontal />
-            </div>
-          </div>
-        </div>
+        <Navbar
+          title={`${foundUser?.firstName ?? ""} ${foundUser?.lastName ?? ""}`}
+        />
       }
     >
       <div className="header-fixed-container">
@@ -47,9 +55,11 @@ export const Profile = () => {
           <div className="profile-header-action" onClick={() => navigate("/")}>
             <RxArrowLeft />
           </div>
-          <div className="profile-header-action">
-            <RxDotsHorizontal />
-          </div>
+          {foundUser?.username === user?.username && (
+            <div className="profile-header-action">
+              <RxDotsHorizontal />
+            </div>
+          )}
         </div>
       </div>
       <div className="profile">
@@ -60,10 +70,36 @@ export const Profile = () => {
           </div>
         </div>
         <div className="profile-name-header">
-          <div className="profile-name">
-            {foundUser?.firstName} {foundUser?.lastName}
+          <div className="profile-name-header-flex">
+            <div>
+              <div className="profile-name">
+                {foundUser?.firstName} {foundUser?.lastName}
+              </div>
+              <div className="profile-username">@{foundUser?.username}</div>
+            </div>
+            {user?.username !== foundUser?.username && (
+              <div className="profile-follow-btn">
+                {isCurrentUserFollowing ? (
+                  <Button
+                    variant="secondary"
+                    className="info-Card-users-btn"
+                    onClick={unFollowHandler}
+                  >
+                    Unfollow
+                  </Button>
+                ) : (
+                  <Button
+                    variant="secondary"
+                    className="info-Card-users-btn"
+                    onClick={followHandler}
+                  >
+                    Follow
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
-          <div className="profile-username">@{foundUser?.username}</div>
+
           <div className="profile-bio">{foundUser?.bio}</div>
           <a className="profile-link" src={foundUser?.username}>
             {foundUser?.link}
