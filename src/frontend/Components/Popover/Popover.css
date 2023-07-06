@@ -4,7 +4,7 @@
 
 .PopoverContent {
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px 20px;
   width: 260px;
   background-color: var(--background-blur-dark);
   backdrop-filter: blur(10px);

@@ -25,24 +25,21 @@ export const EditMenu = ({
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content className="Edit-PopoverContent">
+            <EditDialogBox
+              content={content}
+              user={user}
+              postId={postId}
+              token={token}
+              dispatch={dispatch}
+            >
+              <div>
+                <FiEdit2 />
+                <button>Edit</button>
+              </div>
+            </EditDialogBox>
             <div>
-              <EditDialogBox
-                content={content}
-                user={user}
-                postId={postId}
-                token={token}
-                dispatch={dispatch}
-              >
-                <button>
-                  <FiEdit2 /> Edit
-                </button>
-              </EditDialogBox>
-            </div>
-            <hr />
-            <div>
-              <button onClick={deletePost}>
-                <AiOutlineDelete /> Delete
-              </button>
+              <AiOutlineDelete />
+              <button onClick={deletePost}>Delete</button>
             </div>
             <Popover.Arrow className="PopoverArrow" />
           </Popover.Content>

@@ -1,6 +1,6 @@
 .Edit-PopoverContent {
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px 20px;
   width: fit-content;
   background-color: var(--background-blur-dark);
   backdrop-filter: blur(10px);
@@ -8,7 +8,13 @@
   font-size: small;
   outline: none;
 }
-.Edit-PopoverContent button{
-    all:unset;
-    cursor: pointer;
+.Edit-PopoverContent div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-block: 5px;
+}
+.Edit-PopoverContent button {
+  all: unset;
+  cursor: pointer;
 }

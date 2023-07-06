@@ -13,6 +13,7 @@ import {
   followUser,
   unfollowUser,
 } from "../../AsyncUtilities/dataAsyncHelpers";
+import { EditProfilePopover } from "../../Components/Popover/EditProfilePopover";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
   const { user, setUser, token } = useAuth();
@@ -56,9 +57,11 @@ export const Profile = () => {
             <RxArrowLeft />
           </div>
           {foundUser?.username === user?.username && (
-            <div className="profile-header-action">
-              <RxDotsHorizontal />
-            </div>
+            <EditProfilePopover>
+              <div className="profile-header-action">
+                <RxDotsHorizontal />
+              </div>
+            </EditProfilePopover>
           )}
         </div>
       </div>
