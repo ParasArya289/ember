@@ -27,32 +27,34 @@ export const LikePopover = ({ children, likedBy }) => {
           {" "}
           {children}
         </Popover.Trigger>
-        <Popover.Portal>
-          <Popover.Content className="PopoverContent">
-            {listLikedUsers?.map((user) => (
-              <div
-                key={user?._id}
-                style={{ marginBlock: "10px", fontSize: "small" }}
-                onClick={() => navigateToUserProfile(user?.username)}
-              >
-                <img
-                  src={user?.avatar}
-                  height="30"
-                  style={{
-                    borderRadius: "50%",
-                    height: "30px",
-                    width: "30px",
-                    backgroundColor: "var(--secondary-color)",
-                  }}
-                />
-                <span>
-                  {user?.firstName} {user?.lastName}
-                </span>
-              </div>
-            ))}
-            <Popover.Arrow className="PopoverArrow" />
-          </Popover.Content>
-        </Popover.Portal>
+        {listLikedUsers.length > 0 && (
+          <Popover.Portal>
+            <Popover.Content className="PopoverContent">
+              {listLikedUsers?.map((user) => (
+                <div
+                  key={user?._id}
+                  style={{ marginBlock: "10px", fontSize: "small" }}
+                  onClick={() => navigateToUserProfile(user?.username)}
+                >
+                  <img
+                    src={user?.avatar}
+                    height="30"
+                    style={{
+                      borderRadius: "50%",
+                      height: "30px",
+                      width: "30px",
+                      backgroundColor: "var(--secondary-color)",
+                    }}
+                  />
+                  <span>
+                    {user?.firstName} {user?.lastName}
+                  </span>
+                </div>
+              ))}
+              <Popover.Arrow className="PopoverArrow" />
+            </Popover.Content>
+          </Popover.Portal>
+        )}
       </Popover.Root>
     </div>
   );

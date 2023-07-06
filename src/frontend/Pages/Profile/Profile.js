@@ -6,6 +6,7 @@ import { Feed } from "../Feed/Feed";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { useData } from "../../Context/dataContext";
 import { PostCard } from "../../Components/PostCard/PostCard";
+import { LikePopover } from "../../Components/Popover/LikePopover";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
   const navigate = useNavigate();
@@ -75,20 +76,26 @@ export const Profile = () => {
             </span>
             <span className="profle-dashboard-info-data-name">Posts</span>
           </div>
-          <div className="profile-dashboard-info">
-            <span className="profle-dashboard-info-data">
-              {" "}
-              {foundUser?.followers?.length}
-            </span>
-            <span className="profle-dashboard-info-data-name">Followers</span>
-          </div>
-          <div className="profile-dashboard-info">
-            <span className="profle-dashboard-info-data">
-              {foundUser?.following?.length}
-            </span>
-            <span className="profle-dashboard-info-data-name">Following</span>
-          </div>
+          <LikePopover likedBy={foundUser?.followers}>
+            <div className="profile-dashboard-info">
+              <span className="profle-dashboard-info-data">
+                {" "}
+                {foundUser?.followers?.length}
+              </span>
+              <span className="profle-dashboard-info-data-name">Followers</span>
+            </div>
+          </LikePopover>
+
+          <LikePopover likedBy={foundUser?.following}>
+            <div className="profile-dashboard-info">
+              <span className="profle-dashboard-info-data">
+                {foundUser?.following?.length}
+              </span>
+              <span className="profle-dashboard-info-data-name">Following</span>
+            </div>
+          </LikePopover>
         </div>
+
         <div className="profile-posts">
           {foundPostOfUser?.map((post) => (
             <PostCard post={post} />
