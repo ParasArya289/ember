@@ -39,8 +39,16 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/profile/:username"
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path="/auth" element={<Auth />} />
-        <Route path="/profile/:username" element={<Profile />} />
+        {/* <Route path="" element={} /> */}
       </Routes>
     </div>
   );
