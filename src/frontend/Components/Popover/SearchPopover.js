@@ -1,26 +1,31 @@
 import * as Popover from "@radix-ui/react-popover";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./SearchPopover.css";
 
 export const SearchPopover = ({ children, array, inputRef }) => {
   const [isPopoverOpen, setPopoverOpen] = useState(true);
+  const navigate = useNavigate();
   useEffect(() => {
     if (inputRef.current.value.length > 0) {
       setPopoverOpen(true);
-      // setTimeout(() => {
-      //   inputRef.current.focus();
-      // }, 200);
-
-        requestAnimationFrame(() =>
-          setTimeout(() => {
-            inputRef.current.focus();
-          }, 0)
-        );
+      requestAnimationFrame(() =>
+        setTimeout(() => {
+          inputRef.current.focus();
+        }, 0)
+      );
 
       return;
     }
     setPopoverOpen(false);
   }, [array]);
+  const navigateToUserProfileHandler = (username = "") => {
+    if (username) {
+      navigate("/profile/" + username);
+      inputRef.current.value = "";
+      setPopoverOpen(false);
+    }
+  };
   return (
     <div className="Popover">
       <Popover.Root open={isPopoverOpen}>
@@ -44,7 +49,11 @@ export const SearchPopover = ({ children, array, inputRef }) => {
               </h6>
             )}
             {array?.map((user) => (
-              <div key={user?._id} className="info-Card-users-container">
+              <div
+                key={user?._id}
+                className="info-Card-users-container"
+                onClick={() => navigateToUserProfileHandler(user?.username)}
+              >
                 <div key={user?._id} className="info-Card-users">
                   <div className="info-card-users-img">
                     <img

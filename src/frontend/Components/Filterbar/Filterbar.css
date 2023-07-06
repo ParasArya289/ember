@@ -25,9 +25,8 @@
   height: 3px;
   transform: translateX(-50%);
   background-color: var(--primary-text-color);
+  transition: width 0.3s ease, left 0.3s ease;
 }
 .filterbar-highlight {
-  /* text-decoration: underline 3px;
-  text-underline-offset: 24px; */
   color: var(--primary-text-color);
 }
