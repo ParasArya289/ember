@@ -5,8 +5,9 @@ import { RxExit } from "react-icons/rx";
 import { useData } from "../../Context/dataContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { ProfileEditDialogBox } from "../ProfleEditDialogBox/ProfileEditDialogBox";
 
-export const EditProfilePopover = ({ children }) => {
+export const EditProfilePopover = ({ children, foundUser }) => {
   const [open, setOpen] = useState(false);
   const {
     dataState: { users },
@@ -20,10 +21,12 @@ export const EditProfilePopover = ({ children }) => {
 
         <Popover.Portal>
           <Popover.Content className="EditProfilePopover">
-            <div>
-              <RxPencil1 />
-              <span>Edit Profile</span>
-            </div>
+            <ProfileEditDialogBox foundUser={foundUser} setOpen={setOpen}>
+              <div>
+                <RxPencil1 />
+                <span>Edit Profile</span>
+              </div>
+            </ProfileEditDialogBox>
             <div>
               <RxExit />
               <span>Log out</span>

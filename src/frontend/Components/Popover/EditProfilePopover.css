@@ -9,10 +9,10 @@
   outline: none;
   z-index: 99;
 }
-.EditProfilePopover > div {
+.EditProfilePopover  div {
   display: flex;
   align-items: center;
   padding-block:5px;
-  gap: 20px;
+  gap: 10px;
   cursor: pointer;
 }

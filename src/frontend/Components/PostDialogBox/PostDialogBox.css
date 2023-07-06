@@ -20,6 +20,7 @@
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
   position: fixed;
+  z-index: 9999999;
   inset: 0;
   animation: overlayShow 100ms cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -30,6 +31,7 @@
   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   position: fixed;
+  z-index: 99999999;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,6 +40,7 @@
   max-height: 85vh;
   padding: 25px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  
 }
 .DialogContent:focus {
   outline: none;

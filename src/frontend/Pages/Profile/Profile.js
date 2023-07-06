@@ -57,7 +57,7 @@ export const Profile = () => {
             <RxArrowLeft />
           </div>
           {foundUser?.username === user?.username && (
-            <EditProfilePopover>
+            <EditProfilePopover foundUser={foundUser}>
               <div className="profile-header-action">
                 <RxDotsHorizontal />
               </div>
