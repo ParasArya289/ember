@@ -12,7 +12,7 @@ import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
 import { useNavigate } from "react-router-dom";
 import PostDialogBox from "../PostDialogBox/PostDialogBox";
 export const Sidebar = () => {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const navigate = useNavigate();
   return (
     <nav className="sidebar-container">
@@ -46,24 +46,27 @@ export const Sidebar = () => {
           </div>
         </PostDialogBox>
 
-        <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
-          <MyPopover user={user}>
-            <div className="sidebar-user-flex">
-              <ProfileHoverCard user={user}>
-                <div className="sidebar-user-img">
-                  <img src={user?.avatar} />
-                </div>
-              </ProfileHoverCard>
+        {token && (
+          <motion.div whileHover={{ scale: 1.04 }} className="sidebar-user">
+            <MyPopover user={user}>
+              <div className="sidebar-user-flex">
+                <ProfileHoverCard user={user}>
+                  <div className="sidebar-user-img">
+                    <img src={user?.avatar} />
+                  </div>
+                </ProfileHoverCard>
 
-              <div className="sidebar-user-info">
-                <p>
-                  {user?.firstName} {user?.lastName}
-                </p>
-                <p>@{user?.username}</p>
+                <div className="sidebar-user-info">
+                  <p>
+                    {user?.firstName} {user?.lastName}
+                  </p>
+                  <p>@{user?.username}</p>
+                </div>
               </div>
-            </div>
-          </MyPopover>
-        </motion.div>
+              
+            </MyPopover>
+          </motion.div>
+        )}
       </div>
     </nav>
   );

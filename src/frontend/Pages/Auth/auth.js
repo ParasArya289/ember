@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Login } from "./Login/Login";
 import { Signup } from "./Signup/Signup";
 import { motion } from "framer-motion";
@@ -12,10 +12,10 @@ export const Auth = () => {
   const { token } = useAuth();
   const [ref, { height }] = useMeasure();
   const navigate = useNavigate();
-
+  const location = useLocation();
   useEffect(() => {
     if (token) {
-      navigate("/");
+      navigate(location?.state?.from ?? "/");
     }
   }, [token]);
   return (
