@@ -10,8 +10,10 @@ export const EditImageDialogBox = ({
   foundUser,
   title,
 }) => {
+  const [open,setOpen] = useState(false);
   const formRef = useRef();
   const {setUser,token} = useAuth();
+  
   const editImageHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
@@ -20,10 +22,10 @@ export const EditImageDialogBox = ({
       userData[key] = value;
     }
     editProfile(userData,token,setUser)
-
+    setOpen(false);
   };
   return (
-    <Dialog.Root>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
