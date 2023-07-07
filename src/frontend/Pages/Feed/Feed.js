@@ -2,7 +2,6 @@ import "./Feed.css";
 
 import { Inforbar } from "../../Components/Infobar/Infobar";
 import { Sidebar } from "../../Components/Sidebar/Sidebar";
-import { Navbar } from "../../Components/Navbar/Navbar";
 
 export const Feed = ({ children, navbar, filterbar, showfilterbar }) => {
   return (

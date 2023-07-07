@@ -1,4 +1,5 @@
 import Mockman from "mockman-js";
+import { Toaster } from "react-hot-toast";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { PrivateRoute } from "./frontend/Components/PrivateRoute";
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       {/* <Mockman /> */}
+      <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route

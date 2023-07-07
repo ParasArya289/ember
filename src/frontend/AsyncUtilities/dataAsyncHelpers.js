@@ -1,5 +1,8 @@
 //Get basic data
 
+import { successToast } from "../../Utils/toast";
+import { customToast } from "../../Utils/toast";
+
 export const getUser = async (dispatch) => {
   try {
     const res = await fetch("/api/users");
@@ -41,7 +44,6 @@ export const getBookmarked = async (dispatch) => {
 //Follow and Unfollow
 
 export const followUser = async (userId, token, setUser) => {
-  console.log({ userId, token });
   try {
     const res = await fetch(`/api/users/follow/${userId}`, {
       method: "POST",
@@ -53,8 +55,9 @@ export const followUser = async (userId, token, setUser) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const { user, followuser } = await res.json();
+    const { user, followUser } = await res.json();
     setUser(user);
+    customToast(followUser,"You Followed")
   } catch (e) {
     console.error(e.message);
   }
@@ -72,8 +75,9 @@ export const unfollowUser = async (userId, token, setUser) => {
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    const { user, followuser } = await res.json();
+    const { user, followUser } = await res.json();
     setUser(user);
+    customToast(followUser,"You unfollowed")
   } catch (e) {
     console.error(e.message);
   }
@@ -96,6 +100,7 @@ export const createPost = async (postData, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
+    successToast("Post Added")
   } catch (e) {
     console.error(e.message);
   }
@@ -115,6 +120,7 @@ export const editPost = async (postData, postId, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
+    successToast("Post changes saved")
   } catch (e) {
     console.error(e.message);
   }
@@ -133,6 +139,7 @@ export const DeletePost = async (postId, token, dispatch) => {
     }
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
+    successToast("Post Deleted")
   } catch (e) {
     console.error(e.message);
   }
@@ -153,6 +160,7 @@ export const bookmarkPost = async (postId, token, dispatch) => {
     }
     const { bookmarks } = await res.json();
     dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+    successToast("Bookmarked Post")
   } catch (e) {
     console.error(e.message);
   }
@@ -172,6 +180,7 @@ export const removeBookmarkedPost = async (postId, token, dispatch) => {
     }
     const { bookmarks } = await res.json();
     dispatch({ type: "INIT_BOOKMARK", payload: bookmarks });
+    successToast("Removed Bookmarked Post")
   } catch (e) {
     console.error(e.message);
   }
@@ -240,6 +249,7 @@ export const editProfile = async (userData, token, setUser) => {
     }
     const { user } = await res.json();
     setUser(user);
+    successToast("Profile changes saved")
   } catch (e) {
     console.error(e.message);
   }
