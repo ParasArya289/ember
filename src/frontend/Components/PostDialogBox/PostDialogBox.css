@@ -1,18 +1,23 @@
 /* reset */
-.Button,.IconButton,.DialogTrigger{
+.Button,
+.IconButton,
+.DialogTrigger {
   all: unset;
 }
-.DialogUser >img{
+.DialogUser > img {
   border-radius: 50%;
 }
-.DialogDescription{
+.DialogDescription {
   display: flex;
 }
-.DialogDescription > textarea{
-  all:unset;
+.DialogDescription > textarea {
+  all: unset;
   flex: 1;
-  color:var(--primary-text-color);
+  color: var(--primary-text-color);
   outline: none;
+  height: auto;
+  min-height: 5rem;
+  max-height: 15rem;
   /* overflow: hidden; */
   /* padding-block: 20px; */
 }
@@ -40,7 +45,6 @@
   max-height: 85vh;
   padding: 25px;
   animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  
 }
 .DialogContent:focus {
   outline: none;
@@ -84,7 +88,7 @@
 }
 .Button.green {
   background-color: var(--ember);
-  color: var(--primary-text-color)
+  color: var(--primary-text-color);
 }
 .Button.green:hover {
   background-color: var(--secondary-color);

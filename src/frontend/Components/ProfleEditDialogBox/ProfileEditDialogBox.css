@@ -28,17 +28,28 @@
   bottom: 20px;
   right: 20px;
 }
-.editAvatarIcon:hover,.editBgIcon:hover{
+.editAvatarIcon:hover,
+.editBgIcon:hover {
   background-color: var(--secondary-color);
 }
 .EditDialogDescription input {
-  /* all:unset; */
-  /* outline: none; */
+  /* all:unset; 
+  outline: none; */
   background-color: var(--background-blur-dark);
 }
 
 .EditDialogDescription form {
   margin-top: 50px;
+}
+.EditDialogDescription form textarea {
+  all: unset;
+  flex: 1;
+  color: var(--primary-text-color);
+  outline: none;
+  background-color: var(--background-blur-dark);
+  resize: vertical;
+  min-height: 5rem;
+  max-height: 15rem;
 }
 
 .Fieldset {

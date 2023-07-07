@@ -1,6 +1,8 @@
 import "./Profile.css";
 import { RxDotsHorizontal } from "react-icons/rx";
 import { RxArrowLeft } from "react-icons/rx";
+import { RxCamera } from "react-icons/rx";
+import { RxPencil1 } from "react-icons/rx";
 import { useNavigate, useParams } from "react-router-dom";
 import { Feed } from "../Feed/Feed";
 import { Navbar } from "../../Components/Navbar/Navbar";
@@ -14,6 +16,8 @@ import {
   unfollowUser,
 } from "../../AsyncUtilities/dataAsyncHelpers";
 import { EditProfilePopover } from "../../Components/Popover/EditProfilePopover";
+import { EditImageDialogBox } from "../../Components/EditProfile/EditImageDialogBox";
+import { EditInfoDialogBox } from "../../Components/EditProfile/EditInfoDialogBox";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
   const { user, setUser, token } = useAuth();
@@ -65,11 +69,34 @@ export const Profile = () => {
           )}
         </div>
       </div>
+
       <div className="profile">
         <div className="header-bg">
           <img src="https://images.pexels.com/photos/5253574/pexels-photo-5253574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+          {user?.username === foundUser?.username && (
+            <EditImageDialogBox
+              dialogFor={"background"}
+              foundUser={foundUser}
+              title={"Edit Background Image"}
+            >
+              <div className="editBgIcon">
+                <RxCamera />
+              </div>
+            </EditImageDialogBox>
+          )}
           <div className="profile-avatar">
             <img src={foundUser?.avatar} />
+            {user?.username === foundUser?.username && (
+              <EditImageDialogBox
+                dialogFor={"avatar"}
+                foundUser={foundUser}
+                title={"Edit Avatar"}
+              >
+                <div className="editAvatarIcon">
+                  <RxCamera />
+                </div>
+              </EditImageDialogBox>
+            )}
           </div>
         </div>
         <div className="profile-name-header">
@@ -80,6 +107,11 @@ export const Profile = () => {
               </div>
               <div className="profile-username">@{foundUser?.username}</div>
             </div>
+            {user?.username === foundUser?.username && (
+              <EditInfoDialogBox foundUser={foundUser}>
+                <RxPencil1 />
+              </EditInfoDialogBox>
+            )}
             {user?.username !== foundUser?.username && (
               <div className="profile-follow-btn">
                 {isCurrentUserFollowing ? (

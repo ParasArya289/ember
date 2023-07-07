@@ -1,10 +1,8 @@
-import "./ProfileEditDialogBox.css";
 import React, { useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
-import { RxCamera } from "react-icons/rx";
 
-export const ProfileEditDialogBox = ({ children, foundUser }) => {
+export const EditInfoDialogBox = ({ children, foundUser }) => {
   const formRef = useRef();
   return (
     <Dialog.Root>
@@ -12,24 +10,8 @@ export const ProfileEditDialogBox = ({ children, foundUser }) => {
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle">Edit Your Profile</Dialog.Title>
+          <Dialog.Title className="DialogTitle">Edit Your Info</Dialog.Title>
           <Dialog.Description className="EditDialogDescription">
-            <div className="profile">
-              <div className="header-bg">
-                <img src="https://images.pexels.com/photos/5253574/pexels-photo-5253574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-                
-                <div className="editBgIcon">
-                  <RxCamera />
-                </div>
-
-                <div className="profile-avatar editAvatar">
-                  <img src={foundUser?.avatar} />
-                </div>
-                <div className="editAvatarIcon">
-                  <RxCamera />
-                </div>
-              </div>
-            </div>
             <form ref={formRef}>
               <fieldset className="Fieldset">
                 <label className="Label" htmlFor="name">
@@ -57,29 +39,6 @@ export const ProfileEditDialogBox = ({ children, foundUser }) => {
               </fieldset>
               <fieldset className="Fieldset">
                 <label className="Label" htmlFor="username">
-                  Background
-                </label>
-                <input
-                  className="Input"
-                  name="bg"
-                  placeholder="Background URL"
-                  required
-                  defaultValue={foundUser?.bg}
-                />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="username">
-                  Avatar
-                </label>
-                <input
-                  className="Input"
-                  name="avatar"
-                  placeholder="Avatar URL"
-                  defaultValue={foundUser?.avatar}
-                />
-              </fieldset>
-              <fieldset className="Fieldset">
-                <label className="Label" htmlFor="username">
                   Username
                 </label>
                 <input
@@ -88,6 +47,19 @@ export const ProfileEditDialogBox = ({ children, foundUser }) => {
                   placeholder="Username"
                   required
                   defaultValue={foundUser?.username}
+                />
+              </fieldset>
+              <fieldset className="Fieldset">
+                <label className="Label" htmlFor="link">
+                  link
+                </label>
+                <input
+                  className="Input"
+                  type="url"
+                  name="link"
+                  placeholder="Link"
+                  required
+                  defaultValue={foundUser?.link}
                 />
               </fieldset>
               <fieldset className="Fieldset">
