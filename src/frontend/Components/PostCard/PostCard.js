@@ -51,7 +51,7 @@ export const PostCard = ({ post }) => {
 
   useEffect(() => {
     setTimeDifference(timeOfPost(post?.updatedAt));
-
+    console.log(post?.updatedAt)
     const interval = setInterval(() => {
       setTimeDifference(timeOfPost(post?.updatedAt));
     }, 10000);
@@ -59,7 +59,7 @@ export const PostCard = ({ post }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [timeOfPost]);
+  }, [timeOfPost,post]);
 
   return (
     <>
