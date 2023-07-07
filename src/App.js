@@ -8,6 +8,7 @@ import { Explore } from "./frontend/Pages/Explore/Explore";
 import { Feed } from "./frontend/Pages/Feed/Feed";
 import { Home } from "./frontend/Pages/Home/Home";
 import { Profile } from "./frontend/Pages/Profile/Profile";
+import { SinglePost } from "./frontend/Pages/SinglePost/SInglePost";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           }
         />
         <Route path="/auth" element={<Auth />} />
-        {/* <Route path="" element={} /> */}
+        <Route path="/post/:postId" element={<SinglePost />} />
       </Routes>
     </div>
   );

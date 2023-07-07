@@ -101,7 +101,7 @@ export const posts = [
     updatedAt: "2023-07-01",
   },
   {
-    _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e267",
+    _id: "f40d6b0e-6f6d-4814-bb5f-883c0e11e2678",
     content:
       "Just adopted the cutest puppy today! Meet Bella, my new furry best friend. 🐶❤️ #NewPuppy",
     likes: {

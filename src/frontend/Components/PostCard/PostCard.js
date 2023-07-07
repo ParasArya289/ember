@@ -100,7 +100,10 @@ export const PostCard = ({ post }) => {
               )}
             </div>
           </div>
-          <div className="postcard-info-container-body">
+          <div
+            className="postcard-info-container-body"
+            onClick={() => navigate("/post/" + post?._id)}
+          >
             <p>{post?.content}</p>
           </div>
           <div className="postcard-action-container">
