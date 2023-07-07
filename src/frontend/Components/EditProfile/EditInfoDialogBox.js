@@ -52,18 +52,6 @@ export const EditInfoDialogBox = ({ children, foundUser }) => {
                 />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="username">
-                  Username
-                </label>
-                <input
-                  className="Input"
-                  name="username"
-                  placeholder="Username"
-                  required
-                  defaultValue={foundUser?.username}
-                />
-              </fieldset>
-              <fieldset className="Fieldset">
                 <label className="Label" htmlFor="link">
                   link
                 </label>
