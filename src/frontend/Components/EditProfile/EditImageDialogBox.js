@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
+import { useAuth } from "../../Context/authContext";
+import { editProfile } from "../../AsyncUtilities/dataAsyncHelpers";
 
 export const EditImageDialogBox = ({
   children,
@@ -9,6 +11,17 @@ export const EditImageDialogBox = ({
   title,
 }) => {
   const formRef = useRef();
+  const {setUser,token} = useAuth();
+  const editImageHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(formRef.current);
+    const userData = {...foundUser};
+    for (const [key, value] of formData.entries()) {
+      userData[key] = value;
+    }
+    editProfile(userData,token,setUser)
+
+  };
   return (
     <Dialog.Root>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>
@@ -17,31 +30,25 @@ export const EditImageDialogBox = ({
         <Dialog.Content className="DialogContent">
           <Dialog.Title className="DialogTitle">{title}</Dialog.Title>
           <Dialog.Description className="EditDialogDescription">
-            <form ref={formRef}>
+            <form ref={formRef} onSubmit={editImageHandler}>
               {dialogFor === "avatar" ? (
                 <fieldset className="Fieldset">
-                  <label className="Label" htmlFor="username">
-                    Avatar
-                  </label>
                   <input
                     className="Input"
                     type="url"
                     name="avatar"
+                    required
                     placeholder="Avatar URL"
                     defaultValue={foundUser?.avatar}
                   />
                 </fieldset>
               ) : (
                 <fieldset className="Fieldset">
-                  <label className="Label" htmlFor="username">
-                    Background
-                  </label>
                   <input
                     className="Input"
                     type="url"
                     name="bg"
                     placeholder="Background URL"
-                    required
                     defaultValue={foundUser?.bg}
                   />
                 </fieldset>

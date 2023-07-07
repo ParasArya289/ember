@@ -194,7 +194,7 @@ export const likePost = async (postId, token, dispatch) => {
     const { posts } = await res.json();
     dispatch({ type: "INIT_POSTS", payload: posts });
     if ("vibrate" in navigator) {
-     navigator.vibrate(100);
+      navigator.vibrate(100);
     }
   } catch (e) {
     console.error(e.message);
@@ -219,6 +219,27 @@ export const unlikePost = async (postId, token, dispatch) => {
     if ("vibrate" in navigator) {
       navigator.vibrate(100);
     }
+  } catch (e) {
+    console.error(e.message);
+  }
+};
+
+//Edit profile
+export const editProfile = async (userData, token, setUser) => {
+  try {
+    const res = await fetch(`/api/users/edit`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: token,
+      },
+      body: JSON.stringify({ userData }),
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    const { user } = await res.json();
+    setUser(user);
   } catch (e) {
     console.error(e.message);
   }

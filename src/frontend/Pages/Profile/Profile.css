@@ -63,6 +63,7 @@
   padding: 5px;
   z-index: 1;
   border-radius: 50%;
+  object-fit: cover;
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
 }
