@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
 import "./PostDialogBox.css";
 import { useAuth } from "../../Context/authContext";
 import { useData } from "../../Context/dataContext";
 import { createPost } from "../../AsyncUtilities/dataAsyncHelpers";
+import { usernameSuggestion } from "../../../Utils/utils";
+import { UserUi } from "../CreatePost/CreatePost";
 
 const PostDialogBox = ({ children }) => {
+  const [suggesteduser, setSuggestedUser] = useState([]);
   const [formData, setFormData] = useState("");
   const { user, token } = useAuth();
-  const { dataDispatch } = useData();
+  const {
+    dataState: { users },
+    dataDispatch,
+  } = useData();
+
+  const textAreaRef = useRef();
+
+  useEffect(() => {
+    const res = usernameSuggestion(users, formData);
+    setSuggestedUser(res);
+  }, [formData]);
 
   const sendPost = () => {
     if (formData) {
@@ -35,11 +48,24 @@ const PostDialogBox = ({ children }) => {
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
             <textarea
+              ref={textAreaRef}
               placeholder="Whats happening?!"
               onChange={(e) => setFormData(e.target.value)}
               value={formData}
             />
           </Dialog.Description>
+            {/* suggestedUser */}
+            <div
+              style={{
+                display: "block",
+                overflow: "hidden",
+                whiteSpace: "wrap",
+              }}
+            >
+              {suggesteduser?.slice(0, 4).map((user) => (
+                <UserUi key={user?._id} user={user} inputRef={textAreaRef} />
+              ))}
+            </div>
 
           <div
             style={{

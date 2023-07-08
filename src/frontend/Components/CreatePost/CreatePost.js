@@ -96,7 +96,6 @@ export const CreatePost = () => {
                 key={user?._id}
                 user={user}
                 inputRef={textAreaRef}
-                setSuggestedUser={setSuggestedUser}
               />
             ))}
           </div>
