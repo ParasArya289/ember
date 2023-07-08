@@ -1,18 +1,48 @@
 export const search = (array, key) => {
   let arr = array;
-  
+
   if (key) {
-    arr = arr.filter(
-      ({ username, firstName, lastName }) =>
-        username.toLowerCase().includes(key) ||
-        `${firstName.toLowerCase()}${lastName.toLowerCase()}`.includes(
-          key
-        )
-    );
+    arr = arr
+      .filter(
+        ({ username, firstName, lastName }) =>
+          username.toLowerCase().includes(key) ||
+          `${firstName.toLowerCase()}${lastName.toLowerCase()}`.includes(key)
+      )
+      ?.sort((a, b) => {
+        const valueA = a?.username.indexOf(key);
+        const valueB = b?.username.indexOf(key);
+        return valueA - valueB;
+      });
     return arr;
   }
   return [];
 };
+
+export const usernameSuggestion = (array, key, ref) => {
+  const regex = /@(\w+)/g;
+  const matches = key.match(regex);
+
+  if (matches) {
+    const lastMatch = matches[matches.length - 1];
+
+    const nextValue = key.slice(
+      key.lastIndexOf(lastMatch) + 1,
+      key.length
+    );
+
+    if (nextValue.includes(" ")) {
+      console.log("continued typing");
+      return[]
+    }
+    if (lastMatch) {
+      const suggestedUser = lastMatch.slice(1);
+      const suggestedUsers = search(array, suggestedUser);
+      return suggestedUsers;
+    }
+  }
+  return [];
+};
+
 
 export const timeOfPost = (date) => {
   const currentDate = new Date();
