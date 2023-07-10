@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
 import { editPost } from "../../AsyncUtilities/dataAsyncHelpers";
+import {
+  linkMentionedUsername,
+  usernameSuggestion,
+} from "../../../Utils/utils";
+import { useData } from "../../Context/dataContext";
+import { UserUi } from "../CreatePost/CreatePost";
 
 export const EditDialogBox = ({
   children,
@@ -11,12 +17,22 @@ export const EditDialogBox = ({
   token,
   dispatch,
 }) => {
+  const [suggesteduser, setSuggestedUser] = useState([]);
   const [formData, setFormData] = useState(content);
+  const {
+    dataState: { users },
+  } = useData();
+
+  const textAreaRef = useRef();
+  useEffect(() => {
+    const res = usernameSuggestion(users, formData);
+    setSuggestedUser(res);
+  }, [formData]);
 
   const editPostHandler = () => {
     if (formData) {
       const data = {
-        content: formData,
+        content: linkMentionedUsername(formData),
         edited: true,
       };
       editPost(data, postId, token, dispatch);
@@ -35,11 +51,28 @@ export const EditDialogBox = ({
           </Dialog.Title>
           <Dialog.Description className="DialogDescription">
             <textarea
+              ref={textAreaRef}
               placeholder="Whats happening?!"
               onChange={(e) => setFormData(e.target.value)}
               value={formData}
             />
           </Dialog.Description>
+          <div
+            style={{
+              display: "block",
+              overflow: "hidden",
+              whiteSpace: "wrap",
+            }}
+          >
+            {suggesteduser?.slice(0, 4).map((user) => (
+              <UserUi
+                key={user?._id}
+                user={user}
+                inputRef={textAreaRef}
+                setFormData={setFormData}
+              />
+            ))}
+          </div>
 
           <div
             style={{

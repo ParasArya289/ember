@@ -18,31 +18,65 @@ export const search = (array, key) => {
   return [];
 };
 
+//Generate suggestion on last @ seen
 export const usernameSuggestion = (array, key, ref) => {
+  // const regex = /@(\w+)/g;
+  // const matches = key.match(regex);
+  // console.log(matches);
+  // if (matches) {
+  //   const lastMatch = matches[matches.length - 1];
+
+  //   const nextValue = key.slice(key.lastIndexOf(lastMatch) + 1, key.length);
+
+  //   if (nextValue.includes(" ")) {
+  //     // console.log("continued typing");
+  //     return [];
+  //   }
+  //   if (lastMatch) {
+  //     const suggestedUser = lastMatch.slice(1);
+  //     const suggestedUsers = search(array, suggestedUser);
+  //     return suggestedUsers;
+  //   }
+  // }
+  // return [];
+
+  // const regex = /@(\w*)$/;
+  // const match = key.match(regex);
+  // console.log(match)
+  // if (match) {
+  //   const currentMention = match[1];
+  //   if (currentMention) {
+  //     const suggestedUsers = search(array, currentMention);
+  //     return suggestedUsers;
+  //   }
+  // }
   const regex = /@(\w+)/g;
-  const matches = key.match(regex);
+  let currentMention = null;
+  let cursorIndex = ref?.current?.selectionStart;
+  let match;
 
-  if (matches) {
-    const lastMatch = matches[matches.length - 1];
+  while ((match = regex.exec(key)) !== null) {
+    const mentionIndex = match.index;
+    const mentionLength = match[0].length;
 
-    const nextValue = key.slice(
-      key.lastIndexOf(lastMatch) + 1,
-      key.length
-    );
-
-    if (nextValue.includes(" ")) {
-      console.log("continued typing");
-      return[]
-    }
-    if (lastMatch) {
-      const suggestedUser = lastMatch.slice(1);
-      const suggestedUsers = search(array, suggestedUser);
-      return suggestedUsers;
+    if (
+      mentionIndex <= cursorIndex &&
+      cursorIndex <= mentionIndex + mentionLength
+    ) {
+      currentMention = match[1];
     }
   }
-  return [];
+
+  const suggestedUsers = search(array, currentMention);
+  return suggestedUsers;
 };
 
+//Replace username mentionns with <a/> tag
+export const linkMentionedUsername = (string) =>
+  string.replace(
+    /@(\w+)/g,
+    '<a href="/profile/$1" data data-username="$1">@$1</a>'
+  );
 
 export const timeOfPost = (date) => {
   const currentDate = new Date();

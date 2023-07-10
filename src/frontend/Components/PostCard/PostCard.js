@@ -19,7 +19,7 @@ import {
 } from "../../AsyncUtilities/dataAsyncHelpers";
 import { timeOfPost } from "../../../Utils/utils";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   const [timeDifference, setTimeDifference] = useState("");
@@ -51,7 +51,7 @@ export const PostCard = ({ post }) => {
 
   useEffect(() => {
     setTimeDifference(timeOfPost(post?.updatedAt));
-    console.log(post?.updatedAt)
+    console.log(post?.updatedAt);
     const interval = setInterval(() => {
       setTimeDifference(timeOfPost(post?.updatedAt));
     }, 10000);
@@ -59,8 +59,58 @@ export const PostCard = ({ post }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [timeOfPost,post]);
+  }, [timeOfPost, post]);
 
+  const renderMessageWithLinks = () => {
+    const parser = new DOMParser();
+    const parsedHTML = parser.parseFromString(post?.content, "text/html");
+    const links = parsedHTML.getElementsByTagName("a");
+
+    const elements = [];
+
+    let currentIndex = 0;
+    Array.from(links).forEach((link) => {
+      const username = link.getAttribute("data-username");
+      const text = link.textContent.trim();
+      const startIndex = link.parentNode.textContent.indexOf(text);
+
+      if (startIndex > currentIndex) {
+        const previousText = link.parentNode.textContent.substring(
+          currentIndex,
+          startIndex
+        );
+        elements.push(<span key={currentIndex}>{previousText}</span>);
+      }
+
+      const handleClick = (e) => {
+        e.stopPropagation();
+        navigate("/profile/" + username);
+      };
+
+      elements.push(
+        <span
+          key={currentIndex + 1}
+          onClick={(e) => handleClick(e)}
+          style={{ color: "var(--ember)", cursor: "pointer" }}
+        >
+          {text}{" "}
+        </span>
+      );
+
+      currentIndex = startIndex + text.length;
+    });
+
+    const remainingText = parsedHTML.body.textContent
+      .substring(currentIndex)
+      .trim();
+    if (remainingText) {
+      elements.push(<span key={currentIndex + 1}>{remainingText}</span>);
+    }
+
+    return elements;
+  };
+
+  console.log(post?.content);
   return (
     <>
       <div className="postcard-container">
@@ -104,7 +154,12 @@ export const PostCard = ({ post }) => {
             className="postcard-info-container-body"
             onClick={() => navigate("/post/" + post?._id)}
           >
-            <p>{post?.content}</p>
+            {/* Parsed Content */}
+            <div className="postcard-info-container-body-content">
+              {renderMessageWithLinks()}
+            </div>
+
+            {/* <p>{post?.content}</p> */}
           </div>
           <div className="postcard-action-container">
             <div className="postcard-action postcard-action-flex">

@@ -53,6 +53,9 @@
 .postcard-info-container-body {
   margin-top: 10px;
 }
+.postcard-info-container-body-content{
+  margin-bottom: 10px;
+}
 .postcard-action-container {
   display: flex;
   justify-content: space-between;

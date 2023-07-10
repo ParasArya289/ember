@@ -20,7 +20,19 @@
   min-height: 5rem;
   max-height: 50rem;
   box-sizing: border-box;
-
+}
+.textarea {
+  all: unset;
+   flex: 1;
+  flex-wrap: wrap;
+  outline: none;
+  word-wrap: break-word;
+  height: max-content;
+  min-height: 5rem;
+  max-height: 50rem;
+  overflow: hidden;
+  border:1px solid white;
+  box-sizing: border-box;
 }
 .createpost-input {
   display: flex;

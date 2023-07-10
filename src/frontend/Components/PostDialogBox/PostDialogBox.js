@@ -5,7 +5,10 @@ import "./PostDialogBox.css";
 import { useAuth } from "../../Context/authContext";
 import { useData } from "../../Context/dataContext";
 import { createPost } from "../../AsyncUtilities/dataAsyncHelpers";
-import { usernameSuggestion } from "../../../Utils/utils";
+import {
+  linkMentionedUsername,
+  usernameSuggestion,
+} from "../../../Utils/utils";
 import { UserUi } from "../CreatePost/CreatePost";
 
 const PostDialogBox = ({ children }) => {
@@ -27,7 +30,7 @@ const PostDialogBox = ({ children }) => {
   const sendPost = () => {
     if (formData) {
       const data = {
-        content: formData,
+        content: linkMentionedUsername(formData),
         username: user?.username,
       };
       createPost(data, token, dataDispatch);
@@ -54,18 +57,23 @@ const PostDialogBox = ({ children }) => {
               value={formData}
             />
           </Dialog.Description>
-            {/* suggestedUser */}
-            <div
-              style={{
-                display: "block",
-                overflow: "hidden",
-                whiteSpace: "wrap",
-              }}
-            >
-              {suggesteduser?.slice(0, 4).map((user) => (
-                <UserUi key={user?._id} user={user} inputRef={textAreaRef} />
-              ))}
-            </div>
+          {/* suggestedUser */}
+          <div
+            style={{
+              display: "block",
+              overflow: "hidden",
+              whiteSpace: "wrap",
+            }}
+          >
+            {suggesteduser?.slice(0, 4).map((user) => (
+              <UserUi
+                key={user?._id}
+                user={user}
+                inputRef={textAreaRef}
+                setFormData={setFormData}
+              />
+            ))}
+          </div>
 
           <div
             style={{
