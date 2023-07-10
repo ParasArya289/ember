@@ -23,7 +23,7 @@ const PostDialogBox = ({ children }) => {
   const textAreaRef = useRef();
 
   useEffect(() => {
-    const res = usernameSuggestion(users, formData);
+    const res = usernameSuggestion(users, formData, textAreaRef);
     setSuggestedUser(res);
   }, [formData]);
 

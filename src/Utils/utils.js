@@ -78,6 +78,11 @@ export const linkMentionedUsername = (string) =>
     '<a href="/profile/$1" data data-username="$1">@$1</a>'
   );
 
+export const unlinkMentionedUsername = (string) => {
+  const regex = /<a\b[^>]*>(.*?)<\/a>/g;
+  return string.replace(regex, (_, username) => username);
+};
+
 export const timeOfPost = (date) => {
   const currentDate = new Date();
   const formattedDate = new Date(date);

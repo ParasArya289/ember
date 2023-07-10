@@ -4,6 +4,7 @@ import { RxCross2 } from "react-icons/rx";
 import { editPost } from "../../AsyncUtilities/dataAsyncHelpers";
 import {
   linkMentionedUsername,
+  unlinkMentionedUsername,
   usernameSuggestion,
 } from "../../../Utils/utils";
 import { useData } from "../../Context/dataContext";
@@ -25,7 +26,7 @@ export const EditDialogBox = ({
 
   const textAreaRef = useRef();
   useEffect(() => {
-    const res = usernameSuggestion(users, formData);
+    const res = usernameSuggestion(users, formData, textAreaRef);
     setSuggestedUser(res);
   }, [formData]);
 
@@ -38,6 +39,7 @@ export const EditDialogBox = ({
       editPost(data, postId, token, dispatch);
     }
   };
+  const unLinkedContent = unlinkMentionedUsername(formData);
   return (
     <Dialog.Root>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>
@@ -54,7 +56,7 @@ export const EditDialogBox = ({
               ref={textAreaRef}
               placeholder="Whats happening?!"
               onChange={(e) => setFormData(e.target.value)}
-              value={formData}
+              defaultValue={unLinkedContent}
             />
           </Dialog.Description>
           <div
