@@ -20,6 +20,20 @@ export const users = [
     updatedAt: formatDate(),
   },
   {
+    _id: "ceec46f2-51e1-4g289-97db-6236de51e708",
+    avatar:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1D2I8QTTIipmHmaxknwoVDdzHaQj90w7TKqOMNiKJhk92FbNKnDmRv3e0RjHzoXJr5UE&usqp=CAU",
+    bg: "https://images.pexels.com/photos/1487711/pexels-photo-1487711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    bio: "Crafting beauty, one stitch at a time.",
+    link: "",
+    firstName: "Karigiri",
+    lastName: "",
+    username: "karigiri",
+    password: "karigiri123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
     _id: "ceec46f2-51e1-4f81-97db-6236de51e704",
     avatar: "https://www.svgrepo.com/show/8137/avatar.svg",
     bio: "Passionate developer exploring new technologies",

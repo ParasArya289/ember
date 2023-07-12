@@ -10,7 +10,7 @@ export const posts = [
   {
     _id: "bf747aeb-57e7-4e82-9c1a-10de989b792d",
     content:
-      "Just finished reading an amazing book that completely blew my mind! Highly recommend it to everyone. #BookRecommendation",
+      "Just finished reading an amazing book that authored by <a href='/profile/sophiadaivs' data data-username='sophiadavis'>@sophiadaivs</a> completely blew my mind! Highly recommend it to everyone. #BookRecommendation",
     likes: {
       likeCount: 3,
       likedBy: [
@@ -23,6 +23,42 @@ export const posts = [
     username: "parasarya",
     createdAt: "2023-06-27",
     updatedAt: formatDate(),
+  },
+  {
+    _id: uuid(),
+    content:
+      "Embrace the art of handcrafted beauty with Karigiri! Explore our collection of exquisite handmade crafts that add a touch of elegance to your life. #Handmade #Crafts #Artisan",
+    likes: {
+      likeCount: 4,
+      likedBy: [
+        { username: "johnsmith" },
+        { username: "emilyjohnson" },
+        { username: "michaelbrown" },
+        { username: "parasarya" },
+      ],
+      dislikedBy: [],
+    },
+    username: "karigiri",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-06-27",
+  },
+  {
+    _id: uuid(),
+    content:
+      "Every stitch tells a story. At Karigir, our handwoven textiles and embroidered pieces showcase the rich cultural heritage and craftsmanship. Wrap yourself in the warmth of tradition and elegance. #Handwoven #Textiles #ArtisanCrafts",
+    likes: {
+      likeCount: 4,
+      likedBy: [
+        { username: "johnsmith" },
+        { username: "emilyjohnson" },
+        { username: "michaelbrown" },
+        { username: "parasarya" },
+      ],
+      dislikedBy: [],
+    },
+    username: "karigiri",
+    createdAt: "2023-06-27",
+    updatedAt: "2023-07-11",
   },
   {
     _id: "ceec46f2-51e1-4f81-97db-6236de51e704",
@@ -139,7 +175,7 @@ export const posts = [
   {
     _id: "9b4d3e35-d6df-4e36-91a5-9e9f3db8fb55",
     content:
-      "Just launched my own business! It's been a long journey, but I'm excited to embark on this new chapter. If you're interested in handmade crafts, check out my website. #Entrepreneur",
+      "Just launched my own business! It's been a long journey, but I'm excited to embark on this new chapter. If you're interested in handmade crafts, check out <a href='/profile/@karigiri' data data-username='karigiri'>@karigiri</a>. #Entrepreneur",
     likes: {
       likeCount: 2,
       likedBy: [{ username: "michaelbrown" }, { username: "sophiadavis" }],
