@@ -88,6 +88,7 @@ export const PostCard = ({ post }) => {
       };
 
       elements.push(
+        
         <span
           key={currentIndex + 1}
           onClick={(e) => handleClick(e)}

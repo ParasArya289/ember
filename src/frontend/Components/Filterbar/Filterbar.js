@@ -3,7 +3,7 @@ import { useData } from "../../Context/dataContext";
 import "./Filterbar.css";
 
 export const Filterbar = () => {
-  const [sortPerameter, setSortPerameter] = useState("trending");
+  const [sortPerameter, setSortPerameter] = useState("latest");
   const { dataState:{posts}, dataDispatch } = useData();
   const addHighlightClass = (parameter) =>
     `filterbar-btn ${sortPerameter === parameter ? "filterbar-highlight" : ""}`;

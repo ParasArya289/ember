@@ -10,7 +10,7 @@ import "./Home.css";
 
 export const Home = () => {
   const {
-    dataState: { posts, sortedPosts },
+    dataState: {sortedPosts },
   } = useData();
   const {
     user: { username: you, following },
@@ -21,13 +21,12 @@ export const Home = () => {
       you,
       ...following.map(({ username }) => username),
     ];
+    
     return sortedPosts?.filter(({ username }) =>
       postIncludingCurrentUser.includes(username)
     );
   };
 
-  const isMobile = window.innerWidth < 850;
-  console.log(isMobile);
 
   return (
     <Feed
@@ -41,7 +40,7 @@ export const Home = () => {
         {filterPostsOfFollowers()?.length <= 0 && <h1>No Post</h1>}
         {filterPostsOfFollowers()?.map((post) => (
           <PostCard key={post?.id} post={post} />
-          ))}
+        ))}
       </div>
     </Feed>
   );

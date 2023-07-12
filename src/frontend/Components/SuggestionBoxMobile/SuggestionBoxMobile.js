@@ -19,27 +19,31 @@ export const SuggestionBoxMobile = () => {
 
   return (
     <>
-      <div className="suggestionBoxMobile-container">
-        {notFollowing?.slice(0, 3)?.map((user) => (
-          <div key={user?._id} className="suggestionBoxMobile-info">
-            <img
-              src={user?.avatar}
-              onClick={() => navigate("/profile/" + user?.username)}
-            />
-            <p>
-              {user?.firstName} {user?.lastName}
-            </p>
-            <Button
-              variant="secondary"
-              className="info-Card-users-btn"
-              onClick={() => followUser(user?._id, token, setUser)}
-            >
-              Follow
-            </Button>
+      {notFollowing.length && (
+        <div>
+          <div className="suggestionBoxMobile-container">
+            {notFollowing?.slice(0, 3)?.map((user) => (
+              <div key={user?._id} className="suggestionBoxMobile-info">
+                <img
+                  src={user?.avatar}
+                  onClick={() => navigate("/profile/" + user?.username)}
+                />
+                <p>
+                  {user?.firstName} {user?.lastName}
+                </p>
+                <Button
+                  variant="secondary"
+                  className="info-Card-users-btn"
+                  onClick={() => followUser(user?._id, token, setUser)}
+                >
+                  Follow
+                </Button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <hr className="postcard-hr" />
+          <hr className="postcard-hr" />
+        </div>
+      )}
     </>
   );
 };
