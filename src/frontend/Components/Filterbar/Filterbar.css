@@ -1,6 +1,7 @@
 .filterbar {
   position: sticky;
   top: 80px;
+  height: fit-content;
   background-color: var(--background-blur);
   backdrop-filter: var(--blur);
   width: 100%;

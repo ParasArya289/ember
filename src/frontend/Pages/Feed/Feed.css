@@ -30,17 +30,13 @@
 }
 
 .main-feed {
-  /* width: 700px; */
-  display: grid;
-  grid-template-rows: min-content 1fr min-content;
+  display: flex;
+  flex-direction: column;
 }
 .main-feed-container {
-  min-height: 100vh;
+  flex-grow: 1;
   background-color: var(--background-blur);
   backdrop-filter: blur(15px);
-}
-.main-feed-populated {
-  /* grid-template-rows: min-content 1fr min-content; */
 }
 
 @media (max-width: 870px) {

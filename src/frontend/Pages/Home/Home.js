@@ -10,7 +10,7 @@ import "./Home.css";
 
 export const Home = () => {
   const {
-    dataState: { posts,sortedPosts },
+    dataState: { posts, sortedPosts },
   } = useData();
   const {
     user: { username: you, following },
@@ -38,9 +38,10 @@ export const Home = () => {
       <CreatePost />
       <div className="home-posts">
         <SuggestionBoxMobile />
+        {filterPostsOfFollowers()?.length <= 0 && <h1>No Post</h1>}
         {filterPostsOfFollowers()?.map((post) => (
           <PostCard key={post?.id} post={post} />
-        ))}
+          ))}
       </div>
     </Feed>
   );
