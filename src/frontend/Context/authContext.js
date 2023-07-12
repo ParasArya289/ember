@@ -4,6 +4,7 @@ import {
   loginUser,
   singupUser,
 } from "../../frontend/AsyncUtilities/authAsyncHelpers";
+import { errorToast } from "../../Utils/toast";
 
 export const authContext = createContext();
 
@@ -36,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message, { id: "toast" });
+      errorToast(e.message);
     } finally {
       setAuthLoading(false);
     }
@@ -62,7 +63,7 @@ export const AuthContextProvider = ({ children }) => {
       }
     } catch (e) {
       console.error(e.message);
-      toast.error(e.message, { id: "toast" });
+      errorToast(e.message);
     } finally {
       setAuthLoading(false);
     }

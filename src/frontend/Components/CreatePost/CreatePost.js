@@ -20,7 +20,7 @@ export const UserUi = ({ user, inputRef, setFormData }) => {
     //   setFormData(injectedValue);
     //   inputRef.current.focus();
     // }
-    
+
     const cursorIndex = inputRef.current.selectionStart;
     const currentValue = inputRef.current.value;
 
@@ -43,8 +43,19 @@ export const UserUi = ({ user, inputRef, setFormData }) => {
         inputRef.current.value = injectedValue;
         setFormData(injectedValue);
         inputRef.current.focus();
+        inputRef.current.selectionEnd = (
+          currentValue.slice(0, mentionIndex + 1) +
+          user?.username +
+          " "
+        ).length;
         break;
       }
+    }
+  };
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      injectUserName();
     }
   };
   return (
@@ -58,7 +69,9 @@ export const UserUi = ({ user, inputRef, setFormData }) => {
         borderRadius: "30px",
         display: "inline-block",
       }}
+      tabIndex={0}
       onClick={injectUserName}
+      onKeyDown={handleEnterKey}
     >
       <img
         src={user?.avatar}

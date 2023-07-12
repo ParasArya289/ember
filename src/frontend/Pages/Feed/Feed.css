@@ -35,6 +35,7 @@
   grid-template-rows: min-content 1fr min-content;
 }
 .main-feed-container {
+  min-height: 100vh;
   background-color: var(--background-blur);
   backdrop-filter: blur(15px);
 }
