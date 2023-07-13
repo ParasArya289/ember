@@ -20,6 +20,7 @@ import {
 import { timeOfPost } from "../../../Utils/utils";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { successToast } from "../../../Utils/toast";
 
 export const PostCard = ({ post }) => {
   const [timeDifference, setTimeDifference] = useState("");
@@ -42,7 +43,10 @@ export const PostCard = ({ post }) => {
         icon: "/public/bg2.svg",
       });
     } else {
-      navigator.clipboard.writeText("http://localhost:3000/");
+      navigator.clipboard.writeText(
+        "https://ember-react.netlify.app/post/"+ post?._id
+      );
+      successToast("Link Copied")
       if ("vibrate" in navigator) {
         navigator.vibrate(100);
       }
@@ -88,7 +92,6 @@ export const PostCard = ({ post }) => {
       };
 
       elements.push(
-        
         <span
           key={currentIndex + 1}
           onClick={(e) => handleClick(e)}

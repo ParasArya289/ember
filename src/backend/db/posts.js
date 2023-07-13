@@ -25,7 +25,7 @@ export const posts = [
     updatedAt: formatDate(),
   },
   {
-    _id: uuid(),
+    _id: "bf747aeb-58e7-4e82-9c1a-10de989b792d",
     content:
       "Embrace the art of handcrafted beauty with Karigiri! Explore our collection of exquisite handmade crafts that add a touch of elegance to your life. #Handmade #Crafts #Artisan",
     likes: {
@@ -43,7 +43,7 @@ export const posts = [
     updatedAt: "2023-06-27",
   },
   {
-    _id: uuid(),
+    _id: "bg747aeb-57e7-4e82-9c1a-10de989b792d",
     content:
       "Every stitch tells a story. At Karigir, our handwoven textiles and embroidered pieces showcase the rich cultural heritage and craftsmanship. Wrap yourself in the warmth of tradition and elegance. #Handwoven #Textiles #ArtisanCrafts",
     likes: {
