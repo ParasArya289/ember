@@ -7,20 +7,6 @@ import { usernameSuggestion } from "../../../Utils/utils";
 
 export const UserUi = ({ user, inputRef, setFormData }) => {
   const injectUserName = () => {
-    // // const regex = /@(\w+)/g;
-    // // const matches = inputRef.current.value.match(regex);
-    // const currentValue = inputRef.current.value;
-
-    // const checkLastSeen = currentValue.lastIndexOf("@");
-    // const newValue = currentValue.slice(0, checkLastSeen + 1);
-
-    // if (inputRef) {
-    //   const injectedValue = newValue + user?.username + " ";
-    //   inputRef.current.value = injectedValue;
-    //   setFormData(injectedValue);
-    //   inputRef.current.focus();
-    // }
-
     const cursorIndex = inputRef.current.selectionStart;
     const currentValue = inputRef.current.value;
 
@@ -130,7 +116,7 @@ export const CreatePost = () => {
           <textarea
             ref={textAreaRef}
             className="textarea"
-            placeholder="Whats happening?!"
+            placeholder="Hey! What's up? Mention your crew with '@'"
             onChange={(e) => setFormData(e.target.value)}
             value={formData}
           />

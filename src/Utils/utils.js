@@ -83,6 +83,56 @@ export const unlinkMentionedUsername = (string) => {
   return string.replace(regex, (_, username) => username);
 };
 
+//Username Parser
+export const renderMessageWithLinks = (string, navigate) => {
+  const parser = new DOMParser();
+  const parsedHTML = parser.parseFromString(string, "text/html");
+  const links = parsedHTML.getElementsByTagName("a");
+
+  const elements = [];
+
+  let currentIndex = 0;
+  Array.from(links).forEach((link) => {
+    const username = link.getAttribute("data-username");
+    const text = link.textContent.trim();
+    const startIndex = link.parentNode.textContent.indexOf(text);
+
+    if (startIndex > currentIndex) {
+      const previousText = link.parentNode.textContent.substring(
+        currentIndex,
+        startIndex
+      );
+      elements.push(<span key={currentIndex}>{previousText}</span>);
+    }
+
+    const handleClick = (e) => {
+      e.stopPropagation();
+      navigate("/profile/" + username);
+    };
+
+    elements.push(
+      <span
+        key={currentIndex + 1}
+        onClick={(e) => handleClick(e)}
+        style={{ color: "var(--ember)", cursor: "pointer" }}
+      >
+        {text}{" "}
+      </span>
+    );
+
+    currentIndex = startIndex + text.length;
+  });
+
+  const remainingText = parsedHTML.body.textContent
+    .substring(currentIndex)
+    .trim();
+  if (remainingText) {
+    elements.push(<span key={currentIndex + 1}>{remainingText}</span>);
+  }
+
+  return elements;
+};
+
 export const timeOfPost = (date) => {
   const currentDate = new Date();
   const formattedDate = new Date(date);

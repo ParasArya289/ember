@@ -44,6 +44,7 @@
 .EditDialogDescription form textarea {
   all: unset;
   flex: 1;
+  padding:10px;
   color: var(--primary-text-color);
   outline: none;
   background-color: var(--background-blur-dark);

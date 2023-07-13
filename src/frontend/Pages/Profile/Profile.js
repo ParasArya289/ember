@@ -18,6 +18,7 @@ import {
 import { EditProfilePopover } from "../../Components/Popover/EditProfilePopover";
 import { EditImageDialogBox } from "../../Components/EditProfile/EditImageDialogBox";
 import { EditInfoDialogBox } from "../../Components/EditProfile/EditInfoDialogBox";
+import { renderMessageWithLinks } from "../../../Utils/utils";
 export const Profile = () => {
   const { username: usernameParams } = useParams();
   const { user, setUser, token } = useAuth();
@@ -47,6 +48,8 @@ export const Profile = () => {
     }
   };
 
+  const bio = renderMessageWithLinks(foundUser?.bio, navigate);
+  console.log(foundUser?.bio);
   return (
     <Feed
       navbar={
@@ -139,8 +142,7 @@ export const Profile = () => {
               </div>
             )}
           </div>
-
-          <div className="profile-bio">{foundUser?.bio}</div>
+          <div className="profile-bio">{bio}</div>
           <a className="profile-link" src={foundUser?.username}>
             {foundUser?.link}
           </a>

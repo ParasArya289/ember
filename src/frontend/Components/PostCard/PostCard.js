@@ -17,7 +17,7 @@ import {
   removeBookmarkedPost,
   unlikePost,
 } from "../../AsyncUtilities/dataAsyncHelpers";
-import { timeOfPost } from "../../../Utils/utils";
+import { renderMessageWithLinks, timeOfPost } from "../../../Utils/utils";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { successToast } from "../../../Utils/toast";
@@ -44,9 +44,9 @@ export const PostCard = ({ post }) => {
       });
     } else {
       navigator.clipboard.writeText(
-        "https://ember-react.netlify.app/post/"+ post?._id
+        "https://ember-react.netlify.app/post/" + post?._id
       );
-      successToast("Link Copied")
+      successToast("Link Copied");
       if ("vibrate" in navigator) {
         navigator.vibrate(100);
       }
@@ -55,7 +55,6 @@ export const PostCard = ({ post }) => {
 
   useEffect(() => {
     setTimeDifference(timeOfPost(post?.updatedAt));
-    console.log(post?.updatedAt);
     const interval = setInterval(() => {
       setTimeDifference(timeOfPost(post?.updatedAt));
     }, 10000);
@@ -65,56 +64,8 @@ export const PostCard = ({ post }) => {
     };
   }, [timeOfPost, post]);
 
-  const renderMessageWithLinks = () => {
-    const parser = new DOMParser();
-    const parsedHTML = parser.parseFromString(post?.content, "text/html");
-    const links = parsedHTML.getElementsByTagName("a");
+  const content = renderMessageWithLinks(post?.content, navigate);
 
-    const elements = [];
-
-    let currentIndex = 0;
-    Array.from(links).forEach((link) => {
-      const username = link.getAttribute("data-username");
-      const text = link.textContent.trim();
-      const startIndex = link.parentNode.textContent.indexOf(text);
-
-      if (startIndex > currentIndex) {
-        const previousText = link.parentNode.textContent.substring(
-          currentIndex,
-          startIndex
-        );
-        elements.push(<span key={currentIndex}>{previousText}</span>);
-      }
-
-      const handleClick = (e) => {
-        e.stopPropagation();
-        navigate("/profile/" + username);
-      };
-
-      elements.push(
-        <span
-          key={currentIndex + 1}
-          onClick={(e) => handleClick(e)}
-          style={{ color: "var(--ember)", cursor: "pointer" }}
-        >
-          {text}{" "}
-        </span>
-      );
-
-      currentIndex = startIndex + text.length;
-    });
-
-    const remainingText = parsedHTML.body.textContent
-      .substring(currentIndex)
-      .trim();
-    if (remainingText) {
-      elements.push(<span key={currentIndex + 1}>{remainingText}</span>);
-    }
-
-    return elements;
-  };
-
-  console.log(post?.content);
   return (
     <>
       <div className="postcard-container">
@@ -160,7 +111,7 @@ export const PostCard = ({ post }) => {
           >
             {/* Parsed Content */}
             <div className="postcard-info-container-body-content">
-              {renderMessageWithLinks()}
+              {content}
             </div>
 
             {/* <p>{post?.content}</p> */}

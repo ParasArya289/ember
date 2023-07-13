@@ -52,7 +52,7 @@ const PostDialogBox = ({ children }) => {
           <Dialog.Description className="DialogDescription">
             <textarea
               ref={textAreaRef}
-              placeholder="Whats happening?!"
+              placeholder="Hey! What's up? Mention your crew with '@'"
               onChange={(e) => setFormData(e.target.value)}
               value={formData}
             />

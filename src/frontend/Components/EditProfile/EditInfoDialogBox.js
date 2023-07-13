@@ -1,13 +1,34 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { RxCross2 } from "react-icons/rx";
 import { editProfile } from "../../AsyncUtilities/dataAsyncHelpers";
 import { useAuth } from "../../Context/authContext";
+import {
+  linkMentionedUsername,
+  unlinkMentionedUsername,
+  usernameSuggestion,
+} from "../../../Utils/utils";
+import { UserUi } from "../CreatePost/CreatePost";
+import { useData } from "../../Context/dataContext";
 
 export const EditInfoDialogBox = ({ children, foundUser }) => {
   const [open, setOpen] = useState(false);
+  const [bio, setBio] = useState(foundUser?.bio);
+  const [suggesteduser, setSuggestedUser] = useState([]);
   const formRef = useRef();
+
+  const {
+    dataState: { users },
+  } = useData();
+
   const { setUser, token } = useAuth();
+
+  const textAreaRef = useRef();
+  useEffect(() => {
+    const res = usernameSuggestion(users, bio, textAreaRef);
+    setSuggestedUser(res);
+  }, [bio]);
+
   const editInfoHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
@@ -15,9 +36,17 @@ export const EditInfoDialogBox = ({ children, foundUser }) => {
     for (const [key, value] of formData.entries()) {
       userData[key] = value;
     }
-    editProfile(userData, token, setUser);
+    
+    editProfile(
+      { ...userData, bio: linkMentionedUsername(bio) },
+      token,
+      setUser
+    );
     setOpen(false);
   };
+
+  const unLinkedContent = unlinkMentionedUsername(bio);
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="DialogTrigger">{children}</Dialog.Trigger>
@@ -28,9 +57,6 @@ export const EditInfoDialogBox = ({ children, foundUser }) => {
           <Dialog.Description className="EditDialogDescription">
             <form ref={formRef} onSubmit={editInfoHandler}>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="name">
-                  First Name
-                </label>
                 <input
                   className="Input"
                   name="firstName"
@@ -40,9 +66,6 @@ export const EditInfoDialogBox = ({ children, foundUser }) => {
                 />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="name">
-                  Last Name
-                </label>
                 <input
                   className="Input"
                   name="lastName"
@@ -52,29 +75,34 @@ export const EditInfoDialogBox = ({ children, foundUser }) => {
                 />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="link">
-                  link
-                </label>
                 <input
                   className="Input"
                   type="url"
                   name="link"
                   placeholder="Link"
-                  required
                   defaultValue={foundUser?.link}
                 />
               </fieldset>
               <fieldset className="Fieldset">
-                <label className="Label" htmlFor="bio">
-                  Bio
-                </label>
                 <textarea
+                  ref={textAreaRef}
                   className="Input"
                   name="bio"
-                  required
-                  defaultValue={foundUser?.bio}
+                  placeholder="Write your bio, Mention people with '@'"
+                  onChange={(e) => setBio(e.target.value)}
+                  defaultValue={unLinkedContent}
                 />
               </fieldset>
+
+              {suggesteduser?.slice(0, 4).map((user) => (
+                <UserUi
+                  key={user?._id}
+                  user={user}
+                  inputRef={textAreaRef}
+                  setFormData={setBio}
+                />
+              ))}
+
               <div
                 style={{
                   display: "flex",
