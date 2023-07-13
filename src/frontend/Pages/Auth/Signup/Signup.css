@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 .avatar-radio-group input[type="radio"] {
-  appearance: none;
+  display: none;
 }
 
 .avatar-radio {
