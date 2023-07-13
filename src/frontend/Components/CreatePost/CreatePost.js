@@ -3,7 +3,10 @@ import { useAuth } from "../../Context/authContext";
 import { createPost } from "../../AsyncUtilities/dataAsyncHelpers";
 import { useEffect, useRef, useState } from "react";
 import { useData } from "../../Context/dataContext";
-import { usernameSuggestion } from "../../../Utils/utils";
+import {
+  linkMentionedUsername,
+  usernameSuggestion,
+} from "../../../Utils/utils";
 
 export const UserUi = ({ user, inputRef, setFormData }) => {
   const injectUserName = () => {
@@ -96,10 +99,7 @@ export const CreatePost = () => {
   const sendPost = () => {
     if (formData) {
       const data = {
-        content: formData.replace(
-          /@(\w+)/g,
-          '<a href="/profile/$1" data data-username="$1">@$1</a>'
-        ),
+        content: linkMentionedUsername(formData),
         username: user?.username,
       };
       createPost(data, token, dataDispatch);
