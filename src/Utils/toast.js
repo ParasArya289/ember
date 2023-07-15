@@ -8,6 +8,7 @@ const toastStyles = {
     marginTop: "70px",
     backgroundColor: "var(--background-blur-dark)",
     backdropFilter: "var(--blur)",
+    WebkitBackdropFilter: "var(--blur)",
     color: "var(--primary-text-color)",
     fontSize: "small",
     fontWeight: "var(--fw-regular)",
