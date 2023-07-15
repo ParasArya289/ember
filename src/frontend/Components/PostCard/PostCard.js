@@ -37,10 +37,10 @@ export const PostCard = ({ post }) => {
   const sharePostHandler = () => {
     if (navigator.share) {
       navigator.share({
-        text: "Checkout this post from" + post?.username,
+        text: "Checkout this post from @" + post?.username,
         url: `https://ember-react.netlify.app/post/` + post?._id,
         title: "Ember",
-        icon:"/bg2.svg",
+        icon: "favicon.ico",
       });
     } else {
       navigator.clipboard.writeText(
