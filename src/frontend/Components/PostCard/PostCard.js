@@ -40,7 +40,7 @@ export const PostCard = ({ post }) => {
         text: "Checkout this post from @" + post?.username,
         url: `https://ember-react.netlify.app/post/` + post?._id,
         title: "Ember",
-        icon: "favicon.ico",
+        icon: "logo192.png",
       });
     } else {
       navigator.clipboard.writeText(
