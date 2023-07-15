@@ -8,14 +8,14 @@ const toastStyles = {
     marginTop: "70px",
     backgroundColor: "var(--background-blur-dark)",
     backdropFilter: "var(--blur)",
-    WebkitBackdropFilter: "var(--blur)",
+    webkitBackdropFilter: "blur(12px)",
     color: "var(--primary-text-color)",
     fontSize: "small",
     fontWeight: "var(--fw-regular)",
   },
   iconTheme: {
     primary: "var(--primary-color)",
-    secondary: "var(--primary-text-color)",
+    secondary: "var(--ember)",
   },
 };
 //success toast
