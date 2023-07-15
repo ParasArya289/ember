@@ -37,10 +37,10 @@ export const PostCard = ({ post }) => {
   const sharePostHandler = () => {
     if (navigator.share) {
       navigator.share({
-        text: "Checkout this post",
-        url: "http://localhost:3000/",
-        title: "Shared from Ember",
-        icon: "/public/bg2.svg",
+        text: "Checkout this post from" + post?.username,
+        url: `https://ember-react.netlify.app/post/` + post?._id,
+        title: "Ember",
+        icon:"/bg2.svg",
       });
     } else {
       navigator.clipboard.writeText(
@@ -62,7 +62,7 @@ export const PostCard = ({ post }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [timeOfPost, post]);
+  }, [timeOfPost]);
 
   const content = renderMessageWithLinks(post?.content, navigate);
 
