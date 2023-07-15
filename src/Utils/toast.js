@@ -4,7 +4,7 @@ const toastStyles = {
   style: {
     border: "var(--layout-border)",
     borderRadius: "30px",
-    padding: "16px",
+    padding: "10px",
     marginTop: "70px",
     backgroundColor: "var(--background-blur-dark)",
     backdropFilter: "var(--blur)",
@@ -48,5 +48,4 @@ export const customToast = (user, text = "") => {
     ),
     toastStyles
   );
-  console.log(user);
 };
