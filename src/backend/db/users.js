@@ -10,7 +10,7 @@ export const users = [
     _id: "ceec46f2-51e1-4f81-97db-6236de51e708",
     avatar:
       "https://pbs.twimg.com/profile_images/1605458814068674563/V2sT6f64_400x400.jpg",
-    bio: "Tech-loving IT student | Passionate web developer | AWS Certified | Embracing innovation",
+    bio: "Tech-loving IT student | Passionate web developer | AWS Certified | Embracing innovation | Founder <a href='profile/karigiri' data data-username='karigiri'>@karigiri</a>",
     link: "https://parasarya.netlify.app/",
     firstName: "Paras",
     lastName: "Arya",
@@ -24,7 +24,7 @@ export const users = [
     avatar:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1D2I8QTTIipmHmaxknwoVDdzHaQj90w7TKqOMNiKJhk92FbNKnDmRv3e0RjHzoXJr5UE&usqp=CAU",
     bg: "https://images.pexels.com/photos/1487711/pexels-photo-1487711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    brand:true,
+    brand: true,
     bio: "Crafting beauty, one stitch at a time.",
     link: "",
     firstName: "Karigiri",
