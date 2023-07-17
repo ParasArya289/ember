@@ -9,8 +9,9 @@ export const SinglePost = () => {
   const {
     dataState: { posts },
   } = useData();
+
   const foundPost = posts?.find(({ _id }) => _id === postId);
-  console.log(foundPost)
+
   return (
     <Feed navbar={<Navbar title={"Post"} />}>
       <PostCard post={foundPost} />
