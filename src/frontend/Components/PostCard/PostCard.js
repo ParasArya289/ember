@@ -40,7 +40,7 @@ export const PostCard = ({ post }) => {
         text: "Checkout this post from @" + post?.username,
         url: `https://ember-react.netlify.app/post/` + post?._id,
         title: "Ember",
-        icon: "logo192.png",
+        icon: "https://www.svgrepo.com/show/445730/ember.svg",
       });
     } else {
       navigator.clipboard.writeText(
@@ -58,11 +58,11 @@ export const PostCard = ({ post }) => {
     const interval = setInterval(() => {
       setTimeDifference(timeOfPost(post?.updatedAt));
     }, 10000);
-
+    console.log(post?.updatedAt);
     return () => {
       clearInterval(interval);
     };
-  }, [timeOfPost]);
+  }, []);
 
   const content = renderMessageWithLinks(post?.content, navigate);
 
