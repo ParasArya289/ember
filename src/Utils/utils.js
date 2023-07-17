@@ -134,6 +134,10 @@ export const renderMessageWithLinks = (string, navigate) => {
 };
 
 export const timeOfPost = (date) => {
+  if (!date) {
+    return "";
+  }
+
   const currentDate = new Date();
   const formattedDate = new Date(date);
 
