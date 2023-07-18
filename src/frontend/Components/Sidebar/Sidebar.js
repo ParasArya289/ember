@@ -4,13 +4,13 @@ import { AiFillHome } from "react-icons/ai";
 import { MdExplore } from "react-icons/md";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillSendFill } from "react-icons/bs";
-import { GoKebabHorizontal } from "react-icons/go";
 import { useAuth } from "../../Context/authContext";
 import { motion } from "framer-motion";
 import { MyPopover } from "../Popover/Popover";
 import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
 import { useNavigate } from "react-router-dom";
 import PostDialogBox from "../PostDialogBox/PostDialogBox";
+
 export const Sidebar = () => {
   const { user, token } = useAuth();
   const navigate = useNavigate();
