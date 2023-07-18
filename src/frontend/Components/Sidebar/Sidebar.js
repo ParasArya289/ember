@@ -8,36 +8,38 @@ import { useAuth } from "../../Context/authContext";
 import { motion } from "framer-motion";
 import { MyPopover } from "../Popover/Popover";
 import { ProfileHoverCard } from "../ProfileHoverCard/ProfileHoverCard";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import PostDialogBox from "../PostDialogBox/PostDialogBox";
+import { Nav } from "react-bootstrap";
 
 export const Sidebar = () => {
   const { user, token } = useAuth();
   const navigate = useNavigate();
+  const activeTabStyle = ({isActive})=> `sidebar-links-link ${isActive && "sidebar-links-link-active"}`
   return (
     <nav className="sidebar-container">
       <div className="sidebar-links">
         <h1 className="sidebar-heading">
           <FaEmber />
         </h1>
-        <div className="sidebar-links-link" onClick={() => navigate("/")}>
+        <NavLink to="/" className={activeTabStyle}>
           <AiFillHome />
           <span>Home</span>
-        </div>
-        <div
-          className="sidebar-links-link"
-          onClick={() => navigate("/explore")}
+        </NavLink>
+        
+        <NavLink to="/explore"
+          className={activeTabStyle}
         >
           <MdExplore />
           <span>Explore</span>
-        </div>
-        <div
-          className="sidebar-links-link"
-          onClick={() => navigate("/bookmark")}
+        </NavLink>
+
+        <NavLink to="/bookmark"
+          className={activeTabStyle}
         >
           <BsFillBookmarkFill />
           <span>Bookmark</span>
-        </div>
+        </NavLink>
 
         <PostDialogBox>
           <div className="sidebar-links-link">

@@ -21,6 +21,8 @@
 .sidebar-links-link {
   font-size: 22px;
   padding: 5px 12px;
+  text-decoration: none;
+  color:var(--primary-text-color);
   cursor: pointer;
 }
 .sidebar-links-link > span {
@@ -29,9 +31,14 @@
   margin-left: 20px;
 }
 
+.sidebar-links-link-active{
+  color:var(--ember)
+}
+
 .sidebar-links-link:hover {
   background-color: var(--hover-color);
-  border-radius: 20px;
+  border-radius: 30px;
+  color:inherit;
 }
 .sidebar-user {
   position: absolute;
