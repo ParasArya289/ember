@@ -4,10 +4,10 @@
   gap: 20px;
   text-align: left;
   padding: 20px;
-  color: var(--ember);
+  color: var(--secondary-color);
 }
 .postcard-placeholder-avatar {
-  background-color: var(--ember) !important;
+  background-color: var(--secondary-color) !important;
   height: 40px;
   width: 40px;
   border-radius: 50%;
