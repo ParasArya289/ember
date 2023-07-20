@@ -43,6 +43,7 @@ export const Signup = () => {
     lastNameRef.current.value = "Doe";
     userName.current.value = "johndoe";
     passwordRef.current.value = "test";
+    createDramaEffect();
   };
 
   const changePasswordVisibility = () => {
