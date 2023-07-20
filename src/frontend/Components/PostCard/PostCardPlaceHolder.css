@@ -1,0 +1,14 @@
+.postcard-placeholder {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  text-align: left;
+  padding: 20px;
+  color: var(--ember);
+}
+.postcard-placeholder-avatar {
+  background-color: var(--ember) !important;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}

@@ -21,9 +21,11 @@ import { renderMessageWithLinks, timeOfPost } from "../../../Utils/utils";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { successToast } from "../../../Utils/toast";
+import { PostCardPlaceHolder } from "./PostCardPlaceHolder";
 
 export const PostCard = ({ post }) => {
   const [timeDifference, setTimeDifference] = useState("");
+  const [imageLoading, setImageLoading] = useState(true);
   const navigate = useNavigate();
 
   const {
@@ -64,98 +66,118 @@ export const PostCard = ({ post }) => {
     };
   }, []);
 
+  const loadImage = () => {
+    const img = new Image();
+    img.src = findUser?.avatar;
+    img.onload = () => {
+      setTimeout(() => {
+        setImageLoading(false);
+      },500);
+    };
+  };
+
+  useEffect(() => {
+    loadImage();
+  }, []);
+
   const content = renderMessageWithLinks(post?.content, navigate);
 
   return (
     <>
-      <div className="postcard-container">
-        <img
-          src={findUser?.avatar}
-          height="40"
-          onClick={() => navigate("/profile/" + post?.username)}
-        />
-        <div className="postcard-info-container">
-          <div className="postcard-header-flex">
-            <div
-              className="postcard-info-container-header"
-              onClick={() => navigate("/profile/" + post?.username)}
-            >
-              <span className="header-name">
-                {findUser?.firstName} {findUser?.lastName}
-                <span className="header-name-edit">
-                  {post?.edited ? " edited" : ""}
-                </span>
-                <BsDot />
-                <span className="header-name-time">{timeDifference}</span>
-              </span>
-              <span className="header-username"> @{findUser?.username}</span>
-            </div>
-
-            <div className="header-menu">
-              {user?.username === post?.username && (
-                <EditMenu
-                  content={post?.content}
-                  user={user}
-                  postId={post?._id}
-                  token={token}
-                  dispatch={dataDispatch}
-                >
-                  <BiDotsHorizontalRounded />
-                </EditMenu>
-              )}
-            </div>
-          </div>
-          <div
-            className="postcard-info-container-body"
-            onClick={() => navigate("/post/" + post?._id)}
-          >
-            {/* Parsed Content */}
-            <div className="postcard-info-container-body-content">
-              {content}
-            </div>
-
-            {/* <p>{post?.content}</p> */}
-          </div>
-          <div className="postcard-action-container">
-            <div className="postcard-action postcard-action-flex">
-              {post?.likes?.likedBy?.some(
-                ({ username }) => username === user?.username
-              ) ? (
-                <RxHeartFilled
-                  onClick={() => unlikePost(post?._id, token, dataDispatch)}
-                />
-              ) : (
-                <RxHeart
-                  onClick={() => likePost(post?._id, token, dataDispatch)}
-                />
-              )}
-              {post?.likes?.likeCount > 0 && (
-                <LikePopover likedBy={post?.likes?.likedBy}>
-                  <span className="postcard-action-likeCount">
-                    {post?.likes?.likeCount}
+      {imageLoading ? (
+        <PostCardPlaceHolder />
+      ) : (
+        <div className="postcard-container">
+          <img
+            src={findUser?.avatar}
+            height="40"
+            onClick={() => navigate("/profile/" + post?.username)}
+            loading="lazy"
+            onLoad={() => setImageLoading(false)}
+          />
+          <div className="postcard-info-container">
+            <div className="postcard-header-flex">
+              <div
+                className="postcard-info-container-header"
+                onClick={() => navigate("/profile/" + post?.username)}
+              >
+                <span className="header-name">
+                  {findUser?.firstName} {findUser?.lastName}
+                  <span className="header-name-edit">
+                    {post?.edited ? " edited" : ""}
                   </span>
-                </LikePopover>
-              )}
+                  <BsDot />
+                  <span className="header-name-time">{timeDifference}</span>
+                </span>
+                <span className="header-username"> @{findUser?.username}</span>
+              </div>
+
+              <div className="header-menu">
+                {user?.username === post?.username && (
+                  <EditMenu
+                    content={post?.content}
+                    user={user}
+                    postId={post?._id}
+                    token={token}
+                    dispatch={dataDispatch}
+                  >
+                    <BiDotsHorizontalRounded />
+                  </EditMenu>
+                )}
+              </div>
             </div>
-            <div className="postcard-action">
-              {bookmark?.some(({ _id }) => _id === post?._id) ? (
-                <RxBookmarkFilled
-                  onClick={() =>
-                    removeBookmarkedPost(post?._id, token, dataDispatch)
-                  }
-                />
-              ) : (
-                <RxBookmark
-                  onClick={() => bookmarkPost(post?._id, token, dataDispatch)}
-                />
-              )}
+            <div
+              className="postcard-info-container-body"
+              onClick={() => navigate("/post/" + post?._id)}
+            >
+              {/* Parsed Content */}
+              <div className="postcard-info-container-body-content">
+                {content}
+              </div>
+
+              {/* <p>{post?.content}</p> */}
             </div>
-            <div className="postcard-action">
-              <RxShare2 onClick={sharePostHandler} />
+            <div className="postcard-action-container">
+              <div className="postcard-action postcard-action-flex">
+                {post?.likes?.likedBy?.some(
+                  ({ username }) => username === user?.username
+                ) ? (
+                  <RxHeartFilled
+                    onClick={() => unlikePost(post?._id, token, dataDispatch)}
+                  />
+                ) : (
+                  <RxHeart
+                    onClick={() => likePost(post?._id, token, dataDispatch)}
+                  />
+                )}
+                {post?.likes?.likeCount > 0 && (
+                  <LikePopover likedBy={post?.likes?.likedBy}>
+                    <span className="postcard-action-likeCount">
+                      {post?.likes?.likeCount}
+                    </span>
+                  </LikePopover>
+                )}
+              </div>
+              <div className="postcard-action">
+                {bookmark?.some(({ _id }) => _id === post?._id) ? (
+                  <RxBookmarkFilled
+                    onClick={() =>
+                      removeBookmarkedPost(post?._id, token, dataDispatch)
+                    }
+                  />
+                ) : (
+                  <RxBookmark
+                    onClick={() => bookmarkPost(post?._id, token, dataDispatch)}
+                  />
+                )}
+              </div>
+              <div className="postcard-action">
+                <RxShare2 onClick={sharePostHandler} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <hr className="postcard-hr" />
     </>
   );
