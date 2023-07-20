@@ -6,13 +6,16 @@ import { useData } from "../../Context/dataContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ProfileEditDialogBox } from "../ProfleEditDialogBox/ProfileEditDialogBox";
+import { logoutHandler } from "../../AsyncUtilities/authAsyncHelpers";
+import { useAuth } from "../../Context/authContext";
 
 export const EditProfilePopover = ({ children, foundUser }) => {
   const [open, setOpen] = useState(false);
   const {
     dataState: { users },
   } = useData();
-  const navigate = useNavigate();
+
+  const { setUser, setToken } = useAuth();
 
   return (
     <div className="Popover">
@@ -21,13 +24,13 @@ export const EditProfilePopover = ({ children, foundUser }) => {
 
         <Popover.Portal>
           <Popover.Content className="EditProfilePopover">
-            <ProfileEditDialogBox foundUser={foundUser} setOpen={setOpen}>
+            {/* <ProfileEditDialogBox foundUser={foundUser} setOpen={setOpen}>
               <div>
                 <RxPencil1 />
                 <span>Edit Profile</span>
               </div>
-            </ProfileEditDialogBox>
-            <div>
+            </ProfileEditDialogBox> */}
+            <div onClick={() => logoutHandler(setUser, setToken)}>
               <RxExit />
               <span>Log out</span>
             </div>
