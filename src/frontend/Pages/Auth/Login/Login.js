@@ -1,13 +1,14 @@
 import "./Login.css";
-import { FaEmber } from "react-icons/fa";
+import { FaEmber, FaEye, FaEyeSlash } from "react-icons/fa";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../Context/authContext";
 
 export const Login = () => {
   const { loginHandler, authLoading } = useAuth();
+  const [passwordVisible, setPasswordVisisble] = useState(false);
   const formRef = useRef(null);
   const userName = useRef(null);
   const passwordRef = useRef(null);
@@ -21,10 +22,16 @@ export const Login = () => {
     }
     loginHandler(obj);
   };
+
   const createTestAccount = () => {
     userName.current.value = "parasarya";
     passwordRef.current.value = "parasarya123";
   };
+
+  const changePasswordVisibility = () => {
+    setPasswordVisisble((prev) => !prev);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -42,13 +49,24 @@ export const Login = () => {
           placeholder="Username"
           required
         />
-        <input
-          ref={passwordRef}
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
+        <div className="auth-password">
+          <input
+            ref={passwordRef}
+            type={passwordVisible ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            required
+          />
+          {passwordVisible ? (
+            <button type="button" onClick={changePasswordVisibility}>
+              <FaEye />
+            </button>
+          ) : (
+            <button type="button" onClick={changePasswordVisibility}>
+              <FaEyeSlash />
+            </button>
+          )}
+        </div>
         <Dropdown className="auth-dropdown" as={ButtonGroup}>
           <Button
             className="auth-btn"

@@ -1,4 +1,4 @@
-import { FaEmber } from "react-icons/fa";
+import { FaEmber, FaEye, FaEyeSlash } from "react-icons/fa";
 import { BsShuffle } from "react-icons/bs";
 
 import { useRef, useState } from "react";
@@ -8,6 +8,7 @@ import { useAuth } from "../../../Context/authContext";
 import { avatars } from "../../../../Utils/avatars";
 import "./Signup.css";
 export const Signup = () => {
+  const [passwordVisible, setPasswordVisisble] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const [avatarLoading, setAvatarLoading] = useState(true);
   const { singupHandler, authLoading } = useAuth();
@@ -43,6 +44,10 @@ export const Signup = () => {
     userName.current.value = "johndoe";
     passwordRef.current.value = "test";
   };
+
+  const changePasswordVisibility = () => {
+    setPasswordVisisble((prev) => !prev);
+  };
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -74,13 +79,24 @@ export const Signup = () => {
           placeholder="Username"
           required
         />
-        <input
-          ref={passwordRef}
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
+        <div className="auth-password">
+          <input
+            ref={passwordRef}
+            type={passwordVisible ? "text" : "password"}
+            name="password"
+            placeholder="Password"
+            required
+          />
+          {passwordVisible ? (
+            <button type="button" onClick={changePasswordVisibility}>
+              <FaEye />
+            </button>
+          ) : (
+            <button type="button" onClick={changePasswordVisibility}>
+              <FaEyeSlash />
+            </button>
+          )}
+        </div>
 
         <motion.div className="avatar-radio-header">
           <motion.p>Select Avatar</motion.p>
