@@ -78,7 +78,7 @@ export const PostCard = ({ post }) => {
 
   useEffect(() => {
     loadImage();
-  }, []);
+  }, [findUser]);
 
   const content = renderMessageWithLinks(post?.content, navigate);
 
