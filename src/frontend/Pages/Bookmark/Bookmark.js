@@ -10,7 +10,7 @@ export const Bookmark = () => {
   return (
     <Feed navbar={<Navbar title={"Bookmark"} />}>
       <div>
-        {bookmark?.length <= 0 && <h1>No Bookmarked Post</h1>}
+        {bookmark?.length <= 0 && <h4>No Bookmarked Post</h4>}
         {bookmark?.map((post) => (
           <PostCard key={post?.id} post={post} />
         ))}

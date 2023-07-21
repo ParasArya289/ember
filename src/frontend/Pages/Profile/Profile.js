@@ -93,7 +93,12 @@ export const Profile = () => {
             </EditImageDialogBox>
           )}
           <div className="profile-avatar">
-            <img src={foundUser?.avatar} />
+            <img
+              src={
+                foundUser?.avatar ||
+                "https://www.svgrepo.com/show/311076/person-question-mark.svg"
+              }
+            />
             {user?.username === foundUser?.username && (
               <EditImageDialogBox
                 dialogFor={"avatar"}
@@ -113,7 +118,7 @@ export const Profile = () => {
               <div className="profile-name">
                 {foundUser?.firstName} {foundUser?.lastName}
               </div>
-              <div className="profile-username">@{foundUser?.username}</div>
+              <div className="profile-username">{foundUser?.username && "@"+foundUser?.username}</div>
             </div>
             {user?.username === foundUser?.username && (
               <EditInfoDialogBox foundUser={foundUser}>
@@ -175,6 +180,7 @@ export const Profile = () => {
         </div>
 
         <div className="profile-posts">
+          {!foundUser?.username && <h6>Account by username @{usernameParams} does not exist!</h6>}
           {foundPostOfUser?.map((post) => (
             <PostCard post={post} />
           ))}

@@ -37,7 +37,7 @@ export const Home = () => {
       <CreatePost />
       <div className="home-posts">
         <SuggestionBoxMobile />
-        {filterPostsOfFollowers()?.length <= 0 && <h1>No Post</h1>}
+        {filterPostsOfFollowers()?.length <= 0 && <h4>No Posts</h4>}
         {filterPostsOfFollowers()?.map((post) => (
           <PostCard key={post?.id} post={post} />
         ))}
