@@ -49,7 +49,7 @@ export const Profile = () => {
   };
 
   const bio = renderMessageWithLinks(foundUser?.bio, navigate);
-  console.log(foundUser?.bio);
+
   return (
     <Feed
       navbar={
@@ -150,7 +150,7 @@ export const Profile = () => {
         <div className="profile-dashboard">
           <div className="profile-dashboard-info">
             <span className="profle-dashboard-info-data">
-              {foundPostOfUser?.length}
+              {foundPostOfUser?.length ?? "-"}
             </span>
             <span className="profle-dashboard-info-data-name">Posts</span>
           </div>
@@ -158,7 +158,7 @@ export const Profile = () => {
             <div className="profile-dashboard-info">
               <span className="profle-dashboard-info-data">
                 {" "}
-                {foundUser?.followers?.length}
+                {foundUser?.followers?.length ?? "-"}
               </span>
               <span className="profle-dashboard-info-data-name">Followers</span>
             </div>
@@ -167,7 +167,7 @@ export const Profile = () => {
           <LikePopover likedBy={foundUser?.following}>
             <div className="profile-dashboard-info">
               <span className="profle-dashboard-info-data">
-                {foundUser?.following?.length}
+                {foundUser?.following?.length ?? "-"}
               </span>
               <span className="profle-dashboard-info-data-name">Following</span>
             </div>
