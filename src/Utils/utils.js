@@ -72,22 +72,20 @@ export const usernameSuggestion = (array, key, ref) => {
 };
 
 //Replace username mentionns with <a/> tag
-export const linkMentionedUsername = (string) =>
-  string.replace(
+export const linkMentionedUsername = (string) => {
+  return string?.replace(
     /@(\w+)/g,
     '<a href="/profile/$1" data data-username="$1">@$1</a>'
   );
+};
 
 export const unlinkMentionedUsername = (string) => {
   const regex = /<a\b[^>]*>(.*?)<\/a>/g;
-  return string.replace(regex, (_, username) => username);
+  return string?.replace(regex, (_, username) => username);
 };
 
 //Username Parser
 export const renderMessageWithLinks = (string, navigate) => {
-  if(!string){
-    return ""
-  }
   const parser = new DOMParser();
   const parsedHTML = parser.parseFromString(string, "text/html");
   const links = parsedHTML.getElementsByTagName("a");
