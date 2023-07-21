@@ -19,7 +19,7 @@ export const SuggestionBoxMobile = () => {
 
   return (
     <>
-      {notFollowing.length && (
+      {notFollowing.length >= 0 && (
         <div>
           <div className="suggestionBoxMobile-container">
             {notFollowing?.slice(0, 3)?.map((user) => (
