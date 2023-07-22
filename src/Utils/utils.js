@@ -86,6 +86,7 @@ export const unlinkMentionedUsername = (string) => {
 
 //Username Parser
 export const renderMessageWithLinks = (string, navigate) => {
+  if(!string) return " "
   const parser = new DOMParser();
   const parsedHTML = parser.parseFromString(string, "text/html");
   const links = parsedHTML.getElementsByTagName("a");
